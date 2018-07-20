@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- 
+    
+  Title: Laboratory Test Component minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 4
+      Failure a-3335-34588-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34588).
+      Failure a-3335-34589-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3335-34589).
+      Failure a-3335-34581-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId 
+      Failure a-3335-34582-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-34582) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.126" (CONF:3335-34584). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34585). 
+
+      
+  Total Warnings Expected: 0
+  
+-->   
+   
+   <!-- Failure a-3335-34588-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34588).
+        Failure a-3335-34589-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3335-34589). 
+   -->
+   <observationCriteria classCodeErr="OBS" moodCode="EVNErr">
+      
+      <templateId>
+         <!-- Component template -->
+         <item root="2.16.840.1.113883.10.20.28.4.121" extension="2017-05-01"/>
+         <!-- Laboratory Test Component template -->
+         <item root="2.16.840.1.113883.10.20.28.4.126" extension="2017-05-01"/>/>
+      </templateId>
+      <!-- Failure a-3335-34581-error Multiple templates  -->
+      <!-- Failure a-3335-34582-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-34582) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.126" (CONF:3335-34584). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34585). -->
+      <templateId>
+           <item root="2.16.840.1.113883.10.20.28.4.126Err" extension="2017-05-01"/>
+         <item />
+      </templateId>
+      <id root="edd94e15-dc95-49d6-8a65-74cb2b87c93b"/>
+      <code code="2339-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+         <displayName value="Glucose [Mass/?volume] in Blood"/>
+      </code>
+      <title value="Cause"/>
+      <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/>
+   </observationCriteria>
+   
+
+</QualityMeasureDocument>

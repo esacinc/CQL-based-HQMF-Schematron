@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Patient Characteristic Expired minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-12-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <observationCriteria classCode="OBS" moodCode="EVN">
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.4.57" extension="2017-05-01"/>
+      </templateId>
+      <id root="6b9cb746-991a-45b1-a0ea-e511e0a38a41"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4">
+        <displayName value="Assertion"/>
+      </code>
+      <title value="Patient Characteristic Expired"/>
+      <statusCode code="completed"/>
+      <value xsi:type="CD" code="419099009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+        <displayName value="Dead"/>
+      </value>
+    </observationCriteria>   
+    
+</QualityMeasureDocument>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Laboratory Test Reference Range minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-11-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <observationCriteria classCode="OBS" moodCode="EVN">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.124" extension="2017-05-01"/>
+    </templateId>
+    <id root="6a296c27-279f-4bdc-8707-6d030a6839a5"/>
+    <code code="19147-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+      <displayName value="Reference Range"/>
+    </code>
+    <title value="Laboratory Test Reference Range"/>
+    <value xsi:type="IVL_PQ">
+      <high value="17.5" unit="g/dL"/>
+    </value>
+  </observationCriteria>     
+  
+                        
+</QualityMeasureDocument>

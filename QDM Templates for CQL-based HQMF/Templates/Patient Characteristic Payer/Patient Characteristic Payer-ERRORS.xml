@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Patient Characteristic Payer minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-12-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 13
+      Failure a-3335-31627-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31627).
+      Failure a-3335-31628-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31628).
+      Failure a-3335-34710-error test="not(@actionNegationInd)" - SHALL NOT contain [0..0] @actionNegationInd (CONF:3335-34710).
+      Failure a-3335-31629-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-31629).
+      Failure a-3335-31632-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3335-31632).
+      Failure a-3335-31636-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3335-31636).
+      Failure a-3335-31633-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3335-31633).
+      Failure a-3335-31637-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3335-31637).
+      Failure a-3335-31639-error test="count(hqmf:value[@xsi:type='CD'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3335-31639).
+      Failure a-3335-31634-error test="@code='48768-6'" - This code SHALL contain exactly one [1..1] @code="48768-6" Payment Source (CONF:3335-31634).
+      Failure a-3335-31635-error test="@codeSystem='2.16.840.1.113883.6.1'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3335-31635).
+      Failure a-3335-31643-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31643).
+      Failure a-3335-31630-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457). 
+  
+  Total Warnings Expected: 1
+      Failure a-3335-31640-warning test="@valueSet" - This value SHOULD contain zero or one [0..1] @valueSet (CONF:3335-31640).
+  
+-->
+  
+  <!--  Failure a-3335-31627-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31627).
+        Failure a-3335-31628-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31628).
+        Failure a-3335-34710-error test="not(@actionNegationInd)" - SHALL NOT contain [0..0] @actionNegationInd (CONF:3335-34710).
+   -->
+  <observationCriteria classCode="OBSErr" moodCode="EVNErr" actionNegationInd="...">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.58" extension="2017-05-01"/>
+    </templateId>
+    <!--Failure a-3335-31629-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-31629) -->
+    <templateId>
+      <!-- 
+        Failure a-3335-31630-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457). 
+      -->
+      <item root="Err" extension="Err"/>
+    </templateId>
+    <!-- Failure a-3335-31632-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id  -->
+    <!-- Failure a-3335-31636-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+    <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+      <displayName value="Payer"/>
+    </code>
+    <!-- Failure a-3335-31633-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code 
+         Failure a-3335-31634-error test="@code='48768-6'" - This code SHALL contain exactly one [1..1] @code="48768-6" Payment Source (CONF:3335-31634).
+         Failure a-3335-31635-error test="@codeSystem='2.16.840.1.113883.6.1'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3335-31635).
+    -->
+    <code />
+    <statusCode code="completed"/>
+    <!-- Failure a-3335-31637-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
+         Failure a-3335-31643-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed
+    -->
+    <statusCode code="Err"/>
+    <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/>
+    <!-- Failure a-3335-31639-error test="count(hqmf:value[@xsi:type='CD'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="CD"
+         Failure a-3335-31640-warning test="@valueSet" - This value SHOULD contain zero or one [0..1] @valueSet
+    -->
+    <value xsi:type="CD" />
+  </observationCriteria>    
+  
+    
+</QualityMeasureDocument>

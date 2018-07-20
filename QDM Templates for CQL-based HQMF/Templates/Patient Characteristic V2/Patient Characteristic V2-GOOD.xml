@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- 
+    
+  Title: Patient Characteristic V2 minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-12-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <observationCriteria classCode="OBS" moodCode="EVN">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.53" extension="2017-08-01"/>
+    </templateId>
+    <id root="35cf9fd6-0d3d-4f86-91bf-a87fbf5ba8ef"/>
+    <code valueSet="{$QDMElementValueSetOID}"/>
+    <statusCode code="completed"/>
+  </observationCriteria> 
+  
+                        
+</QualityMeasureDocument>

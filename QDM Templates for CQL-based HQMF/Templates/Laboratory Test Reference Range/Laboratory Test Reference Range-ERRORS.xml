@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Laboratory Test Reference Range minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-11-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 10
+      Failure a-3335-34406-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34406).
+      Failure a-3335-34407-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-34407).
+      Failure a-3335-34398-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-34398).
+      Failure a-3335-34400-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3335-34400).
+      Failure a-3335-34405-error test="count(hqmf:value[@xsi:type='IVL_PQ'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="IVL_PQ" (CONF:3335-34405).
+      Failure a-3335-34408-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3335-34408).
+      Failure a-3335-34409-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3335-34409).
+      Failure a-3335-34399-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-34399). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.124" (CONF:3335-34401) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34615).
+      Failure a-3335-34403-error test="@code='19147-8'" - This code SHALL contain exactly one [1..1] @code="19147-8" Lab Test Reference Range (CONF:3335-34403).
+      Failure a-3335-34404-error test="@codeSystem='2.16.840.1.113883.6.1'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3335-34404).
+   
+  Total Warnings Expected: 0
+  
+-->
+  <!-- Failure a-3335-34406-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34406).
+       Failure a-3335-34407-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-34407).
+  -->
+  <observationCriteria >
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.124" extension="2017-05-01"/>
+     </templateId>
+    <!-- Failure a-3335-34398-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-34398). -->
+    <templateId>
+      <!-- Failure a-3335-34399-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-34399). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.124" (CONF:3335-34401) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34615).-->
+      <item root="2.16.840.1.113883.10.20.28.4.124Err" extension="2017-05-01"/>
+    </templateId>
+    <!-- Failure a-3335-34408-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id -->
+    <!--  Failure a-3335-34409-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+    <code code="19147-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+      <displayName value="Reference Range"/>
+    </code>
+    <!-- Failure a-3335-34400-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code 
+         Failure a-3335-34403-error test="@code='19147-8'" - This code SHALL contain exactly one [1..1] @code="19147-8" Lab Test Reference Range
+         Failure a-3335-34404-error test="@codeSystem='2.16.840.1.113883.6.1'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" 
+    -->
+    <code code="19147-8Err" codeSystem="2.16.840.1.113883.6.1Err" codeSystemName="LOINC">
+      <displayName value="Reference Range"/>
+    </code>
+    <!-- Failure a-3335-34405-error test="count(hqmf:value[@xsi:type='IVL_PQ'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="IVL_PQ" (CONF:3335-34405). -->
+     <value xsi:type="CD"> <!-- Error is here, should be IVL_PQ -->
+      <high value="17.5" unit="g/dL"/>
+    </value>
+    
+  </observationCriteria>     
+  
+                        
+</QualityMeasureDocument>

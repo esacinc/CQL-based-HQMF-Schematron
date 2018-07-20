@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <!-- 
+    
+  Title: Population Criteria Section V2 sample file with errors
+  Autor: Dan Donahue
+  Date: 07-16-2018
+  
+  Total Warnings Expected: 0
+  
+  Total Errors Expected: 70
+      Failure a-3346-18774-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-18774).
+      Failure a-3346-19059-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-19059).
+      Failure a-3346-18781-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-18781).
+      Failure a-3346-18961-error test="count(hqmf:text)=1" - SHALL contain exactly one [1..1] text (CONF:3346-18961).
+      NOT TESTED  Failure a-3346-29995-error test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0" - SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996).
+      Failure a-3346-18775-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0" - This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633).
+      Failure a-3346-19060-error test="@code='57026-7'" - This code SHALL contain exactly one [1..1] @code="57026-7" Population Criteria (CONF:3346-19060).
+      Failure a-3346-30092-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3346-30092).
+      Failure a-3346-18782-error test="@value='Population Criteria Section'" - This title SHALL contain exactly one [1..1] @value="Population Criteria Section" (CONF:3346-18782).  
+    
+    **** INITIAL POPULATION CRITERIA (SHALL CONTAIN AT LEAST ONE) **** 
+      Failure a-3346-30022-error test="count(hqmf:code)=1" - This initialPopulationCriteria SHALL contain exactly one [1..1] code (CONF:3346-30022).
+      NOT TESTED Failure a-3346-34868-error test="count(hqmf:precondition) &gt; 0" - This initialPopulationCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34868).
+      Failure a-3346-30023-error test="@code='IPOP'" - This code SHALL contain exactly one [1..1] @code="IPOP" Initial Population (CONF:3346-30023).
+      Failure a-3346-30093-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30093).
+      Failure a-3346-34869-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34869).
+      Failure a-3346-34870-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34870).
+      Failure a-3346-34886-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34886).
+      Failure a-3346-34887-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34887).
+    
+    **** NUMERATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30028-error test="count(hqmf:code)=1" - This numeratorCriteria SHALL contain exactly one [1..1] code (CONF:3346-30028). 
+      NOT TESTED Failure a-3346-34871-error test="count(hqmf:precondition) &gt; 0" - This numeratorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34871).  
+      Failure a-3346-30029-error test="@code='NUMER'" - This code SHALL contain exactly one [1..1] @code="NUMER" Numerator (CONF:3346-30029). 
+      Failure a-3346-30094-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30094).  
+      Failure a-3346-34872-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34872). 
+      Failure a-3346-34873-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34873).
+      Failure a-3346-34888-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34888). 
+      Failure a-3346-34889-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34889).  
+     
+    **** DENOMINATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30030-error test="count(hqmf:code)=1" - This denominatorCriteria SHALL contain exactly one [1..1] code (CONF:3346-30030).  
+      NOT  TESTED Failure a-3346-34874-error test="count(hqmf:precondition) &gt; 0" - This denominatorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34874).  
+      Failure a-3346-30031-error test="@code='DENOM'" - This code SHALL contain exactly one [1..1] @code="DENOM" Denominator (CONF:3346-30031).  
+      Failure a-3346-30095-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30095).  
+      Failure a-3346-34875-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34875).  
+      Failure a-3346-34876-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34876). 
+      Failure a-3346-34890-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34890). 
+      Failure a-3346-34891-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34891).  
+    
+    **** MEASURE POPULATION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30034-error test="count(hqmf:code)=1" - This measurePopulationCriteria SHALL contain exactly one [1..1] code (CONF:3346-30034).  
+      NOT  TESTED Failure a-3346-34877-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34877).  
+      Failure a-3346-30035-error test="@code='MSRPOPL'" - This code SHALL contain exactly one [1..1] @code="MSRPOPL" Measure Population (CONF:3346-30035).  
+      Failure a-3346-30096-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30096).  
+      Failure a-3346-34878-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34878).  
+      Failure a-3346-34879-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34879). 
+      Failure a-3346-34892-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34892). 
+      Failure a-3346-34893-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34893).  
+    
+    **** DENOMINATOR EXCEPTION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30038-error test="count(hqmf:code)=1" - This denominatorExceptionCriteria SHALL contain exactly one [1..1] code (CONF:3346-30038).  
+      NOT  TESTED Failure a-3346-34880-error test="count(hqmf:precondition) &gt; 0" - This denominatorExceptionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34880).  
+      Failure a-3346-30039-error test="@code='DENEXCEP'" - This code SHALL contain exactly one [1..1] @code="DENEXCEP" Denominator Exception (CONF:3346-30039).  
+      Failure a-3346-30097-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30097).  
+      Failure a-3346-34881-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34881).  
+      Failure a-3346-34882-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34882). 
+      Failure a-3346-34894-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34894). 
+      Failure a-3346-34895-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34895).   
+    
+    **** DENOMINATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30042-error test="count(hqmf:code)=1" - This denominatorExclusionCriteria SHALL contain exactly one [1..1] code (CONF:3346-30042).  
+      NOT  TESTED Failure a-3346-34883-error test="count(hqmf:precondition) &gt; 0" - This denominatorExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34883).  
+      Failure a-3346-30043-error test="@code='DENEX'" - This code SHALL contain exactly one [1..1] @code="DENEX" Denominator Exclusion (CONF:3346-30043).  
+      Failure a-3346-30098-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30098).  
+      Failure a-3346-34884-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34884).  
+      Failure a-3346-34885-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34885). 
+      Failure a-3346-34896-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34896). 
+      Failure a-3346-34897-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34897).  
+    
+    **** NUMERATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30046-error test="count(hqmf:code)=1" - This numeratorExclusionCriteria SHALL contain exactly one [1..1] code (CONF:3346-30046).  
+      NOT  TESTED Failure a-3346-34898-error test="count(hqmf:precondition) &gt; 0" - This numeratorExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34898).  
+      Failure a-3346-30047-error test="@code='NUMEX'" - This code SHALL contain exactly one [1..1] @code="NUMEX" Numerator Exclusion (CONF:3346-30047). 
+      Failure a-3346-30099-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30099).  
+      Failure a-3346-34899-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34899).  
+      Failure a-3346-34900-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34900). 
+      Failure a-3346-34904-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34904). 
+      Failure a-3346-34905-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34905).  
+    
+    **** MEASURE POPULATION EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-30050-error test="count(hqmf:code)=1" - This measurePopulationExclusionCriteria SHALL contain exactly one [1..1] code (CONF:3346-30050).  
+      NOT  TESTED Failure a-3346-34901-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34901).  
+      Failure a-3346-30051-error test="@code='MSRPOPLEX'" - This code SHALL contain exactly one [1..1] @code="MSRPOPLEX" Measure Population Exclusions (CONF:3346-30051). 
+      Failure a-3346-30100-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30100).  
+      Failure a-3346-34902-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34902).  
+      Failure a-3346-34903-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34903). 
+      Failure a-3346-34906-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34906). 
+      Failure a-3346-34907-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34907).  
+    
+    **** STRATIFIER CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      NOT  TESTED Failure a-3346-34634-error test="count(hqmf:precondition) &gt; 0" - This stratifierCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34634).  
+      Failure a-3346-30055-error test="@code='STRAT'" - The code, if present, SHALL contain exactly one [1..1] @code="STRAT" Stratification (CONF:3346-30055). 
+      Failure a-3346-30101-error test="@codeSystem" - The code, if present, SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30101).   
+      Failure a-3346-34635-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference (CONF:3346-34635).  
+      Failure a-3346-34644-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id (CONF:3346-34644). 
+      Failure a-3346-34645-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34645). 
+      Failure a-3346-34646-error test="@extension" - This id SHALL contain exactly one [1..1] @extension (CONF:3346-34646).  
+   
+  
+  
+-->
+    
+    <templateId>
+        <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+    </templateId> 
+    <component>
+        <!-- 
+            NOT TESTED Failure a-3346-29995-error test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0" - SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996).
+            Failure a-3346-18782-error test="@value='Population Criteria Section'" - This title SHALL contain exactly one [1..1] @value="Population Criteria Section" (CONF:3346-18782).  
+ 
+        -->
+        <populationCriteriaSection>
+            <templateId>
+                <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+            </templateId>
+            <!-- Failure a-3346-18774-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId  -->
+            <templateId>
+                <!-- Failure a-3346-18775-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0" - This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633). -->
+                <item extension="2017-08-01Err" root="2.16.840.1.113883.10.20.28.2.7ERrr"/>
+            </templateId>
+            <id extension="PopulationCriteria1" root="61BB30D4-D0EB-4827-A165-545F27C5E5E0"/>
+            <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+            <!-- Failure a-3346-19059-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-19059).
+                 Failure a-3346-19060-error test="@code='57026-7'" - This code SHALL contain exactly one [1..1] @code="57026-7" Population Criteria 
+                 Failure a-3346-30092-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1)-->
+            <code code="57026-Err7" />
+            <title value="Population Criteria Section"/>
+            <!-- Failure a-3346-18781-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-18781).
+                 Failure a-3346-18782-error test="@value='Population Criteria Section'" - This title SHALL contain exactly one [1..1] @value="Population Criteria Section"
+            -->
+            <title value="Only one title allowed"/>
+            <!--  Failure a-3346-18961-error test="count(hqmf:text)=1" - SHALL contain exactly one [1..1] text (CONF:3346-18961). -->
+            <!--  <text/>-->
+            
+            <!-- **** INITIAL POPULATION CRITERIA (SHALL CONTAIN AT LEAST ONE) **** -->
+            <component typeCode="COMP">
+                <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="initialPopulation" root="98CF8F6F-09CB-42C5-AFB6-FAC2DDFFD697"/>
+                    <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30022-error test="count(hqmf:code)=1" - This initialPopulationCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30023-error test="@code='IPOP'" - This code SHALL contain exactly one [1..1] @code="IPOP" Initial Population (CONF:3346-30023).
+                    Failure a-3346-30093-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4)
+                    -->
+                    <code code="IPOPErr" codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Initial Population&quot;"
+                                root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!--  Failure a-3346-34869-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference  -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Initial Population&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- Failure a-3346-34870-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id 
+                                 Failure a-3346-34886-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                                 Failure a-3346-34887-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id></id>
+                        </criteriaReference>
+                    </precondition>
+                </initialPopulationCriteria>
+            </component>
+            
+            <!-- 
+               **** DENOMINATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <denominatorCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominator" root="25ED221B-928A-4E0E-B27F-3BAF7A6C57BA"/>
+                    <!-- 
+                    Failure a-3346-30030-error test="count(hqmf:code)=1" - This denominatorCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30031-error test="@code='DENOM'" - This code SHALL contain exactly one [1..1] @code="DENOM" Denominator 
+                    Failure a-3346-30095-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem 
+                    -->
+                    <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <code code="DENOMErr"  codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Denominator&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34875-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Denominator&quot;"  root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                                Failure a-3346-34876-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                                Failure a-3346-34890-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                                Failure a-3346-34891-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                             -->
+                            <id></id>
+                        </criteriaReference>
+                    </precondition>
+                </denominatorCriteria>
+            </component>
+            
+            <!-- 
+                **** DENOMINATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominatorExclusions" root="684881AB-266E-4CBC-ABBF-57AA9413F003"/>
+                    <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30042-error test="count(hqmf:code)=1" - This denominatorExclusionCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30043-error test="@code='DENEX'" - This code SHALL contain exactly one [1..1] @code="DENEX" Denominator Exclusion
+                    Failure a-3346-30098-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem 
+                    -->
+                    <code code="DENEXErr"  codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Denominator Exclusions&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34884-error test="count(hqmf:criteriaReference)=1">Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Denominator Exclusions&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34885-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34896-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34897-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id></id>
+                        </criteriaReference>
+                    </precondition>
+                </denominatorExclusionCriteria>
+            </component>
+            
+            <!-- 
+                **** DENOMINATOR EXCEPTION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <denominatorExceptionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominatorExceptions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30038-error test="count(hqmf:code)=1" - This denominatorExceptionCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30039-error test="@code='DENEXCEP'" - This code SHALL contain exactly one [1..1] @code="DENEXCEP" Denominator Exception
+                    Failure a-3346-30097-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) 
+                    -->
+                    <code code="DENEXCEPErr"  />
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34881-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34882-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34894-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34895-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </denominatorExceptionCriteria>
+            </component>
+            
+            
+            <!-- 
+                **** NUMERATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <numeratorCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="numerator" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30028-error test="count(hqmf:code)=1" - This numeratorCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30029-error test="@code='NUMER'" - This code SHALL contain exactly one [1..1] @code="NUMER" Numerator
+                    Failure a-3346-30094-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem
+                    -->
+                    <code code="NUMERErr"  codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Numerator One&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34872-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;Numerator One&quot;" root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34873-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34888-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34889-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </numeratorCriteria>
+            </component>
+            
+            <!-- 
+                **** NUMERATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <numeratorExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="numeratorExclusions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30046-error test="count(hqmf:code)=1" - This numeratorExclusionCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30047-error test="@code='NUMEX'" - This code SHALL contain exactly one [1..1] @code="NUMEX" Numerator Exclusion 
+                    Failure a-3346-30099-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) 
+                    -->
+                    <code code="NUMEXErr"  />
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34899-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34900-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34904-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34905-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </numeratorExclusionCriteria>
+            </component>
+            
+            
+            <!-- 
+               **** MEASURE POPULATION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+             -->
+            <component typeCode="COMP">
+                <measurePopulationCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="measurePopulation" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="MSRPOPL" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30034-error test="count(hqmf:code)=1" - This measurePopulationCriteria SHALL contain exactly one [1..1] code
+                    Failure a-3346-30035-error test="@code='MSRPOPL'" - This code SHALL contain exactly one [1..1] @code="MSRPOPL" Measure Population
+                    Failure a-3346-30096-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) 
+                    -->
+                    <code code="MSRPOPLErr"  />
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34878-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34879-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34892-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34893-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </measurePopulationCriteria>
+            </component>
+            
+            <!-- 
+                **** MEASURE POPULATION EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <measurePopulationExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="measurePoulationExclusions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="MSRPOPLEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                    Failure a-3346-30050-error test="count(hqmf:code)=1" - This measurePopulationExclusionCriteria SHALL contain exactly one [1..1] code 
+                    Failure a-3346-30051-error test="@code='MSRPOPLEX'" - This code SHALL contain exactly one [1..1] @code="MSRPOPLEX" Measure Population Exclusions
+                    Failure a-3346-30100-error test="@codeSystem" - This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) 
+                    -->
+                    <code code="MSRPOPLEXErr"  />
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34902-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34903-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34906-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34907-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </measurePopulationExclusionCriteria>
+            </component>
+ 
+            <!--  
+                **** STRATIFIER CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+            -->
+            <component typeCode="COMP">
+                <stratifierCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="stratifier" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- 
+                     Failure a-3346-30055-error test="@code='STRAT'" - The code, if present, SHALL contain exactly one [1..1] @code="STRAT" Stratification
+                    Failure a-3346-30101-error test="@codeSystem" - The code, if present, SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) 
+                    -->
+                    <code code="STRATErr"  />
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                        <!-- Failure a-3346-34635-error test="count(hqmf:criteriaReference)=1"> Such preconditions SHALL contain exactly one [1..1] criteriaReference -->
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="..." root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                            <!-- 
+                            Failure a-3346-34644-error test="count(hqmf:id)=1" - This criteriaReference SHALL contain exactly one [1..1] id
+                            Failure a-3346-34645-error test="@root" - This id SHALL contain exactly one [1..1] @root
+                            Failure a-3346-34646-error test="@extension" - This id SHALL contain exactly one [1..1] @extension
+                            -->
+                            <id />
+                        </criteriaReference>
+                    </precondition>
+                </stratifierCriteria>
+            </component>
+            
+            
+            
+            <component typeCode="COMP">
+                <cql-ext:supplementalDataElement>
+                    <id extension="Supplemental Data Elements"
+                        root="DD8DCB62-9D03-4871-9511-8D422D18EC37"/>
+                    <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;SDE Ethnicity&quot;"
+                                root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                    </precondition>
+                </cql-ext:supplementalDataElement>
+            </component>
+            <component typeCode="COMP">
+                <cql-ext:supplementalDataElement>
+                    <id extension="Supplemental Data Elements"
+                        root="DFB4B948-1184-4CAE-B6BE-6E8E0E37A125"/>
+                    <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;SDE Payer&quot;"
+                                root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                    </precondition>
+                </cql-ext:supplementalDataElement>
+            </component>
+            <component typeCode="COMP">
+                <cql-ext:supplementalDataElement>
+                    <id extension="Supplemental Data Elements"
+                        root="C195037E-412C-4F46-9906-DB5E4DC968B1"/>
+                    <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;SDE Race&quot;"
+                                root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                    </precondition>
+                </cql-ext:supplementalDataElement>
+            </component>
+            <component typeCode="COMP">
+                <cql-ext:supplementalDataElement>
+                    <id extension="Supplemental Data Elements"
+                        root="AE507B12-5910-4BC0-931D-38C116493B7D"/>
+                    <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <precondition typeCode="PRCN">
+                        <criteriaReference classCode="OBS" moodCode="EVN">
+                            <id extension="AntidepressantMedicationManagement.&quot;SDE Sex&quot;"
+                                root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                        </criteriaReference>
+                    </precondition>
+                </cql-ext:supplementalDataElement>
+            </component>
+        </populationCriteriaSection>
+    </component>
+    
+</QualityMeasureDocument>

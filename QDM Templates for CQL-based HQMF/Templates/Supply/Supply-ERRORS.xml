@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Supply minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 7
+      Failure a-3346-34795 test="@classCode='SPLY'" - SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3346-34795).
+      Failure a-3346-34796 test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34796).
+      Failure a-3346-34771 test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-34771).
+      Failure a-3346-34797 test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-34797).
+      Failure a-3346-34798 test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-34798).
+      Failure a-3346-34800 test="count(hqmf:quantity)=1" - SHALL contain exactly one [1..1] quantity (CONF:3346-34800).
+      Failure a-3346-34772 test="count(hqmf:item)" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-34772). 
+      Failure a-3346-34772 test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-34772) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.129" (CONF:3346-34783) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34784).
+  
+  Total Warnings Expected: 0
+  
+-->
+  
+  <!-- Failure a-3346-34795 test="@classCode='SPLY'" - SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3346-34795).
+       Failure a-3346-34796 test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34796).
+  -->
+  <supplyCriteria >
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.129" extension="2017-08-01"/>
+    </templateId>
+    <!-- Failure a-3346-34771 test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId -->
+    <templateId>
+      <!-- Failure a-3346-34772 test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-34772) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.129" (CONF:3346-34783) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34784). -->
+      <item root="2.16.840.1.113883.10.20.28.4.129" extension="2017-08-01Err"/>
+    </templateId>
+    <!-- Failure a-3346-34797 test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id -->
+    <!-- Failure a-3346-34798 test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+    <!-- <title value="Supply"/> -->
+    <quantity xsi:type="IVL_PQ">
+      <low value="50" unit="mL"/>
+    </quantity> 
+    <!-- Failure a-3346-34800 test="count(hqmf:quantity)=1" - SHALL contain exactly one [1..1] quantity -->
+    <quantity xsi:type="IVL_PQ">
+      <low value="50" unit="mL"/>
+    </quantity>
+  </supplyCriteria>       
+  
+     
+                        
+</QualityMeasureDocument>

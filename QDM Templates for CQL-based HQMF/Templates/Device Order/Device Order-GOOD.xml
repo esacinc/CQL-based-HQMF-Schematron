@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+<!-- 
+    
+  Title: Device Order minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-10-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+   <supplyCriteria classCode="SPLY" moodCode="RQO">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.15" extension="2017-05-01"/>
+      </templateId>
+      <id root="5ab17ed3-166c-4265-9c61-d254e30c8e83"/>
+      <title value="Device, Order"/>
+      <statusCode code="active"/>
+      <participation typeCode="DEV">
+         <role classCode="MANU">
+            <playingDevice classCode="DEV" determinerCode="KIND">
+               <code valueSet="{$QDMElementValueSetOID}"/>
+            </playingDevice>
+         </role>
+      </participation>
+   </supplyCriteria>
+   
+
+</QualityMeasureDocument>

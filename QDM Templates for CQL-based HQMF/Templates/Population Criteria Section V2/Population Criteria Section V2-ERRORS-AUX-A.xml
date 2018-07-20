@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <!-- 
+    
+  Title: Population Criteria Section V2 sample file with errors
+  Autor: Dan Donahue
+  Date: 07-16-2018
+  
+  Total Warnings Expected: 0
+  
+  Total Errors Expected: 9
+      Failure a-3346-29995-error test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0" - SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996).
+     
+    **** INITIAL POPULATION CRITERIA (SHALL CONTAIN AT LEAST ONE) **** 
+      NOT TESTED Failure a-3346-34868-error test="count(hqmf:precondition) &gt; 0" - This initialPopulationCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34868).
+    
+    **** NUMERATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34871-error test="count(hqmf:precondition) &gt; 0" - This numeratorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34871).  
+      
+    **** DENOMINATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34874-error test="count(hqmf:precondition) &gt; 0" - This denominatorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34874).  
+    
+    **** MEASURE POPULATION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34877-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34877).  
+     
+    **** DENOMINATOR EXCEPTION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34880-error test="count(hqmf:precondition) &gt; 0" - This denominatorExceptionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34880).  
+    
+    **** DENOMINATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34883-error test="count(hqmf:precondition) &gt; 0" - This denominatorExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34883).  
+     
+    **** NUMERATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34898-error test="count(hqmf:precondition) &gt; 0" - This numeratorExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34898).  
+    
+    **** MEASURE POPULATION EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34901-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationExclusionCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34901).  
+ 
+    **** STRATIFIER CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+      Failure a-3346-34634-error test="count(hqmf:precondition) &gt; 0" - This stratifierCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34634).  
+    
+  
+  
+-->
+    
+    <templateId>
+        <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+    </templateId> 
+    <component>
+        <populationCriteriaSection>
+            <templateId>
+                <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+            </templateId>
+             <id extension="PopulationCriteria1" root="61BB30D4-D0EB-4827-A165-545F27C5E5E0"/>
+            <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+             <title value="Population Criteria Section"/>
+             <text/>
+ 
+             
+            <!-- **** INITIAL POPULATION CRITERIA (SHALL CONTAIN AT LEAST ONE) **** -->
+            <!-- Failure a-3346-29995-error test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0" - SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996). -->
+            <!--
+            <component typeCode="COMP">
+                <initialPopulationCriteria classCode="OBS" moodCode="EVN">...</initialPopulationCriteria>
+            </component>
+            -->
+            
+            <!-- 
+               **** DENOMINATOR CRITERIA (MAY CONTAIN ONE OR MORE) ****
+               Failure a-3346-34874-error test="count(hqmf:precondition) &gt; 0" - This denominatorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34874). 
+            -->
+            <component typeCode="COMP">
+                <denominatorCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominator" root="25ED221B-928A-4E0E-B27F-3BAF7A6C57BA"/>
+                    <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </denominatorCriteria>
+            </component>
+            
+            <!-- 
+                **** DENOMINATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) ****
+                Failure a-3346-34883-error test="count(hqmf:precondition) &gt; 0" - This denominatorExclusionCriteria SHALL contain at least one [1..*] precondition
+            -->
+            <component typeCode="COMP">
+                <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominatorExclusions" root="684881AB-266E-4CBC-ABBF-57AA9413F003"/>
+                    <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </denominatorExclusionCriteria>
+            </component>
+            
+            <!-- 
+                **** DENOMINATOR EXCEPTION CRITERIA (MAY CONTAIN ONE OR MORE) ****
+                Failure a-3346-34880-error test="count(hqmf:precondition) &gt; 0" - This denominatorExceptionCriteria SHALL contain at least one [1..*] precondition
+            -->
+            <component typeCode="COMP">
+                <denominatorExceptionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="denominatorExceptions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </denominatorExceptionCriteria>
+            </component>
+            
+            
+            <!-- 
+                **** NUMERATOR CRITERIA (MAY CONTAIN ONE OR MORE) **** 
+                Failure a-3346-34871-error test="count(hqmf:precondition) &gt; 0" - This numeratorCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34871).
+            -->
+            <component typeCode="COMP">
+                <numeratorCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="numerator" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                  </numeratorCriteria>
+            </component>
+            
+            <!-- 
+                **** NUMERATOR EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) ****
+                Failure a-3346-34898-error test="count(hqmf:precondition) &gt; 0" - This numeratorExclusionCriteria SHALL contain at least one [1..*] precondition
+            -->
+            <component typeCode="COMP">
+                <numeratorExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="numeratorExclusions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </numeratorExclusionCriteria>
+            </component>
+            
+            
+            <!-- 
+               **** MEASURE POPULATION CRITERIA (MAY CONTAIN ONE OR MORE) ****
+               Failure a-3346-34877-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationCriteria SHALL contain at least one [1..*] precondition
+             -->
+            <component typeCode="COMP">
+                <measurePopulationCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="measurePopulation" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="MSRPOPL" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                 </measurePopulationCriteria>
+            </component>
+            
+            <!-- 
+                **** MEASURE POPULATION EXCLUSION CRITERIA (MAY CONTAIN ONE OR MORE) ****
+                Failure a-3346-34901-error test="count(hqmf:precondition) &gt; 0" - This measurePopulationExclusionCriteria SHALL contain at least one [1..*] precondition 
+            -->
+            <component typeCode="COMP">
+                <measurePopulationExclusionCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="measurePoulationExclusions" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="MSRPOPLEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </measurePopulationExclusionCriteria>
+            </component>
+ 
+            <!--  
+                **** STRATIFIER CRITERIA (MAY CONTAIN ONE OR MORE) ****
+                Failure a-3346-34634-error test="count(hqmf:precondition) &gt; 0" - This stratifierCriteria SHALL contain at least one [1..*] precondition
+            -->
+            <component typeCode="COMP">
+                <stratifierCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="stratifier" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+                    <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                </stratifierCriteria>
+            </component>
+            
+     </populationCriteriaSection>
+  </component>
+    
+</QualityMeasureDocument>

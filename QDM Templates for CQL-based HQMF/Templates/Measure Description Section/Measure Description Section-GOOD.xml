@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Measure Description Section  minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <templateId>
+    <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+  </templateId> 
+  <component>
+    <measureDescriptionSection>
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.2.3"/>
+      </templateId>
+      <code code="74045-6" codeSystem="2.16.840.1.113883.6.1">
+        <displayName value="Measure Description"/>
+      </code>
+      <title value="Measure Description Section"/> 
+      <text value="...."/>
+    </measureDescriptionSection>
+  </component> 
+  
+                        
+</QualityMeasureDocument>

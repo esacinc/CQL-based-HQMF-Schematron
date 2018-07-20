@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-610b-e7a4-0161-d7cbde0048eb"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title
+          value="Home Management Plan of Care (HMPC) Document Given to Patient/Caregiver"/>
+   <text
+         value="An assessment that there is documentation in the medical record that a Home Management Plan of Care (HMPC) document was given to the pediatric asthma patient/caregiver"/>
+   <statusCode code="COMPLETED"/>
+   <setId root="e1cb05e0-97d5-40fc-b456-15c5dbf44309"/>
+   <versionNumber value="6.0.002"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="1.3.6.1.4.1.33895"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="1.3.6.1.4.1.33895"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Asthma-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.271"/>
+         <title value="Asthma"/>
+      </valueSet>
+   </definition>
+   <!--Discharge To Home Or Police Custody-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.82"/>
+         <title value="Discharge To Home Or Police Custody"/>
+      </valueSet>
+   </definition>
+   <!--Patient Refusal-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.93"/>
+         <title value="Patient Refusal"/>
+      </valueSet>
+   </definition>
+   <!--Asthma action plan
+			-
+			CODE:/CodeSystem/LOINC/Version/2.63/Code/69981-9/Info-->
+      <definition>
+      <cql-ext:code code="69981-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                    codeSystemVersion="2.63">
+         <displayName value="Asthma action plan"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+         <text mediaType="text/cql">
+            <reference value="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver-6.0.002.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver-6.0.002.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver-6.0.002.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb1780160e4c3f7052c06"/>
+         <text mediaType="text/cql">
+            <reference value="MATGlobalCommonFunctions-2.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="MATGlobalCommonFunctions-2.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="MATGlobalCommonFunctions-2.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="255feadd-3664-479f-9098-0f157371d455"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="26" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="LOINC(R) is a registered trademark of the Regenstrief Institute.&#xA; &#xA;This material contains SNOMED Clinical Terms (R) (SNOMED CT(C)) copyright 2004-2017 International Health Terminology Standards Development Organization. All rights reserved."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Asthma is the most common chronic disease in children and a major cause of morbidity and health care costs nationally (Adams, et al, 2001). In 2005, 5.2% of children with asthma had at least one asthma attack in the previous year (3.8 million children). Nearly two of every three children who currently have asthma had at least one attack in the past 12 months. Chronic asthma in children can account for an annual loss of more than 14 million school days per year, according to the Asthma and Allergy Foundation (Asthma Facts and Figures).&#xA;&#xA;It is clear from multiple sources of evidence including the National Heart Lung and Blood Institute (NHLBI) Guidelines that actual self-management of asthma by the patient or caregiver leads to more positive outcomes. Appropriate self-management is completely reliant upon patient education. Patient education is more effective when it aims at training self-management skills that will alter behavior (Norris, et al, 2001).&#xA;&#xA;NHLBI notes that review of asthma management by expert clinicians is necessary but not sufficient to improve outcomes. Active learning, participating and verbalization of understanding are all strategies that a healthcare organization must incorporate with parents or caregivers of asthmatic children in order for them to understand and make the appropriate changes that can impact the disease in the child in question. Education programs have been effective in improving lung function, feelings of self-esteem, and consequently decreased missed days of school in children and adolescents (Phipatanakul, 2004). Acute hospitalization follow up is imperative to a successful discharge from the hospital, providing the caretaker with the resource information needed to contact the follow up facility, medical office or clinic setting (Schatz, et al, 2009).&#xA;&#xA;Environmental control consists of removal of asthma triggers from the environment. Multiple studies support the positive correlation of household maintenance factors such as control of cockroach dust, and the number of acute asthma attacks in asthmatic children (McConnell, et al, 2005 and Eggleston, et al, 2005). Evidence from Carter et al, (2001) supported by the National Institute of Health (NIH) grant found specifically that reduction in triggers such as household conditions i.e. dust mites, cockroach, cats and presence of molds and fungus, resulted in a decrease in acute care visits and an overall positive outcome of children.&#xA;&#xA;Rescue action education related to early recognition of symptoms and proper action to control incidence of asthma attacks is noted to have positive outcomes for asthmatic children (Ducharme and Bhogal, 2008)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Under-treatment and/or inappropriate treatment of asthma are recognized as major contributors to asthma morbidity and mortality. National guidelines for the diagnosis and management of asthma in children, recommend establishing a plan for maintaining control of asthma and for establishing plans for managing exacerbation."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Improvement noted as an increase in rate"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Adams RJ, Fuhlbrigge A, Finkelstein JA, Lozano P, Livingston JM, Weiss KB, and Weiss ST (2001). Use of Inhaled Anti-inflammatory Medication in Children with Asthma in Managed Care Settings. Archives of Pediatrics and Adolescent Medicine, 155, 501-507."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Asthma Facts and Figures. Retrieved on February 27, 2018 from http://www.aafa.org/page/asthma-facts.aspx."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Ducharme FM, Bhogal SK. The role of written action plans in childhood asthma.  Curr Opin Allergy Clin Immunol. 2008 Apr;8(2):177-88."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Eggleston, P.A., Butz, A., Rand, C., Curtin-Brosnan, J, Kanchanaraksa, S, Swartz, L, Breysse, P, Buckley, T., Diette, G., Merriman, B., Krishnan, J. (2005). Home Environmental Intervention in Inner-City Asthma: A Randomized Controlled Clinical Trial. Ann Allergy Asthma Immunology; 95 p518-524"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="McConnell, R., Milam, J., Richardson, J., Galvan, J., Jones, C., Thorne, P.S., and Berhane, K. (2005). Educational Intervention to Control Cockroach allergen Exposure in The homes of Hispanic Children in Los Angeles; Results of the La Casa Study. Clinical Exp Allergy; 35, p426-433"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Asthma Education and Prevention Program, http://www.nhlbi.nih.gov/about/org/naepp."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Heart Lung and Blood Institute (NHLBI). Guidelines for the Diagnosis and Management of Asthma (EPR-3). Retrieved on February 17, 2015 from:  http://www.nhlbi.nih.gov/health-pro/guidelines/current/asthma-guidelines."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Phipatanakul, W. (2004). Effects of Educational Interventions for Self-Management of Asthma in Children and Adolsecents:Systematic Review and Meta-Analysis. Pediatrics; 114; 530."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Schatz, M, Rachelefsky, G, Krishnan, J.A. (2009). Follow-up after Acute Asthma Episodes. What Improves Future Outcomes. Proc Am Thorac Soc; Vol 6 p 386-393."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Zemek, R.L., Bhogal, S.K., Ducharme, F. M. (2008). Systematic Review of Randomized Controlled Trials Examining Written Action Plans in Children: What is the Plan? (Reprinted) Arch Pediatr Adolesc Med/ vol 162 No 2. Retrieved on February 17, 2015 from http://archpedi.jamanetwork.com/article.aspx?articleid=379087."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The home management plan of care document should be a separate and patient-specific written instruction. The document must be present in the form of an explicit and separate document specific to the patient rather than components or segments of the plan spread across discharge instruction sheets, discharge orders, education sheets, or other instruction sheets.&#xA;&#xA;The home management plan of care is represented in the eMeasure logic by a LOINC code for an asthma action plan document. This form, or equivalent, contains most of the components required for the home management plan of care, including information on:&#xA;*&#x9;Methods and timing of rescue actions: the home management plan of care addresses what to do if asthma symptoms worsen after discharge, including all of the following: 1) When to take action, i.e., assessment of severity (eg, peak flow meter reading, signs and symptoms to watch for); 2) What specific steps to take, i.e., initial treatment instructions (eg, inhaled relievers up to three treatments of 2-4 puffs by MDI at 20-minute intervals or single nebulizer treatment); 3) Contact information to be used, when an asthma attack occurs or is about to occur.&#xA;*&#x9;Appropriate use of long-term asthma medications (controllers), including the medication name, dose, frequency, and method of administration.&#xA;*&#x9;Appropriate use of rescue, quick-relief, or short acting medications of choice to quickly relieve asthma exacerbations (relievers), including the medication name, dose, frequency, and method of administration.&#xA;*&#x9;Environmental control and control of other triggers: information on avoidance or mitigation of environmental and other triggers.&#xA;&#xA;In addition to the information outlined in the asthma action plan form (or equivalent document), the home management plan of care is required to include information regarding arrangements for referral or follow-up care with a healthcare provider, namely:&#xA;*&#x9;If an appointment for referral or follow-up care with a healthcare provider has been made, the home management plan of care is required to include the provider/clinic/office name, as well as the date and time of the appointment.&#xA;*&#x9;If an appointment for referral of follow-up care with a healthcare provider has NOT been made, the home management plan of care is required to include information for the patient/caregiver to be able to make arrangements for follow-up care, i.e., provider/clinic/office name, telephone number and time frame for appointment for follow-up care (eg, 7-10 days).&#xA;&#xA;The home management plan of care can only be considered to comply with the criteria outlined in the measure logic if it meets the requirements outlined above and is appropriately filled-out with information specific to the patient.&#xA;&#xA;Patient refusal includes refusal by a caregiver. The caregiver is defined as the patient's family or any other person (eg, home health, VNA provider, prison official or other law enforcement personnel) who will be responsible for care of the patient after discharge.&#xA;&#xA;The &quot;Discharge To Home Or Police Custody&quot; value set also intends to capture the following discharge disposition values:&#xA;* Assisted Living Facilities&#xA;* Court/Law Enforcement - includes detention facilities, jails, and prison&#xA;* Home - includes board and care, foster or residential care, group or personal care homes, and homeless shelters&#xA;* Home with Home Health Services&#xA;* Outpatient Services including outpatient procedures at another hospital, Outpatient Chemical Dependency Programs and Partial Hospitalization."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Pediatric asthma inpatients with an age of 2 through 17 years, and length of stay less than or equal to 120 days that ends during the measurement period"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Patients discharged to home or police custody"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Pediatric asthma inpatients with:&#xA;A.  Documentation that they or their caregivers were given a written Home Management Plan of Care (HMPC) document that addresses all of the following: &#xA;1. Arrangements for follow-up care &#xA;2. Environmental control and control of other triggers&#xA;3. Method and timing of rescue actions&#xA;4. Use of controllers &#xA;5. Use of relievers&#xA; &#xA;-OR-&#xA; &#xA;B.  Pediatric asthma inpatients with documentation that they or their caregivers refused a written Home Management Plan of Care (HMPC) document. Patient refusal includes refusal by a caregiver. The caregiver is defined as the patient's family or any other person (e.g., home health, VNA provider, prison official or other law enforcement personnel) who will be responsible for care of the patient after discharge."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="f4e8bd24-0f4c-44a4-8fd8-20fc056e027b"/>
+         <title value="eMeasure Children's Asthma Care (eCAC)"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_KiMf3"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="6cca0816-415e-40c5-9675-b1964a388622"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_IqPbH"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="94e79af8-6499-4beb-93b1-4854d27c24aa"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_03ktP"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="7746ff33-558d-4616-a8d5-ead0400c4838"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_wFebC"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="c8060e96-dc7d-4780-a5cd-0aff93854cf3"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_6Djk7"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="c09e583a-9974-4925-83e7-fbdeeb787d21"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.9"/>
+               </templateId>
+               <id extension="69981-9_Communication:FromProviderToPatient"
+                   root="A84534EB-7866-46C1-94CF-1F246AFAFC8A"/>
+               <code code="69981-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                     codeSystemVersion="2.63"
+                     xsi:type="CD"/>
+               <title value="Communication: From Provider To Patient"/>
+               <statusCode code="COMPLETED"/>
+		             <participation typeCode="IRCP">
+                  <role classCode="PAT"/>
+               </participation>
+		             <participation typeCode="AUT">
+                  <role classCode="ASSIGNED">
+                     <code code="158965000" codeSystem="2.16.840.1.113883.6.96">
+                        <displayName value="Medical Practitioner"/>
+                     </code>
+                  </role>
+               </participation>
+	           </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <actCriteria actionNegationInd="TRUE" classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.9"/>
+               </templateId>
+               <id extension="69981-9_Communication:FromProviderToPatientNotDone"
+                   root="1B118B1B-E84F-4A16-BFCD-9ACA8EB3BEA3"/>
+               <code code="69981-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                     codeSystemVersion="2.63"
+                     xsi:type="CD"/>
+               <title value="Communication: From Provider To Patient, Not Done"/>
+               <statusCode code="COMPLETED"/>
+		             <participation typeCode="IRCP">
+                  <role classCode="PAT"/>
+               </participation>
+		             <participation typeCode="AUT">
+                  <role classCode="ASSIGNED">
+                     <code code="158965000" codeSystem="2.16.840.1.113883.6.96">
+                        <displayName value="Medical Practitioner"/>
+                     </code>
+                  </role>
+               </participation>
+	           </actCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="7658E6A0-A927-4061-9472-0DC1FADEEFE7"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="0B1A2300-1143-4C7C-9BE0-57196CA1F9DB"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;Initial Population&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="CDD53501-4B2E-4B96-9AC8-12BAA5934B6E"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;Denominator&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="6119E0A2-43FB-4F8C-85C5-491AB21A5E95"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;Numerator&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="287827C8-D95B-4AF7-8E8A-D1C3DBB03310"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;SDE Ethnicity&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="0B783DEE-6D65-429A-A43D-23AE050E4085"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;SDE Payer&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="6B78BD68-3337-46AF-B87A-E4C05157FED9"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;SDE Race&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="A658D67B-6BA9-4E4B-BDD5-FADEE8FCCFA3"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HomeManagementPlanofCareHMPCDocumentGiventoPatientCaregiver.&quot;SDE Sex&quot;"
+                         root="34AD83C1-E470-4A02-B201-445FA3F8C1D2"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

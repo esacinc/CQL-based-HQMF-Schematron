@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Physical Exam Performed V2 minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-12-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <observationCriteria classCode="OBS" moodCode="EVN">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.62" extension="2017-08-01"/>
+    </templateId>
+    <id root="74a0af1f-15ed-4536-854f-79a066953e44"/>
+    <code code="5880005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+      <displayName value="Physical Examination"/>
+    </code>
+    <title value="Physical Exam, Performed"/>
+    <statusCode code="completed"/>
+    <effectiveTime xsi:type="IVL_TS"/>
+    <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/>
+  </observationCriteria>
+  
+</QualityMeasureDocument>

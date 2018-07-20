@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Target Outcome minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 10
+      Failure a-3346-29112 test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-29112).
+      Failure a-3346-29113 test="@moodCode='GOL'" - SHALL contain exactly one [1..1] @moodCode="GOL" Goal (CONF:3346-29113).
+      Failure a-3346-29104 test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-29104). 
+      Failure a-3346-29106 test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-29106).
+      Failure a-3346-29114 test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-29114).
+      Failure a-3346-29116 test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-29116).
+      Failure a-3346-29107 test="count(hqmf:value)=1" - SHALL contain exactly one [1..1] value (CONF:3346-29107).
+      Failure a-3346-29110 test="@code='385676005'" - This code SHALL contain exactly one [1..1] @code="385676005" Outcome of action (CONF:3346-29110).
+      Failure a-3346-29111 test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-29111).
+      Failure a-3346-29105 test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-29105) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.128" (CONF:3346-29108) SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-29109). 
+
+  Total Warnings Expected: 0
+  
+-->
+  
+  <!-- Failure a-3346-29112 test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-29112).
+      Failure a-3346-29113 test="@moodCode='GOL'" - SHALL contain exactly one [1..1] @moodCode="GOL" Goal (CONF:3346-29113).
+  -->
+  <observationCriteria classCode="OBSErr" moodCode="GOLErr">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.128" extension="2017-08-01"/>
+    </templateId>
+    <!-- Failure a-3346-29104 test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-29104)   -->
+     <templateId>
+       <!-- Failure a-3346-29105 test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-29105) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.128" (CONF:3346-29108) SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-29109).  -->
+        <item root="2.16.840.1.113883.10.20.28.4.128Err" extension="2017-08-01"/>
+    </templateId>
+      <!-- Failure a-3346-29114-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id  -->
+      <!--  <id root="58f3015d-d2dc-45ac-bf6d-fa8d1588603f"/> -->
+      <!-- Failure a-3346-29116-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+      <!-- <title value="Target Outcome"/> -->
+      <code code="385676005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+        <displayName value="Outcome of action"/>
+      </code>
+      <!-- Failure a-3346-29106-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code 
+           Failure a-3346-29110 test="@code='385676005'" - This code SHALL contain exactly one [1..1] @code="385676005" Outcome of action (CONF:3346-29110).
+           Failure a-3346-29111 test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-29111).
+      -->
+      <code />
+      <!-- Failure a-3346-29107 test="count(hqmf:value)=1" - SHALL contain exactly one [1..1] value -->
+      <!-- <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/> -->
+    
+  </observationCriteria>
+                        
+</QualityMeasureDocument>

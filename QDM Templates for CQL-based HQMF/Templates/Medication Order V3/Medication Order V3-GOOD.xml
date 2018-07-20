@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Medication Order V3 minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-11-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <substanceAdministrationCriteria classCode="SBADM" moodCode="RQO">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.51" extension="2018-05-01"/>
+    </templateId>
+    <id root="27beb8e3-7c86-48cf-b430-235b72786dea"/>
+    <title value="Medication, Order"/>
+    <statusCode code="active"/>
+    <participation typeCode="CSM">
+      <role classCode="MANU">
+        <playingMaterial classCode="MMAT" determinerCode="KIND">
+          <code valueSet="{$QDMElementValueSetOID}"/>
+        </playingMaterial>
+      </role>
+    </participation>
+  </substanceAdministrationCriteria>   
+  
+                        
+</QualityMeasureDocument>

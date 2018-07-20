@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+<!-- 
+    
+  Title: Provider Characteristic V2 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 13
+      Failure a-3346-31740-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-31740).
+      Failure a-3346-31741-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31741).
+      Failure a-3346-31742-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-31742).
+      Failure a-3346-31745-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-31745).
+      Failure a-3346-31746-error test="count(hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="DRIV" Is derived from (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3346-34842) SHALL contain exactly one [1..1] role (CONF:3346-31753).
+      Failure a-3346-31748-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3346-31748).
+      Failure a-3346-31749-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31749).
+      Failure a-3346-31743-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-31743) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.71" (CONF:3346-31744) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34121). 
+      Failure a-3346-31754-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned Entity (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-31754).
+      Failure a-3346-34837-error test="count(hqmf:playingEntity)=1" - This role SHALL contain exactly one [1..1] playingEntity (CONF:3346-34837).
+      Failure a-3346-34838-error test="@classCode='PSN'" - This playingEntity SHALL contain exactly one [1..1] @classCode="PSN" Person (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3346-34838).
+      Failure a-3346-34839-error test="@determinerCode='KIND'" - This playingEntity SHALL contain exactly one [1..1] @determinerCode="KIND" (CodeSystem: EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-34839).
+      Failure a-3346-34840-error test="count(hqmf:code)=1" - This playingEntity SHALL contain exactly one [1..1] code (CONF:3346-34840).
+    
+   
+  Total Warnings Expected: 1
+      Failure a-3346-34841-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34841).
+  
+-->
+    
+    <!-- Failure a-3346-31740-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-31740).
+         Failure a-3346-31741-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31741).
+    -->
+    <observationCriteria >
+        <templateId>
+            <item root="2.16.840.1.113883.10.20.28.4.71" extension="2017-08-01"/>
+        </templateId>
+        <!-- Failure a-3346-31742-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-31742)  -->
+        <templateId>
+            <!-- 
+               Failure a-3346-31743-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-31743) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.71" (CONF:3346-31744) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34121). 
+	        -->
+            <item root="Err" extension="Err"/>
+        </templateId>
+        <!-- Failure a-3346-31745-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id  -->
+         <statusCode code="completed"/>
+        <!-- Failure a-3346-31748-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
+             Failure a-3346-31749-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed
+        -->
+        <statusCode code="Err"/>
+        <participation typeCode="DRIV">
+            <role classCode="ASSIGNED">
+                <!-- Failure a-3346-34838-error test="@classCode='PSN'" - This playingEntity SHALL contain exactly one [1..1] @classCode="PSN" Person (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3346-34838).
+                     Failure a-3346-34839-error test="@determinerCode='KIND'" - This playingEntity SHALL contain exactly one [1..1] @determinerCode="KIND" (CodeSystem: EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-34839).
+                 -->
+                <playingEntity classCode="PSNErr" determinerCode="KINDErr">
+                    <code valueSet="{$QDMElementValueSetOID}"/>
+                    <!--   Failure a-3346-34840-error test="count(hqmf:code)=1" - This playingEntity SHALL contain exactly one [1..1] code (CONF:3346-34840). 
+                           Failure a-3346-34841-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34841).
+                    -->
+                    <code />
+                </playingEntity>
+            </role>
+        </participation>
+        <!--  Failure a-3346-31746-error test="count(hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="DRIV"  -->
+        <participation typeCode="DRIV">
+            <!-- Failure a-3346-31754-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned Entity -->
+            <role classCode="ASSIGNEDErr">
+                <!-- Failure a-3346-34837-error test="count(hqmf:playingEntity)=1" - This role SHALL contain exactly one [1..1] playingEntity -->
+            </role>
+        </participation>
+    </observationCriteria>
+    
+</QualityMeasureDocument>
+

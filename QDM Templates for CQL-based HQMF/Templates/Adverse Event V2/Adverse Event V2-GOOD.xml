@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+<!-- 
+    
+  Title: Adverse Event V2  minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+   <observationCriteria classCode="OBS" moodCode="EVN">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.120" extension="2017-08-01"/>
+      </templateId>
+      <id root="69da3f12-e963-4f6f-baed-3e59cf9b58c8"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+      <title value="Adverse Event"/>
+      <statusCode code="completed"/>
+      <value xsi:type="CD" code="281647001" codeSystem="2.16.840.1.113883.6.96"  codeSystemName="SNOMED-CT">
+         <displayName value="Adverse Reaction"/>
+      </value>
+      <participation typeCode="CSM">
+         <role classCode="MANU">
+            <playingEntity classCode="MMAT" determinerCode="KIND">
+               <code valueSet="{$QDMElementValueSetOID}"/>
+            </playingEntity>
+         </role>
+      </participation>
+   </observationCriteria> 
+
+</QualityMeasureDocument>

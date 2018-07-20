@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <!-- 		
+    Title:  CQL HQMF Vol I Conformance Statments sample file with no Vol I conformance assertions triggered
+    Author: Dan Donahue
+    Date:   03-21-2018
+    
+    Total Errors Expected: 0
+    Total Warnings Expected: 0
+    Total Reports Expected: 0
+    
+-->
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+   <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-5fa6-fe85-015f-b67723d904f4"/>
+  <!-- ... -->
+   <!--Telephone Evaluation-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1082"/>
+         <title value="Telephone Evaluation"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Major Depression-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.105.12.1007"/>
+         <title value="Major Depression"/>
+      </valueSet>
+   </definition>
+   <!--Encounter Inpatient-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Diagnostic Evaluation-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1492"/>
+         <title value="Psych Visit - Diagnostic Evaluation"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Psychotherapy-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1496"/>
+         <title value="Psych Visit - Psychotherapy"/>
+      </valueSet>
+   </definition>
+   <!--Preventive Care Services - Established Office Visit, 18 and Up-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1025"/>
+         <title value="Preventive Care Services - Established Office Visit, 18 and Up"/>
+      </valueSet>
+   </definition>
+   <!--Annual Wellness Visit-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1240"/>
+         <title value="Annual Wellness Visit"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Antidepressant Medication-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1213"/>
+         <title value="Antidepressant Medication"/>
+      </valueSet>
+   </definition>
+   <!--Home Healthcare Services-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+         <title value="Home Healthcare Services"/>
+      </valueSet>
+   </definition>
+   <!--Hospice care ambulatory-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1108.15"/>
+         <title value="Hospice care ambulatory"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Telephone Management-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1053"/>
+         <title value="Telephone Management"/>
+      </valueSet>
+   </definition>
+   <!--Office Visit-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+         <title value="Office Visit"/>
+      </valueSet>
+   </definition>
+   <!--Preventive Care Services-Initial Office Visit, 18 and Up-->
+   <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1023"/>
+         <title value="Preventive Care Services-Initial Office Visit, 18 and Up"/>
+      </valueSet>
+   </definition>
+   <!--Discharge to home for hospice care (procedure)
+			-
+			CODE:/CodeSystem/SNOMEDCT/Version/2017-03/Code/428361000124107/Info-->
+      <definition>
+      <cql-ext:code code="428361000124107" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-03">
+         <displayName value="Discharge to home for hospice care (procedure)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Discharge to healthcare facility for hospice care (procedure)
+			-
+			CODE:/CodeSystem/SNOMEDCT/Version/2017-03/Code/428371000124100/Info-->
+      <definition>
+      <cql-ext:code code="428371000124100" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-03">
+         <displayName value="Discharge to healthcare facility for hospice care (procedure)"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+         <text mediaType="text/cql"> <!-- Changed text/cql to  application/cql -->
+            <reference value="AntidepressantMedicationManagement-6.2.006.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="AntidepressantMedicationManagement-6.2.006.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="AntidepressantMedicationManagement-6.2.006.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb1780160e4c3f7052c06"/>
+         <text mediaType="text/cql">
+            <reference value="MATGlobalCommonFunctions-2.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="MATGlobalCommonFunctions-2.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="MATGlobalCommonFunctions-2.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="402803825fa6fe85015fb735add70650"/>
+         <text mediaType="text/cql">
+            <reference value="Hospice-0.1.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Hospice-0.1.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Hospice-0.1.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <!-- ... -->
+    <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="TelephoneEvaluation_EncounterPerformed_zzblo"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="TelephoneEvaluation_EncounterPerformed"
+                   root="fc151011-4cd0-4cbe-bfe4-c8b52b9b8132"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1082"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_kas2X"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="4ca655bf-2a14-486a-95c6-725f5fc59cad"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_TFMF4"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="3a8e3357-abc3-4008-936b-9dae25822361"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MajorDepression_Diagnosis_1lwVq"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="MajorDepression_Diagnosis"
+                   root="803dee17-fee5-468e-8bfd-b84aaa114703"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <value valueSet="2.16.840.1.113883.3.464.1003.105.12.1007" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_0vzel"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="59c3933e-c568-4119-b89d-c29b7c752ef3"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-DiagnosticEvaluation_EncounterPerformed_ONp7X"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PsychVisit-DiagnosticEvaluation_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6404"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1492"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-Psychotherapy_EncounterPerformed_iVAeE"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PsychVisit-Psychotherapy_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6403"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1496"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PreventiveCareServices-EstablishedOfficeVisit18andUp_EncounterPerformed_UHOh9"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PreventiveCareServices-EstablishedOfficeVisit18andUp_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6410"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1025"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnnualWellnessVisit_EncounterPerformed_alP7p"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="AnnualWellnessVisit_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6412"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1240"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_VFSrr"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="9f629832-9667-4036-8070-ba3cb2e917bb"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AntidepressantMedication_MedicationDispensed_czu7Z"/>
+            <supplyCriteria classCode="SPLY" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.49">
+                   </item>
+               </templateId>
+               <id extension="AntidepressantMedication_MedicationDispensed"
+                   root="40280381-3d61-56a7-013e-7af6125a640d"/>
+               <title value="Medication, Dispensed"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <!--
+	            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1213"/>
+                     </playingMaterial>
+                  </role>
+               </participation>
+               -->
+               <participation typeCode="CSM">
+                 <role classCode="MANU">
+                    <playingMaterial classCode="MMAT" determinerCode="KIND">
+                       <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1213"/>
+                    </playingMaterial>
+                 </role>
+                  <time></time>
+               </participation>
+	           </supplyCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AntidepressantMedication_MedicationActive_KFqCz"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.44"/>
+               </templateId>
+               <id extension="AntidepressantMedication_MedicationActive"
+                   root="40280381-3d61-56a7-013e-7af6125a640d"/>
+               <title value="Medication, Active"/>
+               <statusCode code="active"/> <!-- Changed 'ACTIVE' to 'active' -->
+		             <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1213"/>
+                     </playingMaterial>
+                  </role>
+               </participation>
+	           </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HomeHealthcareServices_EncounterPerformed_zkEWj"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HomeHealthcareServices_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6414"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionOrder_olJoM"/>
+            <actCriteria classCode="ACT" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.35"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionOrder"
+                   root="95cca057-9695-4ee4-a5bd-eff4b54c6098"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Order"/>
+               <statusCode code="active"/> <!-- Changed:   'ACTIVE' to 'active' -->
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionPerformed_A3pCX"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionPerformed"
+                   root="95cca057-9695-4ee4-a5bd-eff4b54c6098"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_RnPsi"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/> <!-- Changed  (not), assert 3335-31238 triggers...incorrect context or test? -->
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="6d83ad4e-0460-457e-b99d-faab48895578"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="completed"/> <!-- Changed 'COMPLETED' to 'completed' -->
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="TelephoneManagement_EncounterPerformed_r36Ld"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="TelephoneManagement_EncounterPerformed"
+                   root="17f07986-a2be-4d46-a9af-a39afc0f37e8"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1053"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OfficeVisit_EncounterPerformed_ZZPf9"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OfficeVisit_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a640f"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PreventiveCareServices-InitialOfficeVisit18andUp_EncounterPerformed_IUVd6"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PreventiveCareServices-InitialOfficeVisit18andUp_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-7af6125a6411"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1023"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="61BB30D4-D0EB-4827-A165-545F27C5E5E0"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="98CF8F6F-09CB-42C5-AFB6-FAC2DDFFD697"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Initial Population&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="25ED221B-928A-4E0E-B27F-3BAF7A6C57BA"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Denominator&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="684881AB-266E-4CBC-ABBF-57AA9413F003"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Denominator Exclusions&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="86807568-57BA-4F88-A1FE-1F88C9648DB6"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Numerator One&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="DD8DCB62-9D03-4871-9511-8D422D18EC37"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Ethnicity&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="DFB4B948-1184-4CAE-B6BE-6E8E0E37A125"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Payer&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="C195037E-412C-4F46-9906-DB5E4DC968B1"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Race&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="AE507B12-5910-4BC0-931D-38C116493B7D"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Sex&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria2" root="A6447078-9052-4B58-A818-0AF2752DE862"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="8BE819D6-4621-4BF6-AE5A-4BC7F3FD31E3"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Initial Population&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="3F8E46A9-F5F6-4FD4-9013-97AE03CF6C46"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Denominator&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="8A75890C-5A65-4214-BF96-C8456C2E643F"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Denominator Exclusions&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="971934A3-508E-401B-B59D-52EA55AF7517"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;Numerator Two&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="323E46EB-7276-4DC9-9A47-EFCC01B63AD7"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Ethnicity&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="15A93DFA-E6B3-407B-ABD4-9501FB1FF72F"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Payer&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="0BA879A6-5F34-499D-A836-99E5EF6F8818"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Race&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="A58EB2A5-368A-4BC4-BBA5-3BBA6C94296E"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AntidepressantMedicationManagement.&quot;SDE Sex&quot;"
+                         root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

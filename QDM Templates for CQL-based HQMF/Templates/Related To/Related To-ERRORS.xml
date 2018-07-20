@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Related To minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 10
+      Failure a-3346-34725-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34725).
+      Failure a-3346-34726-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3346-34726).
+      Failure a-3346-34717-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-34717).
+      Failure a-3346-34727-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-34727).
+      Failure a-3346-34729-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-34729).
+      Failure a-3346-34719-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-34719).
+      Failure a-3346-34718-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-34718) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.127" (CONF:3346-34721) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34722). 
+      Failure a-3346-34730-error test="@root" - This id SHALL contain exactly one [1..1] @root (CONF:3346-34730).
+      Failure a-3346-34723-error test="@code='42752001'" - This code SHALL contain exactly one [1..1] @code="42752001" Due to (CONF:3346-34723).
+      Failure a-3346-34724-error test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-34724).
+  
+  Total Warnings Expected: 0
+  
+-->
+  
+  <!-- Failure a-3346-34725-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34725).
+       Failure a-3346-34726-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3346-34726).
+  -->
+  <observationCriteria >
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.127" extension="2017-08-01"/>
+    </templateId>
+    <!-- Failure a-3346-34717-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-34717). -->
+    <templateId>
+      <!--  
+        Failure a-3346-34718-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-34718) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.127" (CONF:3346-34721) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34722). 
+      -->
+      <item root="2.16.840.1.113883.10.20.28.4.127Err" extension="2017-08-01"/>
+    </templateId>
+    <id root="302625d2-e41a-4d51-ba11-af0dfc81a11b"/>
+    <!--  Failure a-3346-34727-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-34727). 
+          Failure a-3346-34730-error test="@root" - This id SHALL contain exactly one [1..1] @root
+    -->
+    <id rootErr="302625d2-e41a-4d51-ba11-af0dfc81a11b"/>
+    <!--  Failure a-3346-34729-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-34729). -->
+    <code code="42752001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+      <displayName value="Due to"/>
+    </code>
+    <!-- Failure a-3346-34719-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-34719). 
+         Failure a-3346-34723-error test="@code='42752001'" - This code SHALL contain exactly one [1..1] @code="42752001" Due to
+         Failure a-3346-34724-error test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96"
+    -->
+    <code code="42752001Err"/>
+  </observationCriteria>
+  
+</QualityMeasureDocument>

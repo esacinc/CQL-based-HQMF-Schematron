@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <!-- 
+    
+  Title: Population Criteria Section V2 sample file with errors
+  Autor: Dan Donahue
+  Date: 07-16-2018
+  
+  Total Warnings Expected: 0
+  
+  Total Errors Expected: 1
+     
+    **** INITIAL POPULATION CRITERIA (SHALL CONTAIN AT LEAST ONE) **** 
+      Failure a-3346-34868-error test="count(hqmf:precondition) &gt; 0" - This initialPopulationCriteria SHALL contain at least one [1..*] precondition (CONF:3346-34868).
+    
+-->
+    
+    <templateId>
+        <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+    </templateId> 
+    <component>
+        <populationCriteriaSection>
+            <templateId>
+                <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+            </templateId>
+            <id extension="PopulationCriteria1" root="61BB30D4-D0EB-4827-A165-545F27C5E5E0"/>
+            <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+            <title value="Population Criteria Section"/>
+            <text/>
+            <component typeCode="COMP">
+                <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+                    <id extension="initialPopulation" root="98CF8F6F-09CB-42C5-AFB6-FAC2DDFFD697"/>
+                    <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+                    <!-- Failure a-3346-34868-error test="count(hqmf:precondition) &gt; 0" - This initialPopulationCriteria SHALL contain at least one [1..*] precondition -->
+                </initialPopulationCriteria>
+            </component>
+ 
+        </populationCriteriaSection>
+    </component>
+    
+</QualityMeasureDocument>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    
+<mergeProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" verboseDebug="true" summaryOnly="falsse" doValidation="true" applyXSD="false" topOnError="false" >
+ 
+    <title>QDM Templates for CQL-base HQMF</title>
+    <version>3.0</version>
+    
+	<!-- Extra attributes to add to root schematron element -->
+	<rootAttribute>queryBinding=xslt2</rootAttribute>
+	
+    <generatedFilename>
+        C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch
+    </generatedFilename>
+	<!--
+	 <compareSchematronFilename>
+		C:\Development\CQL\CQL Schematron\Trifolia Schematron\QDM Templates for CQL-based HQMF IG V2.sch    
+     </compareSchematronFilename>
+    -->
+	
+    <finalTestFilename>
+       C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\TestFiles\EP_EC\CMS128_v5_4_eCQM.xml 
+    </finalTestFilename>
+    
+    <fileHeader>
+    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+    THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+    IN NO EVENT SHALL ESAC INC., OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+    GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     
+
+	  This schematron implements conformance for QDM Templates for CQL-Based HQMF data files. 
+	  It contains conformance tests adherent to both Volume 1 and Volume 3 implementation guides (IG)
+	
+	  In this schematron conformance rules and assertions for Volume 1 are prefixed with "vol-I" in their identifiers.
+	  The numbers following "vol-I" reference "Conformance Requirement" identifiers in the Volume I implementation guide.
+
+	  Conformance rules and assertions NOT prefixed with "vol-I" correspond to conformance statements in the Volume 3 
+	  QDM Templates for CQL-based HQMF IG V3 implementation guide.
+	  
+    </fileHeader>
+    
+    <errorsHeader>ERROR Patterns and Assertions</errorsHeader>
+    <warningsHeader>WARNING Patterns and Assertions</warningsHeader>
+    
+    <mergeReportFilename>C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/mergeReport.txt</mergeReportFilename>
+    
+    <vocabFilename>C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Vocabulary/voc.xml</vocabFilename>
+    
+    <!-- All schematrons expected to be under a single main directory -->
+    <sourceMainDirectory>C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF</sourceMainDirectory>
+    
+    <!--    Specify the schematrons to use in the merge below, separated by the templates found in each of the source directories listed. -->
+    <!--    Note that the directoryName tags refer to directories relative to the sourceMainDirectory tag, above. -->
+    <!--    selector='all' means use all the schematron subdirectories found under directoryName, except for those listed in the 'exclude' tags. -->
+    <!--    selector='some' means only use the directoryName subdirectories listed in the 'include' tags --> 
+
+    <sourceDirectory selector='some'>  
+        <directoryName>/Templates/</directoryName>
+        <!-- Document templates -->
+        <include>QDM Templates for CQL-based HQMF Header V3</include>
+        <!-- Section templates -->
+        <include>Data Criteria Section V3</include>
+        <include>Measure Description Section</include>
+        <include>Measure Observations Section V2</include>
+        <include>Population Criteria Section V2</include>  
+        <!-- Entry templates -->
+		<include>Vol I Conformance Statements</include>
+		<include>Admission Source</include> 
+		<include>Adverse Event V2</include>
+		<include>Allergy Intolerance V2</include> 
+        <include>Assessment Order</include>
+        <include>Assessment Performed V2</include> 
+        <include>Assessment Recommended V2</include> 
+        <include>Care Goal V2</include> 
+		<include>Cause</include> 
+       
+        <!-- <include>Communication From Patient To Provider V2</include>  -->   <!-- RETIRED for 2018 V3 -->
+        <!-- <include>Communication From Provider To Patient V2</include>  -->   <!-- RETIRED for 2018 V3 -->
+        <!-- <include>Communication From Provider To Provider V2</include> -->   <!-- RETIRED for 2018 V3 -->
+        
+        <include>Communication Performed</include>
+		<include>Component</include> 
+        <include>Device Applied V2</include>
+        <include>Device Order</include>
+        <include>Device Recommended</include>
+        <include>Diagnosis V2</include>
+        <include>Diagnostic Study Order V3</include>
+        <include>Diagnostic Study Performed V2</include>
+        <include>Diagnostic Study Recommended V3</include>
+        <include>Dosage</include>
+        <!-- <include>Encounter Active (RETIRED)</include> -->  <!-- RETIRED for 2018 V3 -->
+        <include>Encounter Order</include>
+        <include>Encounter Performed V2</include>
+        <include>Encounter Recommended</include>
+		<include>Facility Location</include>
+        <include>Family History</include>
+        <!-- <include>Frequency (RETIRED)</include> --> <!-- RETIRED for 2018 V3 -->
+        <include>Immunization Administered V3</include>
+        <include>Immunization Order V2</include>
+        <include>Incision Datetime</include>
+        <include>Intervention Order</include>
+        <include>Intervention Performed V2</include>
+        <include>Intervention Recommended</include>
+		<include>Laboratory Test Component</include>
+		<include>Laboratory Test Reference Range</include>
+        <include>Laboratory Test Order V2</include>
+        <include>Laboratory Test Performed V2</include>
+        <include>Laboratory Test Recommended V2</include>
+        <include>Medication Active V3</include>
+        <include>Medication Administered V3</include>
+        <include>Medication Discharge V2</include>
+        <include>Medication Dispensed V2</include>
+        <include>Medication Order V3</include>
+        <include>Patient Care Experience</include>
+		<include>Patient Characteristic V2</include>
+		<include>Patient Characteristic Birth Date</include>
+        <include>Patient Characteristic Clinical Trial Participant</include>
+		<include>Patient Characteristic Ethnicity</include>
+        <include>Patient Characteristic Expired</include>
+        <include>Patient Characteristic Payer</include>
+		<include>Patient Characteristic Race</include>
+		<include>Patient Characteristic Sex</include>
+        <include>Physical Exam Order V2</include>
+        <include>Physical Exam Performed V2</include>
+        <include>Physical Exam Recommended V2</include>
+		<include>Principal Diagnosis</include> 
+        <include>Procedure Order V3</include>
+        <include>Procedure Performed V3</include>
+        <include>Procedure Recommended V2</include>
+		<include>Program Participation V2</include> 
+        <include>Provider Care Experience</include>
+		<include>Provider Characteristic V2</include> 
+        <!-- <include>Radiation Dosage (RETIRED)</include> -->   <!-- RETIRED for 2018 V3 -->
+        <!-- <include>Radiation Duration (RETIRED)</include> --> <!-- RETIRED for 2018 V3 -->
+        <include>Reason</include>
+        <include>Related To</include>
+        <include>Result V2</include>
+        <include>Severity Observation V2</include>
+        <include>Status V2</include>
+        <include>Substance Administered V3</include>
+        <include>Substance Order V3</include>
+        <include>Substance Recommended V3</include>
+        <include>Supply</include>
+        <include>Symptom V2</include>
+        <include>Target Outcome</include>
+        
+    </sourceDirectory>
+  
+</mergeProfile>

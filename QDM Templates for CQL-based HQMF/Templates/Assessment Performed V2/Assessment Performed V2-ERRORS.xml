@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <!-- 
+    
+  Title: Assessment Performed V2 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 11
+      Failure a-3346-34142-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34142).
+      Failure a-3346-34143-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34143).
+      Failure a-3346-34126-error test="count(hqmf:templateId=1" - SHALL contain exactly one [1..1] templateId 
+      Failure a-3346-34145-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-34145).
+      Failure a-3346-34128-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-34128).
+      Failure a-3346-34146-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-34146).
+      Failure a-3346-34129-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3346-34129).
+      Failure a-3346-34127-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01'])=1" - SHALL contain exactly one [1..1] item (CONF:3346-34127) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.117" (CONF:3346-34134) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34254). 
+      Failure a-3346-34137-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34137).
+      Failure a-3346-34739-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3346-34739). 
+      Failure a-3346-34741-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34741).  
+    
+   Total Warnings Expected: 3
+      Failure a-3346-34136-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34136).
+      Failure a-3346-34247-warning test="count(hqmf:item)=1">The methodCode, if present, SHOULD contain zero or one [0..1] item (CONF:3346-34247). 
+      Failure a-3346-34249-warning test="@valueSet">The item, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34249).
+ 
+-->  
+   
+   <!--  Failure a-3346-34142-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34142).
+         Failure a-3346-34143-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34143).
+   -->
+   <observationCriteria classCode="OBSErr" moodCodeErr="EVN">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.117" extension="2017-08-01"/>
+      </templateId>
+      <!--       Failure a-3346-34126-error test="count(hqmf:templateId[count(hqmf:item)=1])=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-34126) -->
+      <templateId>
+         <!--  Failure a-3346-34127-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01'])=1" - SHALL contain exactly one [1..1] item (CONF:3346-34127) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.117" (CONF:3346-34134) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34254). -->
+         <item root="2.16.840.1.113883.10.20.28.4.117Err" extension="2017-08-01"/>
+      </templateId>
+      <id root="08f25bc3-5eff-49a5-b2ec-f66f1027574c"/>
+      <!-- Failure a-3346-34145-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-34145). -->
+      <id root="08f25bc3-5eff-49a5-b2ec-f66f10123456"/>
+      <code valueSet="..."/>
+      <!-- Failure a-3346-34128-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-34128). -->
+      <!-- Failure a-3346-34136-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34136). -->
+      <code />
+      <!-- Failure a-3346-34146-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-34146). -->
+      <titleErr value="Assessment, Performed"/>
+      <statusCode code="completed"/>
+      <!-- Failure a-3346-34129-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3346-34129). -->
+      <!-- Failure a-3346-34137-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34137). -->
+      <statusCode code="completedErr"/>
+      <methodCode>
+         <item valueSet="..."></item>
+         <!-- Failure a-3346-34247-warning test="count(hqmf:item)=1">The methodCode, if present, SHOULD contain zero or one [0..1] item (CONF:3346-34247).  -->
+         <!-- Failure a-3346-34249-warning test="@valueSet">The item, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34249). -->
+         <item></item>
+      </methodCode>
+      <participation typeCode="AUT">
+         <!-- Failure a-3346-34741-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34741). -->
+         <role classCodeErr="ROL"></role>
+         <time>
+            <!--       Failure a-3346-34739-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3346-34739).  -->
+            <high></high>
+         </time>
+      </participation>
+   </observationCriteria>  
+
+</QualityMeasureDocument>

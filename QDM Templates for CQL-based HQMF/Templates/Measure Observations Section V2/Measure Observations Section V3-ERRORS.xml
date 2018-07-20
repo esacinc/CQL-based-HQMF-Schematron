@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+  Title: Measure Observations Section V3 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  
+  Total Errors Expected: 16
+      Failure a-3372-18901-error SHALL contain exactly one [1..1] templateId (CONF:3372-18901). 
+      Failure a-3372-18905-error SHALL contain exactly one [1..1] code (CONF:3372-18905). 
+      Failure a-3372-18910-error SHALL contain exactly one [1..1] title (CONF:3372-18910). 
+      Failure a-3372-18911-error SHALL contain exactly one [1..1] text (CONF:3372-18911). 
+      Failure a-3372-18902-error This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104). 
+
+      Not tested - Failure a-3372-30105-error SHALL contain at least one [1..*] definition (CONF:3372-30105). 
+      Failure a-3372-18906-error This code SHALL contain exactly one [1..1] @code="57027-5" Measure Observation (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1 STATIC) (CONF:3372-18906). 
+      Failure a-3372-30103-error This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3372-30103). 
+      Failure a-3372-18965-error This title SHALL contain exactly one [1..1] @value="Measure Observations Section" (CONF:3372-18965). 
+      Failure a-3372-34644-error Such definitions SHALL contain exactly one [1..1] measureObservationDefinition (CONF:3372-34644). 
+      Failure a-3372-34650-error This measureObservationDefinition SHALL contain exactly one [1..1] code (CONF:3372-34650). 
+      Failure a-3372-34651-error This measureObservationDefinition SHALL contain exactly one [1..1] value (CONF:3372-34651).  
+      Failure a-3372-34649-error This measureObservationDefinition SHALL contain exactly one [1..1] methodCode (CONF:3372-34649).  
+      Failure a-3372-34645-error test="count(hqmf:componentOf) = 1" - This measureObservationDefinition SHALL contain exactly one [1..1] componentOf (CONF:3372-34645) 
+      Failure a-3372-34646-error test="count(hqmf:criteriaReference) = 1" - This componentOf SHALL contain exactly one [1..1] criteriaReference (CONF:3372-34646).
+      Failure a-3372-34647-error test="@classCode='OBS'" - This criteriaReference SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3372-34647).
+      Failure a-3372-34648-error test="@moodCode='EVN'" - This criteriaReference SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34648).
+
+ Total Warnings Expected: 0 
+  
+  
+  -->
+  <templateId>
+    <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+  </templateId> 
+  <component>
+    <measureObservationsSection>
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.2.4" extension="2018-05-01"/>
+      </templateId>
+      <!-- Failure a-3372-18901-error SHALL contain exactly one [1..1] templateId (CONF:3372-18901). -->
+      <!-- Failure a-3372-18902-error This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104).-->
+      <templateId>
+        <item rootErr="2.16.840.1.113883.10.20.28.2.4" extension="2018-05-01Err"/>
+      </templateId>
+      <code code="57027-5" codeSystem="2.16.840.1.113883.6.1">
+        <displayName value="Measure Observation"/>
+      </code>
+      <!-- Failure a-3372-18905-error SHALL contain exactly one [1..1] code (CONF:3372-18905). -->
+      <!-- Failure a-3372-18906-error This code SHALL contain exactly one [1..1] @code="57027-5" Measure Observation  -->
+      <!-- Failure a-3372-30103-error This code SHALL contain exactly one [1..1] @codeSystem -->
+      <code></code>
+      <title value="Measure Observations Section"/>
+      <!-- Failure a-3372-18910-error SHALL contain exactly one [1..1] title -->
+      <!-- Failure a-3372-18965-error This title SHALL contain exactly one [1..1] @value="Measure Observations Section" -->
+      <title></title>
+      <!-- Failure a-3372-18911-error SHALL contain exactly one [1..1] text (CONF:3372-18911). -->
+      <!-- <text value="...."/> -->
+      <definition>
+        <measureObservationDefinition classCode="OBS" moodCode="DEF">
+          <id extension="Measure Observation"
+            root="8A9A47CF-45A4-4385-923C-5A045D8EA9F8"/>
+          <!-- Failure a-3372-34650-error This measureObservationDefinition SHALL contain exactly one [1..1] code -->
+          <!-- Failure a-3372-34651-error This measureObservationDefinition SHALL contain exactly one [1..1] value  -->
+          <!-- Failure a-3372-34649-error This measureObservationDefinition SHALL contain exactly one [1..1] methodCode-->
+          <!-- 
+          <code code="AGGREGATE" codeSystem="2.16.840.1.113883.5.4"/>
+          <value nullFlavor="DER" xsi:type="INT">
+            <expression value="TestCMS55v5.&quot;Measure Observation&quot;"/>
+          </value>
+          -->
+          <componentOf>
+            <criteriaReference classCode='OBS' moodCode='EVN'>
+              <id extension="TestCMS55v5.&quot;Measure Population&quot;"
+                root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+            </criteriaReference>
+          </componentOf>
+          <!-- Failure a-3372-34645-error test="count(hqmf:componentOf) = 1" - This measureObservationDefinition SHALL contain exactly one [1..1] componentOf -->
+          <componentOf>
+            <criteriaReference classCode='OBS' moodCode='EVN'>
+              <id extension="TestCMS55v5.&quot;Measure Population&quot;"
+                root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+            </criteriaReference>
+            <!-- Failure a-3372-34646-error test="count(hqmf:criteriaReference) = 1" - This componentOf SHALL contain exactly one [1..1] criteriaReference 
+                 Failure a-3372-34647-error test="@classCode='OBS'" - This criteriaReference SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3372-34647).
+                 Failure a-3372-34648-error test="@moodCode='EVN'" - This criteriaReference SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34648).
+            -->
+            <criteriaReference>
+              <id extension="TestCMS55v5.&quot;Measure Population&quot;"
+                root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+            </criteriaReference>
+          </componentOf>
+        </measureObservationDefinition>
+      </definition>
+      <definition>
+        <!-- Failure a-3372-34644-error Such definitions SHALL contain exactly one [1..1] measureObservationDefinition (CONF:3372-34644).  -->
+      </definition>
+    </measureObservationsSection>
+  </component>
+                        
+</QualityMeasureDocument>

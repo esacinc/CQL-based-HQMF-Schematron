@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- 
+    
+  Title: Communication Performed minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 14
+      Failure a-3372-34706-error test="@classCode='ACT'" - SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3372-34706).
+      Failure a-3372-34707-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34707).
+      Failure a-3372-34683-error test="count(hqmf:templateId[count(hqmf:item)=1])=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-34683) such that it  SHALL contain exactly one [1..1] item (CONF:3372-34684). 
+      Failure a-3372-34709-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-34709).
+      Failure a-3372-34710-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-34710).
+      Failure a-3372-34690-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3372-34690). 
+      Failure a-3372-34684-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-34684) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.132" (CONF:3372-34696). This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34697).
+      Failure a-3372-34704-error test="lower-case(normalize-space(@code))='completed'"> This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34704). 
+      
+      Failure a-3372-34718-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34718).
+      Failure a-3372-34855-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34855) .
+      Failure a-3372-34856-error test="count(hqmf:code)=1" This role SHALL contain exactly one [1..1] code (CONF:3372-34856). 
+      Failure a-3372-34858-error test="count(hqmf:code)=1" - This role SHALL contain exactly one [1..1] code (CONF:3372-34858).
+      Failure a-3372-34870-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34870). 
+      Failure a-3372-34681-error test="count(hqmf:outboundRelationship[@typeCode='RSON'][count(hqmf:observationCriteria/hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88'][@extension='2017-05-01'])=1])=1" - SHALL contain exactly one [1..1] outboundRelationship (CONF:3372-34681) such that it SHALL contain exactly one [1..1] @typeCode="RSON" Has Reason (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34695). SHALL contain exactly one [1..1] Reason (identifier: urn:hl7ii:2.16.840.1.113883.10.20.28.4.88:2017-05-01) (CONF:3372-34682).
+  
+  Total Warnings Expected: 1
+      Failure a-3372-34705-warning test="@valueSet">The code, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3372-34705). 
+   
+-->  
+   
+   <!--  Failure a-3372-34706-error test="@classCode='ACT'" - SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3372-34706).
+         Failure a-3372-34707-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34707).
+    -->
+   <actCriteria classCodeErr="ACT" moodCode="EVNErr">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.132" extension="2018-05-01"/>
+      </templateId>
+      <!--  Failure a-3372-34683-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-34683)  -->
+      <templateId>
+         <!--Failure a-3372-34684-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-34684) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.132" (CONF:3372-34696). This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34697).-->
+         <item root="2.16.840.1.113883.10.20.28.4.132Err" extension="2018-05-01"/>
+      </templateId>
+      <id root="6bf11fc2-78f9-4517-bafa-7988b350e188"/>
+      <!-- Failure a-3372-34709-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-34709). -->
+      <id root="6bf11fc2-78f9-4517-bafa-7988b3512345"/>
+      <!-- Failure a-3372-34705-warning test="@valueSet">The code, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3372-34705). -->
+      <code valueSetErr="{$QDMElementValueSetOID}"/>
+      <!-- Failure a-3372-34710-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-34710). -->
+      <!--<title value="Communication: From Patient to Provider"/>-->
+      <statusCode code="completed"/>
+      <!-- Failure a-3372-34690-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3372-34690). -->
+      <!-- Failure a-3372-34704-error test="lower-case(normalize-space(@code))='completed'"> This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34704). -->
+      <statusCode code="completedErr"/>
+      <participation typeCode="AUT">
+         <time></time>
+         <!-- Failure a-3372-34718-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34718). -->
+         <role classCode="ROLErr"/>
+      </participation>
+      <participation typeCode="PRF">
+         <!-- Failure a-3372-34855-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34855) . --> 
+         <role classCode="ASSIGNEDErr"/>
+         <!-- Failure a-3372-34856-error test="count(hqmf:code)=1" This role SHALL contain exactly one [1..1] code (CONF:3372-34856). -->
+      </participation>
+      <participation typeCode="IRCP">
+          <role >
+             <!-- Failure a-3372-34858-error test="count(hqmf:code)=1" - This role SHALL contain exactly one [1..1] code (CONF:3372-34858). -->
+          </role>
+      </participation>
+      <participation typeCode="VIA" modeCode="...">
+         <modeCode></modeCode>
+         <!-- Failure a-3372-34870-error test="@classCode='ASSIGNED'" - This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34870). -->
+         <role > </role>
+      </participation>
+      <!--  Failure a-3372-34681-error test="count(hqmf:outboundRelationship[@typeCode='RSON'][count(hqmf:observationCriteria/hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88'][@extension='2017-05-01'])=1])=1" - SHALL contain exactly one [1..1] outboundRelationship (CONF:3372-34681) such that it SHALL contain exactly one [1..1] @typeCode="RSON" Has Reason (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34695). SHALL contain exactly one [1..1] Reason (identifier: urn:hl7ii:2.16.840.1.113883.10.20.28.4.88:2017-05-01) (CONF:3372-34682).-->
+      <outboundRelationship typeCode="RSON">
+         <observationCriteria classCode="OBS" moodCode="EVN">
+            <templateId>
+               <item root="2.16.840.1.113883.10.20.28.4.88" extension="2017-05-01Err"/> <!-- Failure a-3372-34681 error is here, incorrect extension -->
+            </templateId>
+            <id root="05c07740-1f8d-417e-a9f2-fc769b1d342d"/>
+            <code code="410666004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+               <displayName value="Reason"/>
+            </code>
+            <title value="Reason"/>
+            <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/>
+         </observationCriteria>    
+      </outboundRelationship>
+   </actCriteria>
+
+</QualityMeasureDocument>

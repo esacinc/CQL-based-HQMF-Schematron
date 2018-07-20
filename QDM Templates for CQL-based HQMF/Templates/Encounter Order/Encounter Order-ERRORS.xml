@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+   <!-- 
+    
+  Title: Encounter Order minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-10-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 11
+      Failure a-3335-30860-error test="@classCode='ENC'" - SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3335-30860).
+      Failure a-3335-30861-error test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30861).
+      Failure a-3335-30863-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-30863).
+      Failure a-3335-30867-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3335-30867).
+      Failure a-3335-30870-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3335-30870).
+      Failure a-3335-30866-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3335-30866).
+      Failure a-3335-30869-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3335-30869).
+      Failure a-3335-30871-error test="not(lower-case(normalize-space(@code))='active') or lower-case(normalize-space(@code))='active'" - This statusCode SHALL containexactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30871).      
+      Failure a-3335-30864-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).
+      Failure a-3335-33488-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3335-33488).      
+      Failure a-3335-33576-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role(CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-33576).       
+  
+  Total Warnings Expected: 0
+  
+-->
+   
+   <!--  Failure a-3335-30860-error test="@classCode='ENC'" - SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3335-30860).
+         Failure a-3335-30861-error test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30861).
+   -->
+   <encounterCriteria >
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.27" extension="2017-05-01"/>
+      </templateId>
+      <!-- Failure a-3335-30863-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3335-30863)  -->
+      <templateId>
+         <!--  Failure a-3335-30864-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).-->
+         <item />
+      </templateId>
+      <!--  Failure a-3335-30866-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id  -->
+      <!--  Failure a-3335-30869-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+      <code valueSet="{$QDMElementValueSetOID}"/>
+      <!-- Failure a-3335-30867-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code  -->
+      <code valueSet="{$QDMElementValueSetOID}"/>
+      <statusCode code="active"/>
+      <!-- Failure a-3335-30870-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
+           Failure a-3335-30871-error test="not(lower-case(normalize-space(@code))='active') or lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active
+      -->
+      <statusCode code="activeErr"/>
+      <participation typeCode="AUT">
+         <!-- Failure a-3335-33576-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role -->
+         <role classCode="ROLErr"></role>
+         <time>
+            <!-- Failure a-3335-33488-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low  -->
+            <lowErr></lowErr>
+         </time>
+      </participation>
+   </encounterCriteria>    
+   
+   
+
+</QualityMeasureDocument>

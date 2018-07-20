@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-610b-e7a4-0161-ba33d3b14075"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title
+          value="Initiation and Engagement of Alcohol and Other Drug Dependence Treatment"/>
+   <text
+         value="Percentage of patients 13 years of age and older with a new episode of alcohol or other drug abuse or (AOD) dependence who received the following. Two rates are reported.&#xA;a. Percentage of patients who initiated treatment within 14 days of the diagnosis.&#xA;b. Percentage of patients who initiated treatment and who had two or more additional services with an AOD diagnosis within 30 days of the initiation visit."/>
+   <statusCode code="COMPLETED"/>
+   <setId root="c3657d72-21b4-4675-820a-86c7fe293bf5"/>
+   <versionNumber value="7.0.004"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <verifier>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.560"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Quality Forum"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </verifier>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Psychotherapy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1496"/>
+         <title value="Psych Visit - Psychotherapy"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol and Drug Dependence-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1001"/>
+         <title value="Alcohol and Drug Dependence"/>
+      </valueSet>
+   </definition>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Detoxification Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1059"/>
+         <title value="Detoxification Visit"/>
+      </valueSet>
+   </definition>
+   <!--Hospice care ambulatory-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1108.15"/>
+         <title value="Hospice care ambulatory"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Discharge Services - Hospital Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1007"/>
+         <title value="Discharge Services - Hospital Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Hospital Observation Care - Initial-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1002"/>
+         <title value="Hospital Observation Care - Initial"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Discharge Services - Hospital Inpatient Same Day Discharge-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1006"/>
+         <title value="Discharge Services - Hospital Inpatient Same Day Discharge"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1010"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Hospital Inpatient Visit - Initial-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1004"/>
+         <title value="Hospital Inpatient Visit - Initial"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol and Drug Dependence Treatment-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1005"/>
+         <title value="Alcohol and Drug Dependence Treatment"/>
+      </valueSet>
+   </definition>
+   <!--Office Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+         <title value="Office Visit"/>
+      </valueSet>
+   </definition>
+   <!--Discharge to home for hospice care (procedure)
+			-
+			CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/428361000124107/Info-->
+      <definition>
+      <cql-ext:code code="428361000124107" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Discharge to home for hospice care (procedure)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Discharge to healthcare facility for hospice care (procedure)
+			-
+			CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/428371000124100/Info-->
+      <definition>
+      <cql-ext:code code="428371000124100" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Discharge to healthcare facility for hospice care (procedure)"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+         <text mediaType="text/cql">
+            <reference value="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment-7.0.004.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment-7.0.004.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment-7.0.004.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb1780160e4c3f7052c06"/>
+         <text mediaType="text/cql">
+            <reference value="MATGlobalCommonFunctions-2.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="MATGlobalCommonFunctions-2.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="MATGlobalCommonFunctions-2.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a401616bdc270a1f14"/>
+         <text mediaType="text/cql">
+            <reference value="Hospice-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Hospice-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Hospice-1.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="d0fb8968-befe-4921-992a-401bf374d227"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="137" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="0004" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="This Physician Performance Measure (Measure) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). NCQA is not responsible for any use of the Measure. NCQA makes no representations, warranties, or endorsement about the quality of any organization or physician that uses or reports performance measures and NCQA has no liability to anyone who relies on such measures or specifications. NCQA holds a copyright in the Measure. The Measure can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices) without obtaining approval from NCQA. Commercial use is defined as the sale, licensing, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain. All commercial uses or requests for modification must be approved by NCQA and are subject to a license at the discretion of NCQA. (C) 2012-2017 National Committee for Quality Assurance. All Rights Reserved. &#xA;&#xA;Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any third party codes contained in the specifications.&#xA;&#xA;CPT(R) contained in the Measure specifications is copyright 2004-2017 American Medical Association. LOINC(R) copyright 2004-2017 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R] ) copyright 2004-2017 International Health Terminology Standards Development Organisation. ICD-10 copyright 2017 World Health Organization. All Rights Reserved."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The performance Measure is not a clinical guideline and does not establish a standard of medical care, and has not been tested for all potential applications. THE MEASURE AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA; &#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Report a total score, and each of the following strata:&#xA;Stratum 1: Patients age 13-17 &#xA;Stratum 2: Patients age &gt;=18"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="There are more deaths, illnesses and disabilities from substance abuse than from any other preventable health condition.  Treatment of medical problems caused by substance use and abuse places a huge burden on the health care system (Schneider Institute 2001). According to a report from the 2001 National Household Survey on Drug Abuse (NHSDA), an estimated 16.6 million Americans aged 12 or older in 2001 were classified with dependence on or abuse of either alcohol or illicit drugs (7.3 percent of the total population) (Substance Abuse and Mental Health Services Administration 2008). Of these, 2.4 million were classified with dependence on or abuse of both alcohol and illicit drugs, 3.2 million were dependent on or abused illicit drugs but not alcohol, and 11.0 million were dependent on or abused alcohol but not illicit drugs (Substance Abuse and Mental Health Services Administration 2008)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="American Psychiatric Association (2006)&#xA;* Because many substance use disorders are chronic, patients usually require long-term treatment, although the intensity and specific components of treatment may vary over time [I rating]. &#xA;* It is important to intensify the monitoring for substance use during periods when the patient is at a high risk of relapsing, including during the early stages of treatment, times of transition to less intensive levels of care, and the first year after active treatment has ceased [I rating].&#xA;* Outpatient treatment of substance use disorders is appropriate for patients whose clinical condition or environmental circumstances do not require a more intensive level of care [I rating]. As in other treatment settings, a comprehensive approach is optimal, using, where indicated, a variety of psychotherapeutic and pharmacological interventions along with behavioral monitoring [I rating ].&#xA;* Naltrexone, injectable naltrexone, acamprosate, a y-aminobutyric acid (GABA) are recommended for patients with alcohol dependence [I rating]. Disulfiram is also recommended for patients with alcohol dependence [II rating]. &#xA;* Methadone and buprenorphine are recommended for patients with opioid dependence [I rating]. Naltrexone is an alternative strategy [I rating].&#xA;&#xA;Michigan Quality Improvement Consortium (2013)&#xA;* Patient Education and Brief Intervention by Primary Care Physician (PCP) or Trained Staff (eg, RN, MSW) [A rating]&#xA;* Assess patient's risk, understanding, and readiness to change. &#xA;* Discuss the relationship of substance use to presenting medical concerns or psychosocial problems. &#xA;* Negotiate goals and strategies for reducing consumption and other change. &#xA;* Involve family members as appropriate. &#xA;&#xA;Referral&#xA;* Refer to a substance abuse health specialist, an addiction physician specialist, or a physician experienced in pharmacologic management of addiction [D rating] &#xA;* Initiate treatment within 14 days &#xA;* Frequent follow-up is helpful to support behavior change; preferably 2 visits within 30 days &#xA;* Also consider referrals to community-based services (eg, Alcoholics Anonymous [AA], Narcotics Anonymous [NA], etc.), or an Employee Assistance Program"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Higher score indicates better quality"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Schneider Institute for Health Policy, Brandeis University. 2001. Substance Abuse: The Nation's Number One Health Problem. Princeton: Robert Wood Johnson Foundation."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Substance Abuse and Mental Health Services Administration, Office of Applied Studies. 2008. Results from the 2007 National Survey on Drug Use and Health: National Finding. NSDUH Series H-34, DHHS Publication No. SMA 08-4343. Rockville, MD."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Work Group on Substance Use Disorders, Kleber H.D., R.D. Weiss, R.F. Anton, B.J. Rounsaville, T.P. George, E.C. Strain, S.F. Greenfield, D.M. Ziedonis, T.R. Kosten, G. Hennessy, C.P. O'Brien, H.S. Connery HS, American Psychiatric Association Steering Committee on Practice Guidelines, McIntyre J.S., S.C. Charles, D.J. Anzia, J.E. Nininger, I.A. Cook, P. Summergrad, M.T. Finnerty, S.M. Woods, B.R. Johnson, J. Yager, R. Pyles, L. Lurie, C.D. Cross, R.D. Walker, R. Peele, M.A. Barnovitz, S.H. Gray, J.P. Shemo, S. Saxena, T. Tonnu, R. Kunkle, A.B. Albert, L.J. Fochtmann, C. Hart, D. Regier. 2006. Treatment of patients with substance use disorders, second edition. American Psychiatric Association. Am J Psychiatry 163(8 Suppl):5-82."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Michigan Quality Improvement Consortium. 2013. Screening, diagnosis and referral for substance use disorders. Southfield (MI): Michigan Quality Improvement Consortium."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The initiation visit is the first visit for alcohol or other drug dependence treatment within 14 days after a diagnosis of alcohol or other drug dependence.&#xA;&#xA;Treatment includes inpatient AOD admissions, outpatient visits, intensive outpatient encounters or partial hospitalization.&#xA;&#xA;The Intake Period: January 1-November 15 of the measurement year. The Intake Period is used to capture new episodes of Alcohol or Drug Dependence. The November 15 cut-off date ensures that all services can occur before the measurement period ends."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The new episode of alcohol and other drug dependence should be the first episode of the measurement period that is not preceded in the 60 days prior by another episode of alcohol or other drug dependence."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Patients age 13 years of age and older who were diagnosed with a new episode of alcohol, opioid, or other drug abuse or dependency during a visit between January 1 and November 15 of the measurement period"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Patients with a previous active diagnosis of alcohol, opioid or other drug abuse or dependence in the 60 days prior to the first episode of alcohol or drug dependence&#xA;&#xA;Exclude patients whose hospice care overlaps the measurement period."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Numerator 1: Patients who initiated treatment within 14 days of the diagnosis&#xA;&#xA;Numerator 2: Patients who initiated treatment and who had two or more additional services with an alcohol, opioid, or other drug abuse or dependence diagnosis within 30 days of the initiation visit"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="009c24d5-d6be-42c5-ae0a-77d251c6808e"/>
+         <title value="None"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_IkL8Y"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="e9a82588-694f-4d54-83cd-c4d8d198e049"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_1yAJ2"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="3b6a3c14-9f16-4ae5-b706-e316d38f3b9d"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-Psychotherapy_EncounterPerformed_HNl1J"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PsychVisit-Psychotherapy_EncounterPerformed"
+                   root="19f00a96-73c1-4a0f-8b8a-701da27e288f"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1496"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AlcoholandDrugDependence_Diagnosis_sqkim"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AlcoholandDrugDependence_Diagnosis"
+                   root="8a4d92b2-3946-cdae-0139-7944acc200ce"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.106.12.1001" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_TDkRd"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="59c3933e-c568-4119-b89d-c29b7c752ef3"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DetoxificationVisit_EncounterPerformed_DDiqk"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="DetoxificationVisit_EncounterPerformed"
+                   root="0fdcf490-3fed-4b78-aa86-13a49be95c3a"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1059"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionOrder_yKIex"/>
+            <actCriteria classCode="ACT" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.35"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionOrder"
+                   root="95cca057-9695-4ee4-a5bd-eff4b54c6098"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Order"/>
+               <statusCode code="ACTIVE"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionPerformed_4hqD2"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionPerformed"
+                   root="95cca057-9695-4ee4-a5bd-eff4b54c6098"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_6VEdp"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="03a8b97f-4351-460c-8daf-fef0a0f73484"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DischargeServices-HospitalInpatient_EncounterPerformed_53dnw"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="DischargeServices-HospitalInpatient_EncounterPerformed"
+                   root="65c71cb8-0f87-4348-8312-29afa720def8"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1007"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HospitalObservationCare-Initial_EncounterPerformed_hsuR3"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HospitalObservationCare-Initial_EncounterPerformed"
+                   root="a22e301e-7870-4289-b2a5-5152ecb6e312"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1002"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_INgYU"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="d817607a-fcad-4b1a-ba2a-116ed6e32b64"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DischargeServices-HospitalInpatientSameDayDischarge_EncounterPerformed_g60RQ"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="DischargeServices-HospitalInpatientSameDayDischarge_EncounterPerformed"
+                   root="a41f931c-d068-4620-a8be-f496bf1677ae"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1006"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_zSvcX"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="85cfc8b8-99fd-4b17-aa84-86df4adc4f4f"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1010"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HospitalInpatientVisit-Initial_EncounterPerformed_ErMd7"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HospitalInpatientVisit-Initial_EncounterPerformed"
+                   root="dc632872-b1cb-488e-95e0-3d0a5dec1b57"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1004"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AlcoholandDrugDependenceTreatment_EncounterPerformed_vv9Tr"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="AlcoholandDrugDependenceTreatment_EncounterPerformed"
+                   root="8a4d92b2-3946-cdae-0139-7944acc300db"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.106.12.1005"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OfficeVisit_EncounterPerformed_ftfdt"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OfficeVisit_EncounterPerformed"
+                   root="7df6a2a7-c122-44aa-9ce0-ba2065843794"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="524225FC-DFD8-48D2-8176-1CF9B98004FC"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="1A45AC32-FC49-4B6B-BFB7-F9F8791C6615"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Initial Population&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="A8030D40-AB0D-4E15-9D7B-C4FE7DB5A6D9"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Denominator&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="D69AE7B2-8F10-4793-915A-72586FCFDFE7"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Denominator Exclusions&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="F9680359-F0E0-4056-B3D8-42313E606FB1"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Numerator&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <stratifierCriteria>
+               <id extension="Stratifiers" root="05E02E65-0DA2-4416-BF5E-DF8B80491B84"/>
+               <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Stratification 1&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </stratifierCriteria>
+         </component>
+         <component typeCode="COMP">
+            <stratifierCriteria>
+               <id extension="Stratifiers" root="30F2DEA4-3478-4AC1-AB5E-225B792E8324"/>
+               <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Stratification 2&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </stratifierCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="D33D063A-AA9C-4F56-92E3-6C37DC123A0D"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Ethnicity&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="9A134FD5-978C-4586-AC0C-D0B29FE2DD78"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Payer&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="7E7EA2E7-5EBF-467A-964A-F0B7FB30830E"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Race&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="D7DB698D-24AC-4DF0-9561-5F5EB5B5D0D8"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Sex&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria2" root="7B1339AB-205D-47FC-A432-DFE2D60B6577"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="2A8674F9-8178-4580-BC4C-1866087C25B5"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Initial Population&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="DABC98BD-7593-4E6A-9152-0B1416E45344"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Denominator&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="2B295A4B-B94E-44E4-83EE-A44AFEFC107C"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Denominator Exclusions&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="FDC151FA-CEB8-482D-8181-3511C858A656"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Numerator 2&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <stratifierCriteria>
+               <id extension="Stratifiers" root="AF65E730-4D68-42AC-B3BE-77F9573BDD34"/>
+               <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Stratification 1&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </stratifierCriteria>
+         </component>
+         <component typeCode="COMP">
+            <stratifierCriteria>
+               <id extension="Stratifiers" root="56D2BB77-D790-44C6-98B7-8A8ED4624A51"/>
+               <code code="STRAT" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;Stratification 2&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </stratifierCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="DC46FE8A-0851-4BC9-AFC8-3D29B8CB7A20"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Ethnicity&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="89743F84-5683-4B6F-B2E1-D14CC731FC91"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Payer&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="C9F993FA-B521-45CE-867D-54C059B99069"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Race&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="446C59CE-C731-4CFE-9122-30C28144D0BA"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="InitiationandEngagementofAlcoholandOtherDrugDependenceTreatment.&quot;SDE Sex&quot;"
+                         root="598D5ED3-F42F-479C-B72E-8654848D82C7"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

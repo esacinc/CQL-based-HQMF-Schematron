@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+  <!-- 
+    
+  Title: Procedure Order V3 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-12-2018
+  Update: 07-18-2018 templateId fix
+  
+  Total Errors Expected: 12
+      Failure a-3372-31120-error-error test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31120).
+      Failure a-3372-33158-error-error test="@classCode='PROC'" - SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33158).
+      Failure a-3372-31122-error-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-31122).
+      Failure a-3372-31125-error-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-31125).
+      Failure a-3372-31128-error-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-31128).
+      Failure a-3372-31126-error-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3372-31126).
+      Failure a-3372-31129-error-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3372-31129).
+      Failure a-3372-33147-error-error test="lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33147). 
+      Failure a-3372-31123-error-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-31123) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.66" (CONF:3372-31124) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33422).
+      Failure a-3372-33421-error-error test="count(hqmf:item)=1">The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-33421).
+      Failure a-3372-33509-error-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3372-33509). 
+      Failure a-3372-33599-error-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-33599). 
+    
+   
+  Total Warnings Expected: 3
+        Failure a-3372-31127-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3372-31127).
+        Failure a-3372-31134-warning test="count(hqmf:item)=1">The priorityCode, if present, SHOULD contain zero or one [0..1] item (CONF:3372-31134). 
+        Failure a-3372-33424-warning test="@valueSet" - This item SHOULD contain zero or one [0..1] @valueSet (CONF:3372-33424).
+ 
+-->
+  
+   <!-- Failure a-3372-31120-error-error test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31120).
+        Failure a-3372-33158-error-error test="@classCode='PROC'" - SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33158).
+   -->
+  <procedureCriteria >
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.66" extension="2018-05-01"/>
+    </templateId>
+    <!--Failure a-3372-31122-error-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-31122) -->
+    <templateId>
+      <!-- 
+        Failure a-3372-31123-error-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-31123) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.66" (CONF:3372-31124) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33422).
+  	  -->
+      <item root="Err" extension="Err"/>
+    </templateId>
+    <!-- Failure a-3372-31125-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id  -->
+    <!-- Failure a-3372-31128-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+    <code valueSet="{$QDMElementValueSetOID}"/>
+    <!-- Failure a-3372-31126-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code 
+         Failure a-3372-31127-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet 
+    -->
+    <code />
+    <statusCode code="active"/>
+    <!-- Failure a-3372-31129-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
+         Failure a-3372-33147-error test="lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active
+    -->
+    <statusCode code="Err"/>
+    <!-- Failure a-3372-31134-warning test="count(hqmf:item)=1">The priorityCode, if present, SHOULD contain zero or one [0..1] item (CONF:3372-31134). -->
+    <priorityCode></priorityCode>
+    <targetSiteCode>
+      <item valueSet="{$QDMElementValueSetOID}"/>
+      <!-- Failure a-3372-33421-error-error test="count(hqmf:item)=1">The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-33421).
+           Failure a-3372-33424-warning test="@valueSet" - This item SHOULD contain zero or one [0..1] @valueSet (CONF:3372-33424).
+      -->
+      <item />
+    </targetSiteCode>
+    
+    <participation typeCode="AUT">
+      <!-- Failure a-3372-33599-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role  -->
+      <role classCode="ROLerr"></role>
+      <time>
+        <!-- Failure a-3372-33509-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low  -->
+        <high></high>
+      </time>
+    </participation>
+  </procedureCriteria>      
+     
+                        
+</QualityMeasureDocument>

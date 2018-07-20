@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!--
+   Title: QDM Templates for CQL-base HQMF Header V3 - minimal sample file with no errors
+   Autor: Dan Donahue
+   Date: 07-16-2018
+   
+   Total Errors Expected: 0
+   
+   Total Warnings Expected: 0
+
+-->
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+   <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.1.2" />
+   </templateId>
+   <id root="40280382-5fa6-fe85-015f-b67723d904f4"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="Anti-depressant Medication Management"/>
+   <text value="Percentage of patients 18 years of age and older who were treated with antidepressant medication, had a diagnosis of major depression, and who remained on an antidepressant medication treatment. Two rates are reported. &#xA;a. Percentage of patients who remained on an antidepressant medication for at least 84 days (12 weeks). &#xA;b. Percentage of patients who remained on an antidepressant medication for at least 180 days (6 months)."/> 
+   <statusCode code="completed"/>
+   <setId root="8924f2b3-ec06-4650-b634-d70a53dee577"/>
+   <versionNumber value="7.0.000"/> 
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <verifier>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.560"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Quality Forum"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </verifier>
+   
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
+         <text mediaType="text/cql">
+            <reference value="AntidepressantMedicationManagement-6.2.006.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="AntidepressantMedicationManagement-6.2.006.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="AntidepressantMedicationManagement-6.2.006.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="ae93a709-93d1-45d4-b905-ab3d83ab9386"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+     <measureAttribute>
+        <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+           <displayName value="Measure Scoring"/>
+        </code>
+        <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+           <displayName value="Proportion"/>
+        </value>
+     </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+            value="This Physician Performance Measure (Measure) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). NCQA is not responsible for any use of the Measure. NCQA makes no representations, warranties, or endorsement about the quality of any organization or physician that uses or reports performance measures and NCQA has no liability to anyone who relies on such measures or specifications. NCQA holds a copyright in the Measure.   The Measure can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices) without obtaining approval from NCQA. Commercial use is defined as the sale, licensing, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain. All commercial uses or requests for modification must be approved by NCQA and are subject to a license at the discretion of NCQA. (C) 2012-2017 National Committee for Quality Assurance. All Rights Reserved. &#xA;&#xA;Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any third party codes contained in the specifications.&#xA;&#xA;CPT(R) contained in the Measure specifications is copyright 2004-2017 American Medical Association. LOINC(R) copyright 2004-2017 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R] ) copyright 2004-2017 International Health Terminology Standards Development Organisation. ICD-10 copyright 2017 World Health Organization. All Rights Reserved."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+            value="The performance Measure is not a clinical guideline and does not establish a standard of medical care, and has not been tested for all potential applications. THE MEASURE AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA; &#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSET" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Care Setting"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="CD"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRJUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Jurisdiction"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="CD"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTOPIC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Topic"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="CD"/>
+      </measureAttribute>
+   </subjectOf>
+      <subjectOf>
+      <measureAttribute>
+         <code code="MSRRPTR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Reporter"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="CD"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRRPTTIME" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Timeframe for Reporting"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="PQ"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRPOPL" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Meausre Population"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRPOPLEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Meausre Population Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="USE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Notice of Use"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+  
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+            value="In 2013, over 15 million adults in the United States had at least one major depressive episode in the past 12 months (National Institute of Mental Health 2013), and depression is estimated to affect nearly a quarter of adults in their lifetime (Burcusa and Iacono 2007). Symptoms of depression include appetite and sleep disturbances, anxiety, irritability and decreased concentration (Charbonneau et al. 2005). The American Psychiatric Association recommends use of antidepressant medication and behavioral therapies, such as psychotherapy, to treat depression (American Psychiatric Association 2010).&#xA;&#xA;For the past 50 years, antidepressant medication has proven to be effective especially for patients with more severe symptoms (Fournier et al. 2010). Among patients who initiate antidepressant treatment, one in three discontinues treatment within one month, before the effect of medication can be assessed, and nearly one in two discontinues treatment within three months (Simon 2002).&#xA;&#xA;Due to increased risky behaviors for chronic disease (eg, physical inactivity, smoking, excessive drinking and insufficient sleep), evidence has shown that depressive disorders are strongly related to the occurrence of many chronic diseases including diabetes, cancer, cardiovascular disease and asthma (Centers for Disease Control and Prevention 2011).&#xA;&#xA;Aligning depression quality improvement with methods used in managing other chronic illnesses has been an important step in depression care. Depression management systems have demonstrated improved short- and long-term outcomes of depression severity and persistence, employment retention, functional status and patient satisfaction (Katon et al. 2002; Rost et al. 2001)."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+            value="American Psychiatric Association (APA 2010): &#xA;Successful treatment of patients with major depressive disorder is promoted by a thorough assessment of the patient and close adherence to treatment plans. Treatment consists of an acute phase, during which remission is induced; a continuation phase, during which remission is preserved; and a maintenance phase, during which the susceptible patient is protected against the recurrence of a subsequent major depressive episode.&#xA;&#xA;Acute Phase: An antidepressant medication is recommended as an initial treatment choice for patients with mild to moderate major depressive disorder [I: Recommended with substantial clinical confidence] and definitely should be provided for those with severe major depressive disorder unless electroconvulsive therapy (ECT) is planned [I: Recommended with substantial clinical confidence]. For most patients, a selective serotonin reuptake inhibitor (SSRI), serotonin norepinephrine reuptake inhibitor (SNRI), mirtazapine, or bupropion is optimal [I: Recommended with substantial clinical confidence]. In general, the use of nonselective monoamine oxidase inhibitors (MAOIs) (eg, phenelzine, tranylcypromine, isocarboxazid) should be restricted to patients who do not respond to other treatments [I: Recommended with substantial clinical confidence], given the necessity for dietary restrictions with these medications and the potential for deleterious drug-drug interactions. &#xA;&#xA;During the acute phase of treatment, patients should be carefully and systematically monitored on a regular basis to assess their response to pharmacotherapy, identify the emergence of side effects (eg, gastrointestinal symptoms, sedation, insomnia, activation, changes in weight, and cardiovascular, neurological, anticholinergic, or sexual side effects), and assess patient safety [I: Recommended with substantial clinical confidence]. If antidepressant side effects do occur, an initial strategy is to lower the dose of the antidepressant or to change to an antidepressant that is not associated with that side effect [I: Recommended with substantial clinical confidence].&#xA;&#xA;Continuation Phase: During the continuation phase of treatment, the patient should be carefully monitored for signs of possible relapse [I: Recommended with substantial clinical confidence]. Systematic assessment of symptoms, side effects, adherence, and functional status is essential [I: Recommended with substantial clinical confidence], and may be facilitated through the use of clinician- and/or patient-administered rating scales [II: Recommended with moderate clinical confidence]. To reduce the risk of relapse, patients who have been treated successfully with antidepressant medications in the acute phase should continue treatment with these agents for 4-9 months [I: Recommended with substantial clinical confidence]. In general, the dose used in the acute phase should be used in the continuation phase [II: Recommended with moderate clinical confidence]. To prevent a relapse of depression in the continuation phase, depression-focused psychotherapy is recommended [I: Recommended with substantial clinical confidence], with the best evidence available for cognitive-behavioral therapy.&#xA;&#xA;Maintenance Phase: During the maintenance phase, an antidepressant medication that produced symptom remission during the acute phase and maintained remission during the continuation phase should be continued at a full therapeutic dose [II: Recommended with moderate clinical confidence]."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Higher score indicates better quality"
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+            value="Charbonneau, A., W. Bruning, T. Titus-Howard, E. Ellerbeck, J. Whittle, S. Hall, J. Campbell, S. Crain, S. Munro. 2005. &quot;The community initiative on depression: report from a multiphase work site depression intervention.&quot; J Occup Environ Med 47(1):60-7."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain"
+            value="Index Prescription Start Date (IPSD): The earliest prescription dispensing event for an antidepressant medication during the period of 270 days prior to the start of the measurement period through 90 days after the start of the measurement period.&#xA;The &quot;continuous treatment&quot; described in this measure allows for gaps in medication treatment up to a total 30 days during the 114-day period (numerator 1) or 51 days during the 231-day period (numerator 2). Gaps can include either gaps used to change medication, or treatment gaps to refill the same medication."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+            value="To identify new treatment episodes for major depression, there must be a 90-day negative medication history (a period during which the patient was not taking antidepressant medication) prior to the first dispensing event associated with the Index Episode Start Date (Index Prescription Start Date).&#xA;&#xA;CUMULATIVE MEDICATION DURATION is an individual's total number of medication days over a specific period; the period counts multiple prescriptions with gaps in between, but does not count the gaps during which a medication was not dispensed. &#xA;&#xA;To determine the cumulative medication duration, determine first the number of the Medication Days for each prescription in the period: the number of doses divided by the dose frequency per day. Then add the Medication Days for each prescription without counting any days between the prescriptions.&#xA;&#xA;For example, there is an original prescription for 30 days with 2 refills for thirty days each. After a gap of 3 months, the medication was prescribed again for 60 days with 1 refill for 60 days. The cumulative medication duration is (30 x 3) + (60 x 2) = 210 days over the 10 month period."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+            value="Patients 18 years of age and older with a visit during the measurement period who were dispensed antidepressant medications in the time within 270 days (9 months) prior to the measurement period through the first 90 days (3 months) of the measurement period, and were diagnosed with major depression 60 days prior to, or 60 days after the dispensing event"
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+            value="Patients who were actively on an antidepressant medication in the 105 days prior to the Index Prescription Start Date.&#xA;&#xA;Exclude patients whose hospice care overlaps the measurement period."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+            value="Numerator 1: Patients who have received antidepressant medication for at least 84 days (12 weeks) of continuous treatment during the 114-day period following the Index Prescription Start Date.&#xA;&#xA;Numerator 2: Patients who have received antidepressant medications for at least 180 days (6 months) of continuous treatment during the 231-day period following the Index Prescription Start Date."
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+            value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+            xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="KEY" codeSystem="2.16.840.1.113883.5.4">
+            ...
+         </code>
+         ...
+      </measureAttribute>
+   </subjectOf> 
+   
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <!-- ... -->
+      </populationCriteriaSection>
+   </component>
+   
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <!-- ... -->
+      </dataCriteriaSection>
+   </component>
+</QualityMeasureDocument>

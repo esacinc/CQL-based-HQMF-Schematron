@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+ <!-- 
+  Title: Adverse Event V2  minimal sample file with  errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  Update: 07-17-2018 templateId fix
+
+      Total Errors Expected: 28
+         Failure a-3346-34210-error SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34210).
+         Failure a-3346-34211-error SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34211).
+         Failure a-3346-34758-error SHALL NOT contain [0..0] @actionNegationInd (CONF:3346-34758).
+         Failure a-3346-34183-error SHALL contain exactly one [1..1] templateId (CONF:3346-34183).
+         Failure a-3346-34184-error SHALL contain exactly one [1..1] item (CONF:3346-34184) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.120" (CONF:3346-34194)	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34531).
+         Failure a-3346-34212-error SHALL contain exactly one [1..1] id (CONF:3346-34212).
+         Failure a-3346-34185-error SHALL contain exactly one [1..1] code (CONF:3346-34185).
+         Failure a-3346-34213-error SHALL contain exactly one [1..1] title (CONF:3346-34213).
+         Failure a-3346-34186-error SHALL contain exactly one [1..1] statusCode (CONF:3346-34186).
+         Failure a-3346-34188-error SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34188).
+         Failure a-3346-34189-error SHALL contain exactly one [1..1] participation (CONF:3346-34189) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34207). HALL contain exactly one [1..1] role (CONF:3346-34190). 
+         Failure a-3346-34196-error This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34196).
+         Failure a-3346-34197-error This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-34197). 
+         Failure a-3346-34198-error This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34198).
+         Failure a-3346-34201-error This value SHALL contain exactly one [1..1] @code="281647001" Adverse Reaction (CONF:3346-34201).
+         Failure a-3346-34202-error This value SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-34202).
+         Failure a-3346-34206-error This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34206). 
+         Failure a-3346-34191-error This role SHALL contain exactly one [1..1] playingEntity (CONF:3346-34191). 
+         Failure a-3346-34696-error This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34696).
+         Failure a-3346-34204-error This playingEntity SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3346-34204).
+         Failure a-3346-34205-error This playingEntity SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-34205).
+         Failure a-3346-34192-error This playingEntity SHALL contain exactly one [1..1] code (CONF:3346-34192).
+         Failure a-3346-34687-error This observationCriteria SHALL contain exactly one [1..1] @classCode="OBS" (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34687). 
+         Failure a-3346-34688-error This observationCriteria SHALL contain exactly one [1..1] @moodCode="EVN" (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34688). 
+         Failure a-3346-34684-error This observationCriteria SHALL contain exactly one [1..1] code (CONF:3346-34684).  
+         Failure a-3346-34685-error This observationCriteria SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34685). 
+         Failure a-3346-34689-error This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34689). 
+         Failure a-3346-34690-error This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-34690). 
+      
+      
+      Total Warnings Expected: 2
+      Failure a-3346-34203-warning" test="@valueSet">This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34203).
+      Failure a-3346-34691-warning" test="@valueSet">This value SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34691). 
+
+ -->
+   
+   <!-- Failure a-3346-34210 SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34210). -->
+   <!-- Failure a-3346-34211 SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34211). -->
+   <!-- Failure a-3346-34758 SHALL NOT contain [0..0] @actionNegationInd (CONF:3346-34758). -->
+   <observationCriteria classCodeErr="OBS" moodCode="EVNErr" actionNegationInd="true">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.120" extension="2017-08-01"/>
+      </templateId>
+      <!-- Failure a-3346-34183 SHALL contain exactly one [1..1] templateId (CONF:3346-34183) -->
+      <!-- Failure a-3346-34184-error SHALL contain exactly one [1..1] item (CONF:3346-34184) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.120" (CONF:3346-34194)	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34531). -->
+      <templateId>
+          <item root="2.16.840.1.113883.10.20.28.4.120Err" extension="2017-08-01Err"/>
+      </templateId>
+      
+      <!-- Failure a-3346-34212 SHALL contain exactly one [1..1] id (CONF:3346-34212). -->
+      <!-- <id root="69da3f12-e963-4f6f-baed-3e59cf9b58c8"/> -->
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+      <!-- Failure a-3346-34185 SHALL contain exactly one [1..1] code (CONF:3346-34185). -->
+      <!-- Failure a-3346-34196-error This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34196). -->
+      <!-- Failure a-3346-34197-error This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-34197).  -->
+      <code code="ASSERTIONErr" codeSystemErr="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+      <!-- Failure a-3346-34213 SHALL contain exactly one [1..1] title (CONF:3346-34213). -->
+      <!-- <title value="Adverse Event"/> -->
+      <statusCode code="completed"/>
+      <!-- Failure a-3346-34186 SHALL contain exactly one [1..1] statusCode (CONF:3346-34186). -->
+      <!-- Failure a-3346-34198-error This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34198). -->
+      <statusCode code="completedErr"/>
+      <value xsi:type="CD" code="281647001" codeSystem="2.16.840.1.113883.6.96"  codeSystemName="SNOMED-CT">
+         <displayName value="Adverse Reaction"/>
+      </value>
+      <!-- Failure a-3346-34188 SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34188). -->
+      <!-- Failure a-3346-34201 This value SHALL contain exactly one [1..1] @code="281647001" Adverse Reaction (CONF:3346-34201). -->
+      <!-- Failure a-3346-34202 This value SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-34202). -->
+      <value xsi:type="CD" code="281647001Err" codeSystemErr="2.16.840.1.113883.6.96"  codeSystemName="SNOMED-CT">
+         <displayName value="Adverse Reaction"/>
+      </value>
+      <participation typeCode="CSM">
+         <role classCode="MANU">
+            <playingEntity classCode="MMAT" determinerCode="KIND">
+               <!-- Failure a-3346-34203-warning" test="@valueSet">This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34203). -->
+               <code valueSetErr="xxxx"/>
+            </playingEntity>
+         </role>
+      </participation>
+      
+      <!-- Failure a-3346-34189 SHALL contain exactly one [1..1] participation (CONF:3346-34189) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34207). HALL contain exactly one [1..1] role (CONF:3346-34190). -->
+      <participation typeCode="CSM">
+         <!-- Failure a-3346-34206-error This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34206). -->
+         <role classCode="MANUErr">
+            <playingEntity classCode="MMAT" determinerCode="KIND">
+               <code valueSet="{$QDMElementValueSetOID}"/>
+            </playingEntity>
+             <!-- Failure a-3346-34191-error This role SHALL contain exactly one [1..1] playingEntity (CONF:3346-34191). -->
+            <!--  Failure a-3346-34204-error This playingEntity SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3346-34204). -->
+            <!-- Failure a-3346-34205-error This playingEntity SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-34205). -->
+            <!-- Failure a-3346-34192-error This playingEntity SHALL contain exactly one [1..1] code (CONF:3346-34192). -->
+             <playingEntity classCode="MMATErr" determinerCodeErr="KIND">
+                <!-- <code valueSet="{$QDMElementValueSetOID}"/> -->
+             </playingEntity>
+         </role>
+      </participation>
+      
+      <participation typeCode="AUT">
+         <time></time>
+         <!-- Failure a-3346-34696-error This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34696). -->
+         <role classCode="ROLErr">
+         <id></id>
+         </role>
+      </participation>
+      
+      <outboundRelationship typeCode="REFR">
+         <!--  Failure a-3346-34687-error This observationCriteria SHALL contain exactly one [1..1] @classCode="OBS" (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34687). --> 
+         <!--  Failure a-3346-34688-error This observationCriteria SHALL contain exactly one [1..1] @moodCode="EVN" (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34688). -->
+         <observationCriteria classCodeErr="OBS" moodCode="EVNErr">
+            <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+            <!--  Failure a-3346-34684-error This observationCriteria SHALL contain exactly one [1..1] code (CONF:3346-34684). -->
+            <!--  Failure a-3346-34689-error This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34689). -->
+            <!--  Failure a-3346-34690-error This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-34690).  -->
+            <code code="ASSERTIONErr" codeSystemErr="2.16.840.1.113883.5.4" />
+            <!-- Failure a-3346-34691-warning" test="@valueSet">This value SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34691).  -->
+            <value xsi:type="CD"  valueSet="xxxx"/> 
+            <!-- Failure a-3346-34685-error This observationCriteria SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34685).  -->
+            <value xsi:type="CD"  />
+         </observationCriteria>
+         
+      </outboundRelationship>
+   </observationCriteria> 
+
+</QualityMeasureDocument>

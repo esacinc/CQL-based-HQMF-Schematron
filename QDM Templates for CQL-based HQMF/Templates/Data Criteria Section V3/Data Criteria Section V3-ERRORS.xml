@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+    Title: Data Criteria Section V3 minimal sample file with  errors
+    Autor: Dan Donahue
+    Date: 07-13-2018
+  
+  Total Errors Expected: 8
+      Failure a-3372-18804-error SHALL contain exactly one [1..1] templateId (CONF:3372-18804) such that it  SHALL contain exactly one [1..1] item (CONF:3372-18805) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.6" (CONF:3372-18806).SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33440).  
+      Failure a-3372-18807-error SHALL contain exactly one [1..1] code (CONF:3372-18807).
+      Failure a-3372-18857-error SHALL contain exactly one [1..1] title (CONF:3372-18857).
+      Failure a-3372-18853-error SHALL contain at least one [1..*] entry (CONF:3372-18853).
+      Failure a-3372-18858-error SHALL contain exactly one [1..1] text (CONF:3372-18858).
+      Failure a-3372-18808-error This code SHALL contain exactly one [1..1] @code="57025-9" Data Criteria (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1 STATIC) (CONF:3372-18808).
+      Failure a-3372-30091-error This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3372-30091).
+      Failure a-3372-18964-error This title SHALL contain exactly one [1..1] @value="Data Criteria Section" (CONF:3372-18964). 
+
+  Total Warnings Expected: 0
+  -->
+   <templateId>
+     <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+   </templateId> 
+   <component>
+     <dataCriteriaSection>
+       <templateId>
+         <item root="2.16.840.1.113883.10.20.28.2.6" extension="2018-05-01" />
+       </templateId> 
+       
+       <!-- Failure a-3372-18804-error Multiple main template id   -->
+       <templateId>
+         <item root="2.16.840.1.113883.10.20.28.2.6" extension="2018-05-01" />
+       </templateId> 
+       
+       <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+       <!-- Failure a-3372-18807-error SHALL contain exactly one [1..1] code (CONF:3372-18807). -->
+       <!-- Failure a-3372-18808-error This code SHALL contain exactly one [1..1] @code="57025-9" -->
+       <!-- Failure a-3372-30091-error This code SHALL contain exactly one [1..1] @codeSystem -->
+       <code />
+       <title value="Data Criteria Section" />
+       <!--  Failure a-3372-18857-error SHALL contain exactly one [1..1] title (CONF:3372-18857). -->
+       <!--  Failure a-3372-18964-error This title SHALL contain exactly one [1..1] @value="Data Criteria Section" (CONF:3372-18964). -->
+       <title value="ERR Data Criteria Section" />
+       <!--  Failure a-3372-18858-error SHALL contain exactly one [1..1] text (CONF:3372-18858). -->
+       <!--  Failure a-3372-18853-error SHALL contain at least one [1..*] entry (CONF:3372-18853). -->
+     </dataCriteriaSection>
+   </component>
+   
+  
+                        
+</QualityMeasureDocument>

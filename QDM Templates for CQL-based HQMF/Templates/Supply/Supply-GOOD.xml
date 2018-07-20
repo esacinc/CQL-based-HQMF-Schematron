@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Supply minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <supplyCriteria classCode="SPLY" moodCode="RQO">
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.129" extension="2017-08-01"/>
+    </templateId>
+    <id root="5ab17ed3-166c-4265-9c61-d254e30c8e83"/>
+    <title value="Supply"/>
+    <quantity xsi:type="IVL_PQ">
+      <low value="50" unit="mL"/>
+    </quantity> 
+  </supplyCriteria>       
+  
+     
+                        
+</QualityMeasureDocument>

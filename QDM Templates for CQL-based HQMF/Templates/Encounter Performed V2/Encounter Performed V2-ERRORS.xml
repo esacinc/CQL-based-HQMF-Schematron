@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Encounter Performend V2 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-10-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 11
+      Failure a-3346-31005-error test="@classCode='ENC'" - SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3346-31005).
+      Failure a-3346-31006-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31006).
+      Failure a-3346-31008-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-31008).
+      Failure a-3346-31011-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-31011).
+      Failure a-3346-31014-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-31014).
+      Failure a-3346-31012-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-31012).
+      Failure a-3346-31015-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3346-31015).
+      Failure a-3346-31016-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31016).
+      Failure a-3346-31009-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-31009) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.5" (CONF:3346-31010) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33397).
+      Failure a-3346-34660-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3346-34660). 
+      Failure a-3346-34661-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34661).  
+    
+  
+  Total Warnings Expected: 2
+       Failure a-3346-31013-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-31013).
+       Failure a-3346-33105-warning test="@valueSet">The dischargeDispositionCode, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-33105).
+  
+-->
+  
+  <!--  -->
+  <encounterCriteria >
+    <templateId>
+      <item root="2.16.840.1.113883.10.20.28.4.5" extension="2017-08-01"/>
+    </templateId>
+    <!--  Failure a-3346-31008-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-31008) -->
+    <templateId>
+      <!--  Failure a-3346-31009-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-31009) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.5" (CONF:3346-31010) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33397).-->
+      <item />
+    </templateId>
+    <!--  Failure a-3346-31011-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id -->
+    <!--  Failure a-3346-31014-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+    <code valueSet="{$QDMElementValueSetOID}"/>
+    <!--  Failure a-3346-31012-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code 
+          Failure a-3346-31013-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet
+    -->
+    <code valueSetErr="{$QDMElementValueSetOID}"/>
+    <statusCode code="completed"/>
+    <!-- Failure a-3346-31015-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
+         Failure a-3346-31016-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed"
+    -->
+    <statusCode code="completedErr"/>
+    <!-- Failure a-3346-33105-warning test="@valueSet">The dischargeDispositionCode, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-33105). -->
+    <dischargeDispositionCode valueSetErr=""/>
+    
+    <participation typeCode="AUT">
+      <!-- Failure a-3346-34661-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" -->
+      <role classCodeErr="ROL"></role>
+      <time>
+        <!-- Failure a-3346-34660-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low  -->
+        <high></high>
+      </time>
+    </participation>
+  </encounterCriteria>
+                          
+</QualityMeasureDocument>

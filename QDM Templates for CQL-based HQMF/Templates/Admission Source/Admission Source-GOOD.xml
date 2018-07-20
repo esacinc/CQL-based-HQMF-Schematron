@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+    
+  Title: Admission Source minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+   <role classCode="SDLOC">
+     <templateId>
+        <item root="2.16.840.1.113883.10.20.28.4.123" extension="2017-05-01" />
+     </templateId> 
+    <code valueSet="xxxx"/>
+  </role>
+                        
+</QualityMeasureDocument>

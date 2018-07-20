@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!-- 
+    
+  Title: Allergy Intolerance V2 minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->   
+   <observationCriteria classCode="OBS" moodCode="EVN">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.119" extension="2017-08-01"/>
+      </templateId>
+      <id root="dd055113-6d52-4b3f-928e-235f8e52c4c0"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+      <title value="Allergy Intolerance"/>
+      <statusCode code="completed"/>
+      <value xsi:type="CD" code="106190000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+         <displayName value="Allergy"/>
+      </value>
+      <participation typeCode="CSM">
+         <role classCode="MANU">
+            <playingEntity classCode="MMAT" determinerCode="KIND">
+               <code valueSet="{$QDMElementValueSetOID}"/>
+            </playingEntity>
+         </role>
+      </participation>
+      <participation typeCode="AUT">
+         <role classCode="ROL"></role>
+         <time>
+            <low></low>
+         </time>
+      </participation>
+      <outboundRelationship typeCode="REFR">
+         <observationCriteria classCode="OBS" moodCode="EVN">
+            <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/> 
+            <value xsi:type="CD" valueSet="..."/> 
+         </observationCriteria>
+      </outboundRelationship >
+   </observationCriteria> 
+
+</QualityMeasureDocument>

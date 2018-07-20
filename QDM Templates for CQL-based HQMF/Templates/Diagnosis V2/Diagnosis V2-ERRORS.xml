@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+    
+  Title: Diagnosis V2 minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-10-2018
+  Update: 07-17-2018 templateId fix
+  
+  Total Errors Expected: 14
+      Failure a-3346-33768-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-33768).
+      Failure a-3346-33769-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-33769).
+      Failure a-3346-34702-error test="not(@actionNegationInd)" - SHALL NOT contain [0..0] @actionNegationInd (CONF:3346-34702).
+      Failure a-3346-33770-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-33770) .
+      Failure a-3346-33777-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3346-33777).
+      Failure a-3346-33780-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3346-33780).
+      Failure a-3346-33772-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3346-33772).
+      Failure a-3346-33773-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3346-33773).
+      Failure a-3346-33786-error test="count(hqmf:item) = 1" - The targetSiteCode, if present, SHALL contain exactly one [1..1 item (CONF:3346-33786).
+      Failure a-3346-33775-error test="count(hqmf:value[@xsi:type='CD'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-33775).
+      Failure a-3346-33778-error test="@code='282291009' and @codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @code="282291009" Diagnosis (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-33778).
+      Failure a-3346-33779-error test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (SNOMED CT) (CONF:3346-33779).
+      Failure a-3346-33781-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-33781).
+      Failure a-3346-33771-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-33771). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.110" (CONF:3346-33776) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34321).
+
+  
+  Total Warnings Expected: 2
+      Failure a-3346-33784-warning test="@valueSet" - This value SHOULD contain zero or one [0..1] @valueSet (CONF:3346-33784).
+      Failure a-3346-33788-warning test="@valueSet">The item, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-33788).
+ 
+-->
+   
+   <!-- Failure a-3346-33768-error test="@classCode='OBS'" - SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-33768).
+        Failure a-3346-33769-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-33769).
+        Failure a-3346-34702-error test="not(@actionNegationInd)" - SHALL NOT contain [0..0] @actionNegationInd (CONF:3346-34702).
+     -->
+   <observationCriteria classCodeErr="OBS" moodCode="EVNErr" actionNegationInd="true">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.110" extension="2017-08-01"/>
+      </templateId>
+      <!-- Failure a-3346-33770-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-33770) -->
+      <templateId>
+         <!-- Failure a-3346-33771-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3346-33771). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.110" (CONF:3346-33776) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34321).-->
+         <item />
+      </templateId> 
+      <!-- Failure a-3346-33777-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id --> 
+      <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+         <displayName value="Diagnosis"/>
+      </code>
+      <!--  Failure a-3346-33772-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code
+            Failure a-3346-33778-error test="@code='282291009' and @codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @code="282291009" Diagnosis (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3346-33778).
+            Failure a-3346-33779-error test="@codeSystem='2.16.840.1.113883.6.96'" - This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (SNOMED CT) (CONF:3346-33779).
+      -->
+      <code></code>
+      <!-- Failure a-3346-33780-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title -->
+      <statusCode code="completed"/>
+      <!--  Failure a-3346-33773-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode
+            Failure a-3346-33781-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed
+      -->
+      <statusCode code="completedErr"/>
+      <targetSiteCode>
+         <item valueSet="{$QDMElementValueSetOID}"></item>
+         <!-- Failure a-3346-33786-error test="count(hqmf:item) = 1" - The targetSiteCode, if present, SHALL contain exactly one [1..1 item -->
+         <!-- Failure a-3346-33788-warning test="@valueSet">The item, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-33788).  -->
+         <item></item>
+      </targetSiteCode>
+      <value xsi:type="CD" valueSet="{$QDMElementValueSetOID}"/>
+      <!--  Failure a-3346-33775-error test="count(hqmf:value[@xsi:type='CD'])=1" - SHALL contain exactly one [1..1] value with @xsi:type="CD"  
+            Failure a-3346-33784-warning test="@valueSet" - This value SHOULD contain zero or one [0..1] @valueSet
+      -->
+      <value xsi:type="CD" valueSetErr="{$QDMElementValueSetOID}"/>
+   </observationCriteria>   
+
+</QualityMeasureDocument>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Measure Observations Section V3 minimal sample file with no errors
+  Autor: Dan Donahue
+  Date: 07-13-2018
+  
+  Total Errors Expected: 0
+  
+  Total Warnings Expected: 0
+  
+-->
+  <templateId>
+    <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01" />
+  </templateId> 
+  <component>
+    <measureObservationsSection>
+      <templateId>
+        <item root="2.16.840.1.113883.10.20.28.2.4" extension="2018-05-01"/>
+      </templateId>
+      <code code="57027-5" codeSystem="2.16.840.1.113883.6.1">
+        <displayName value="Measure Observation"/>
+      </code>
+      <title value="Measure Observations Section"/>
+      <text value="...."/>
+      <definition>
+        <measureObservationDefinition classCode="OBS" moodCode="DEF">
+          <id extension="Measure Observation"
+            root="8A9A47CF-45A4-4385-923C-5A045D8EA9F8"/>
+          <code code="AGGREGATE" codeSystem="2.16.840.1.113883.5.4"/>
+          <methodCode></methodCode>
+          <value nullFlavor="DER" xsi:type="INT">
+            <expression value="TestCMS55v5.&quot;Measure Observation&quot;"/>
+          </value>
+          <componentOf>
+            <criteriaReference classCode='OBS' moodCode='EVN'>
+              <id extension="TestCMS55v5.&quot;Measure Population&quot;"
+                root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+            </criteriaReference>
+          </componentOf>
+        </measureObservationDefinition>
+      </definition>
+    </measureObservationsSection>
+  </component>
+                        
+</QualityMeasureDocument>

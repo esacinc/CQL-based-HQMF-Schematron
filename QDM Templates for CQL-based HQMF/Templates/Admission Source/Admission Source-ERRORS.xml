@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 
+    
+  Title: Admission Source minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 07-06-2018
+  Update: 07-17-2018 templateId fix
+  
+      Total Errors Expected: 4                
+        Failure a-3335-34340-error test="count(hqmf:templateId[count(hqmf:item)=1])=1 - SHALL contain exactly one [1..1] templateId (CONF:3335-34340)
+        Failure a-3335-34341-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1 - SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34530)
+        Failure a-3335-34344-error SHALL contain exactly one [1..1] @classCode="SDLOC" Service Delivery Location (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-34344).
+        Failure a-3335-34342-error SHALL contain exactly one [1..1] code (CONF:3335-34342).
+
+Total Warnings Expected: 1
+      Failure a-3335-34346-warning This code SHOULD contain zero or one [0..1] @valueSet (CONF:3335-34346).
+
+ -->
+                        
+   <!-- Failure a-3335-34344 SHALL contain exactly one [1..1] @classCode="SDLOC" Service Delivery Location (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-34344). -->
+   <role classCode="SDLOCErr">
+     <templateId>
+        <item root="2.16.840.1.113883.10.20.28.4.123" extension="2017-05-01" />
+     </templateId> 
+     <!-- Failure a-3335-34340 SHALL contain exactly one [1..1] templateId (CONF:3335-34340) -->                      
+     <templateId>
+       <!-- Failure a-3335-34341-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1 - SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01"  -->
+       <item root="2.16.840.1.113883.10.20.28.4.123Err" extensio="2017-05-01" />
+     </templateId> 
+    <code valueSet="xxxx"/>
+    <!-- Failure a-3335-34346This code SHOULD contain zero or one [0..1] @valueSet (CONF:3335-34346). -->
+    <code />
+  </role>
+                        
+</QualityMeasureDocument>
