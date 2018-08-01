@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
-
+    Update: 07-30-2018  Removed author participation. Not required
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -28,8 +28,7 @@
       <sch:assert id="a-3372-32054-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-32054).</sch:assert>
       <sch:assert id="a-3372-32058-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-32058).</sch:assert>
       <sch:assert id="a-3372-32497-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-32497) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32503) SHALL contain exactly one [1..1] role (CONF:3372-32498).</sch:assert>
-      <sch:assert id="a-3372-34542-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34542) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34545) SHALL contain exactly one [1..1] time (CONF:3372-34543) SHALL contain exactly one [1..1] role (CONF:3372-34544). </sch:assert>
-    </sch:rule>
+     </sch:rule>
     <sch:rule id="r-Medication-Administered-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-32055-error" test="@code='416118004' and @codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @code="416118004" Administration (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3372-32055).</sch:assert>
       <sch:assert id="a-3372-32056-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CONF:3372-32056).</sch:assert>

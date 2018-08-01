@@ -6,6 +6,7 @@
   Title: Assessment Order minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-06-2018
+  Update: 07-30-2018  Fixed: 3372-34667 Changed 'completed' to 'active'
   
   Total Errors Expected: 0
   
@@ -19,7 +20,7 @@
       <id root="08f25bc3-5eff-49a5-b2ec-f66f1027574c"/>
       <code valueSet="..."/>
       <title value="Assessment, Ordered"/>
-      <statusCode code="completed"/>
+      <statusCode code="active"/>
       <participation typeCode="AUT">
          <role classCode="ROL"></role>
          <time>

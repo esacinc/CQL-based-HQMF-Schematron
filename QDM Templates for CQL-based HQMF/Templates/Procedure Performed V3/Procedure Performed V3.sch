@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
-
+Update: 07-30-2018  Removed author participation. Not required
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -27,7 +27,6 @@
       <sch:assert id="a-3372-31344-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-31344).</sch:assert>
       <sch:assert id="a-3372-31342-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-31342).</sch:assert>
       <sch:assert id="a-3372-31345-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-31345).</sch:assert>
-      <sch:assert id="a-3372-34556-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34556) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34559) SHALL contain exactly one [1..1] time (CONF:3372-34557) SHALL contain exactly one [1..1] role (CONF:3372-34558).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Performed-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-33150-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33150).</sch:assert>

@@ -7,6 +7,7 @@
   Title: Substance Recommended V3 minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-13-2018
+  Update: 07-30-2018 3372-32106: changed MANU to ADMM, 3372-32108: changed MMAT to MAT
   
   Total Errors Expected: 0
   
@@ -21,8 +22,8 @@
     <title value="Substance, Recommended"/>
     <statusCode code="active"/>
     <participation typeCode="CSM">
-      <role classCode="MANU">
-        <playingMaterial classCode="MMAT" determinerCode="KIND">
+      <role classCode="ADMM">
+        <playingMaterial classCode="MAT" determinerCode="KIND">
           <code valueSet="{$QDMElementValueSetOID}" />
         </playingMaterial>
       </role>

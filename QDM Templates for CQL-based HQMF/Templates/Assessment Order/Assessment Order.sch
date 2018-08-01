@@ -34,7 +34,8 @@
     </sch:rule>
  
     <sch:rule id="r-Assessment-Order-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]/hqmf:statusCode">
-      <sch:assert id="a-3372-34667-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).</sch:assert>
+      <!-- Fixed: Changed 'completed' to 'active' -->
+      <sch:assert id="a-3372-34667-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).</sch:assert>
     </sch:rule>
     
     <sch:rule id="r-Assessment-Order-participation-time-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">

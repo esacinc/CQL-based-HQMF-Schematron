@@ -7,6 +7,7 @@
   Title: Device Applied V2 minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-10-2018
+  Updated: 07-30-2018 Removed author 3372-34503 as a SHALL
   
   Total Errors Expected: 0
   
@@ -30,13 +31,7 @@
             </playingDevice>
          </role>
       </participation>
-      <participation typeCode="AUT">
-         <time>
-            <low></low>
-         </time>
-         <role classCode="ROL">
-         </role>
-      </participation>
+     
       
    </procedureCriteria>   
 

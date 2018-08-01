@@ -35,12 +35,12 @@
       <sch:assert id="a-3372-32125-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32125) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.78" (CONF:3372-32126) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33693). </sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
-      <sch:assert id="a-3372-32106-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).</sch:assert>
+      <sch:assert id="a-3372-32106-error" test="@classCode='ADMM'">This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).</sch:assert>
       <sch:assert id="a-3372-32107-error" test="count(hqmf:playingMaterial)=1">This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32107).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-CSM-role-playingMaterial-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role/hqmf:playingMaterial">
       <sch:assert id="a-3372-32110-error" test="count(hqmf:code)=1">This playingMaterial SHALL contain exactly one [1..1] code (CONF:3372-32110).</sch:assert>
-      <sch:assert id="a-3372-32108-error" test="@classCode='MMAT'">This playingMaterial SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).</sch:assert>
+      <sch:assert id="a-3372-32108-error" test="@classCode='MAT'">This playingMaterial SHALL contain exactly one [1..1] @classCode="MAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).</sch:assert>
       <sch:assert id="a-3372-32109-error" test="@determinerCode='KIND'">This playingMaterial SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3372-32109).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-AUT-time-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)]/hqmf:time">

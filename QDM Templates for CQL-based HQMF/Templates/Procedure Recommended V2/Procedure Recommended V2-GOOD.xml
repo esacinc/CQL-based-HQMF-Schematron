@@ -7,6 +7,7 @@
   Title: Procedure Recommended V2 minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-12-2018
+  Update: 07-30-2018  3372-33155 change 'completed' to 'active'
   
   Total Errors Expected: 0
   
@@ -20,7 +21,7 @@
     <id root="7d559e0a-4e01-4f52-b87b-a3342705e2f2"/>
     <code valueSet="{$QDMElementValueSetOID}"/>
     <title value="Procedure, Recommended"/>
-    <statusCode code="completed"/>
+    <statusCode code="active"/>
     <participation typeCode='AUT'>
       <time>
         <low></low>

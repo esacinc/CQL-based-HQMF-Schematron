@@ -7,6 +7,7 @@
   Title: Medication Administered V3 minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-11-2018
+  Update: 07-30-2018  Removed author participation. Not required
   
   Total Errors Expected: 0
   
@@ -31,16 +32,7 @@
       </role>
     </participation>
     
-    <participation typeCode="AUT">
-      <time>
-        <low></low>
-      </time>
-      <role classCode="ROL">
-        <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
-          <code valueSet="{$QDMElementValueSetOID}"/>
-        </playingManufacturedMaterial>
-      </role>
-    </participation>
+   
   </substanceAdministrationCriteria> 
                         
 </QualityMeasureDocument>

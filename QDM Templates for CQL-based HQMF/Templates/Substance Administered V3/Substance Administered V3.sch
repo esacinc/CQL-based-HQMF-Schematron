@@ -28,7 +28,6 @@
       <sch:assert id="a-3372-32884-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3372-32884).</sch:assert>
       <sch:assert id="a-3372-32887-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-32887).</sch:assert>
       <sch:assert id="a-3372-32897-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-32897) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32898) SHALL contain exactly one [1..1] role (CONF:3372-32899). </sch:assert>
-      <sch:assert id="a-3372-34563-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34563) such that it SHALL contain exactly one [1..1] time (CONF:3372-34564). SHALL contain exactly one [1..1] role (CONF:3372-34565). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34566).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Administered-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-33177-error" test="@code='416118004'">This code SHALL contain exactly one [1..1] @code="416118004" Administration (CONF:3372-33177).</sch:assert>

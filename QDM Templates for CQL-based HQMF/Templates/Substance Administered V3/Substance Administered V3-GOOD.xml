@@ -7,6 +7,7 @@
   Title: Substance Administered V3 minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-13-2018
+  Update: 07-30-2018  Removed author participation. Not required
   
   Total Errors Expected: 0
   
@@ -30,13 +31,7 @@
         </playingMaterial>
       </role>
     </participation>
-    <participation typeCode="AUT">
-      <time>
-        <low></low>
-      </time>
-      <role classCode="ROL">
-      </role>
-    </participation>
+    
   </substanceAdministrationCriteria>        
   
      

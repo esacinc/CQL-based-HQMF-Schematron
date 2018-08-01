@@ -29,7 +29,7 @@
       <sch:assert id="a-3372-31218-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-31218).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Recommended-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]/hqmf:statusCode">
-      <sch:assert id="a-3372-33155-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).</sch:assert>
+      <sch:assert id="a-3372-33155-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Recommended-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]/hqmf:templateId" >
       <sch:assert id="a-3372-31212-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31212) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.68" (CONF:3372-31213) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33417).</sch:assert>

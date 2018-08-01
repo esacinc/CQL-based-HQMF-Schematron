@@ -7,9 +7,10 @@
   Title: Device Applied V2 minimal sample file with errors
   Autor: Dan Donahue
   Date: 07-10-2018
-  Update: 07-17-2018 templateId fix
+  Update: 07-18-2018 templateId fix
+  Update: 07-30-2018 Removed author 3372-34503 as a SHALL
   
-  Total Errors Expected: 21
+  Total Errors Expected: 20
       Failure a-3372-31302-error test="@classCode='PROC'" - SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-31302).
       Failure a-3372-31303-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31303).
       Failure a-3372-31305-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-31305).
@@ -18,7 +19,6 @@
       Failure a-3372-31309-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-31309).
       Failure a-3372-31310-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3372-31310).
       Failure a-3372-31315-error test="count(hqmf:participation[@typeCode='DEV'][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3372-31315) such that it SHALL contain exactly one [1..1] @typeCode="DEV" Device (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-31316). SHALL contain exactly one [1..1] role (CONF:3372-31317). 
-      Failure a-3372-34503-error test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3372-34503) such that it SHALL contain exactly one [1..1] time (CONF:3372-34504). SHALL contain exactly one [1..1] role (CONF:3372-34505). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34506).
       Failure a-3372-31306-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01'])=1" - This templateId a.	SHALL contain exactly one [1..1] item (CONF:3372-31306). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.13" (CONF:3372-31307). This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33361).
       Failure a-3372-31311-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-31311).
       Failure a-3372-33060-error test="count(hqmf:item)=1">The targetSiteCode, if present, SHALL contain zero or one [0..1] item (CONF:3372-33060).
@@ -106,14 +106,6 @@
          </time>
          <!-- Failure a-3372-34508-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role -->
          <role classCode="ROLErr">
-         </role>
-      </participation>
-      <!--      Failure a-3372-34503-error test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3372-34503) such that it SHALL contain exactly one [1..1] time (CONF:3372-34504). SHALL contain exactly one [1..1] role (CONF:3372-34505). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34506). -->
-      <participation typeCode="AUT">
-         <time>
-             <low></low>
-         </time>
-         <role classCode="ROL">
          </role>
       </participation>
       

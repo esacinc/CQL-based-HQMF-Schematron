@@ -8,6 +8,7 @@
   Autor: Dan Donahue
   Date: 07-12-2018
   Update: 07-18-2018 templateId fix
+  Update: 07-30-2018  3372-33155 change 'completed' to 'active'
   
   Total Errors Expected: 13
       Failure a-3372-33154-error test="@classCode='PROC'" - SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33154).
@@ -17,7 +18,7 @@
       Failure a-3372-31217-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-31217).
       Failure a-3372-31215-error test="count(hqmf:code)=1" - SHALL contain exactly one [1..1] code (CONF:3372-31215).
       Failure a-3372-31218-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode (CONF:3372-31218).
-      Failure a-3372-33155-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).
+      Failure a-3372-33155-error test="lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).
       Failure a-3372-31212-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-31212) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.68" (CONF:3372-31213) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33417).
       Failure a-3372-31223-error test="count(hqmf:item)=1">The priorityCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31223). 
       Failure a-3372-33414-error test="count(hqmf:item)=1">The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-33414).
@@ -52,9 +53,9 @@
          Failure a-3372-31216-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet 
     -->
     <code />
-    <statusCode code="completed"/>
+    <statusCode code="active"/>
     <!-- Failure a-3372-31218-error test="count(hqmf:statusCode)=1" - SHALL contain exactly one [1..1] statusCode 
-         Failure a-3372-33155-error test="lower-case(normalize-space(@code))='completed'" - This statusCode SHALL contain exactly one [1..1] @code="completed" Completed
+         Failure a-3372-33155-error test="lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active
     -->
     <statusCode code="Err"/>
     <priorityCode>

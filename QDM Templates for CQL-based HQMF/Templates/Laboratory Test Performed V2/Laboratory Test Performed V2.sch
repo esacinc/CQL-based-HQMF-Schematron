@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 07-30-2018  Removed author participation. Not required
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -28,7 +29,6 @@
       <sch:assert id="a-3346-30369-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3346-30369).</sch:assert>
       <sch:assert id="a-3346-30372-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-30372).</sch:assert>
       <sch:assert id="a-3346-33611-error" test="count(hqmf:value)=0">SHALL NOT contain [0..0] value (CONF:3346-33611).</sch:assert>
-      <sch:assert id="a-3346-34535-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34535) such that it SHALL contain exactly one [1..1] time (CONF:3346-34536) SHALL contain exactly one [1..1] role (CONF:3346-34537).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-30509-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-30509).</sch:assert>

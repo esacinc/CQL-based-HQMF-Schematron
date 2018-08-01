@@ -7,7 +7,7 @@
   Title: Substance Recommended V3 minimal sample file with errors
   Autor: Dan Donahue
   Date: 07-13-2018
-  Update: 07-18-2018 templateId fix
+  Update: 07-30-2018 3372-32106: changed MANU to ADMM, 3372-32108: changed MMAT to MAT
   
   Total Errors Expected: 16
       Failure a-3372-32063-error test="@classCode='SBADM'" - SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32063).
@@ -19,10 +19,10 @@
       Failure a-3372-32103-error test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3372-32103) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32104) SHALL contain exactly one [1..1] role (CONF:3372-32105).
       Failure a-3372-32071-error test="lower-case(normalize-space(@code))='active'" - This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32071).
       Failure a-3372-32125-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-32125) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.78" (CONF:3372-32126) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33693). 
-      Failure a-3372-32106-error test="@classCode='MANU'" - This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).
+      Failure a-3372-32106-error test="@classCode='ADMM'" - This role SHALL contain exactly one [1..1] @classCode="ADMM" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).
       Failure a-3372-32107-error test="count(hqmf:playingMaterial)=1" - This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32107).
       Failure a-3372-32110-error test="count(hqmf:code)=1" - This playingMaterial SHALL contain exactly one [1..1] code (CONF:3372-32110).
-      Failure a-3372-32108-error test="@classCode='MMAT'" - This playingMaterial SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
+      Failure a-3372-32108-error test="@classCode='MAT'" - This playingMaterial SHALL contain exactly one [1..1] @classCode="MAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
       Failure a-3372-32109-error test="@determinerCode='KIND'" - This playingMaterial SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3372-32109).
       Failure a-3372-34477-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3372-34477). 
       Failure a-3372-34478-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34478). 
@@ -59,11 +59,11 @@
     <routeCode/>
     
     <participation typeCode="CSM">
-      <role classCode="MANU">
-        <!-- Failure a-3372-32108-error test="@classCode='MMAT'" - This playingMaterial SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
+      <role classCode="ADMM">
+        <!-- Failure a-3372-32108-error test="@classCode='MAT'" - This playingMaterial SHALL contain exactly one [1..1] @classCode="MAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
              Failure a-3372-32109-error test="@determinerCode='KIND'" - This playingMaterial SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3372-32109).
         -->
-        <playingMaterial classCode="MMATErr" determinerCodeErr="KIND">
+        <playingMaterial classCode="MATErr" determinerCodeErr="KIND">
           <code valueSet="{$QDMElementValueSetOID}" />
           <!-- Failure a-3372-32110-error test="count(hqmf:code)=1" - This playingMaterial SHALL contain exactly one [1..1] code 
                Failure a-3372-32111-warning test="@valueSet" - This code SHOULD contain zero or one [0..1] @valueSet
@@ -74,8 +74,8 @@
     </participation>
     <!-- Failure a-3372-32103-error test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1" - SHALL contain exactly one [1..1] participation (CONF:3372-32103) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32104) SHALL contain exactly one [1..1] role (CONF:3372-32105). -->
     <participation typeCode="CSM">
-      <!-- Failure a-3372-32106-error test="@classCode='MANU'" - This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured  -->
-      <role classCode="MANUErr">
+      <!-- Failure a-3372-32106-error test="@classCode='ADMM'" - This role SHALL contain exactly one [1..1] @classCode="ADMM" Manufactured  -->
+      <role classCode="ADMMErr">
         <!-- Failure a-3372-32107-error test="count(hqmf:playingMaterial)=1" - This role SHALL contain exactly one [1..1] playingMaterial -->
       </role>
     </participation>

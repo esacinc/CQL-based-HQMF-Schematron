@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
-
+Update: 07-30-2018  Removed author participation. Not required
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -28,7 +28,6 @@
       <sch:assert id="a-3346-32527-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-32527).</sch:assert>
       <sch:assert id="a-3346-32531-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-32531).</sch:assert>
       <sch:assert id="a-3346-32539-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-32539) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-32540) SHALL contain exactly one [1..1] role (CONF:3346-32541). </sch:assert>
-      <sch:assert id="a-3346-34438-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1][count(hqmf:time)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34438) such that it SHALL contain exactly one [1..1] time (CONF:3346-34439). SHALL contain exactly one [1..1] role (CONF:3346-34440).  SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34442).</sch:assert>
       </sch:rule>
     <sch:rule id="r-Medication-Discharge-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-32528-error" test="@code='10183-2'">This code SHALL contain exactly one [1..1] @code="10183-2" Discharge Medication (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3346-32528).</sch:assert>
