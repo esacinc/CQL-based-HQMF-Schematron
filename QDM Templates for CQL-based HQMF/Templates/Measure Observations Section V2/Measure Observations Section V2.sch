@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 
+<!-- 
+
+ Update: 08-14-2018 - Removed extension from context of templateId rule
+
+-->
+
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
   <sch:ns prefix="svs" uri="urn:ihe:iti:svs:2008" />
@@ -12,6 +18,10 @@
   </sch:phase>
   
   <sch:pattern id="p-Measure-Observations-Section-errors">
+    <sch:rule id="r-Measure-Observations-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2']]/hqmf:component/hqmf:measureObservationsSection/hqmf:templateId">
+      <sch:assert id="a-3372-18902-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104). </sch:assert>
+    </sch:rule>
+    
     <sch:rule id="r-Measure-Observations-Section-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection">
       <sch:assert id="a-3372-18901-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3372-18901). </sch:assert>
       <sch:assert id="a-3372-18905-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-18905). </sch:assert>
@@ -19,12 +29,7 @@
       <sch:assert id="a-3372-30105-error" test="count(hqmf:definition) &gt; 0">SHALL contain at least one [1..*] definition (CONF:3372-30105). </sch:assert>
       <sch:assert id="a-3372-18911-error" test="count(hqmf:text)=1">SHALL contain exactly one [1..1] text (CONF:3372-18911). </sch:assert>
     </sch:rule>
- 
-    <sch:rule id="r-Measure-Observations-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection/hqmf:templateId">
-      <sch:assert id="a-3372-18902-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104). </sch:assert>
-    </sch:rule>
     
-   
     <sch:rule id="r-Measure-Observations-Section-code-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-18906-error" test="@code='57027-5'">This code SHALL contain exactly one [1..1] @code="57027-5" Measure Observation (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1 STATIC) (CONF:3372-18906). </sch:assert>
       <sch:assert id="a-3372-30103-error" test="@codeSystem='2.16.840.1.113883.6.1'">This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3372-30103). </sch:assert>

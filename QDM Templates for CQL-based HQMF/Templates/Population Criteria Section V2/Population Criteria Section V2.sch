@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -16,6 +17,10 @@
   
  
   <sch:pattern id="p-Population-Criteria-Section-errors">
+    <sch:rule id="r-Population-Criteria-Section-templateId-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' ]]/hqmf:templateId">
+      <sch:assert id="a-3346-18775-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0">This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633).</sch:assert>
+    </sch:rule>
+    
     <sch:rule id="r-Population-Criteria-Section-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-18774-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3346-18774).</sch:assert>
       <sch:assert id="a-3346-19059-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-19059).</sch:assert>
@@ -23,10 +28,6 @@
       <sch:assert id="a-3346-18961-error" test="count(hqmf:text)=1">SHALL contain exactly one [1..1] text (CONF:3346-18961).</sch:assert>
       <sch:assert id="a-3346-29995-error" test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0">SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Population-Criteria-Section-templateId-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]/hqmf:templateId">
-      <sch:assert id="a-3346-18775-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0">This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633).</sch:assert>
-    </sch:rule>
-    
     <sch:rule id="r-Population-Criteria-Section-code-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-19060-error" test="@code='57026-7'">This code SHALL contain exactly one [1..1] @code="57026-7" Population Criteria (CONF:3346-19060).</sch:assert>
       <sch:assert id="a-3346-30092-error" test="@codeSystem">This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3346-30092).</sch:assert>

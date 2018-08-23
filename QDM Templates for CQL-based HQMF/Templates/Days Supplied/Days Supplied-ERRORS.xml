@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" > 
+
+<!-- 
+    
+  Title: Days Supplied minimal sample file with errors
+  Autor: Dan Donahue
+  Date: 08-22-2018
+  
+  Total Errors Expected: 8
+      Failure a-3372-34886-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-34886) such that it  SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.133" (CONF:3372-34887)  SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34888). 
+      Failure a-3372-34889-error test="@classCode='SPL'" - SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3372-34889).
+      Failure a-3372-34890-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34890). 
+      Failure a-3372-34885-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-34885). 
+      Failure a-3372-34891-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-34891)
+      Failure a-3372-34893-error test="count(hqmf:quantity)=1" - SHALL contain exactly one [1..1] quantity (CONF:3372-34893). 
+      Failure a-3372-34892-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-34892). 
+      Failure a-3372-34894-error test="@unit='d'" - This quantity SHALL contain exactly one [1..1] @unit="d" Day (CodeSystem: UCUM urn:oid:2.16.840.1.113883.6.8) (CONF:3372-34894).
+  
+  Total Warnings Expected: 0
+-->
+   
+   <!--  Failure a-3372-34889-error test="@classCode='SPL'" - SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3372-34889).
+         Failure a-3372-34890-error test="@moodCode='EVN'" - SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34890). 
+   -->
+   <supplyCriteria classCode="SPLYErr" moodCodeErr="EVN">
+      <templateId>
+         <item root="2.16.840.1.113883.10.20.28.4.133" extension="2018-05-01"/>
+      </templateId>
+      <!-- Failure a-3372-34885-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-34885). -->
+      <templateId>
+         <!-- Failure a-3372-34886-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01'])=1" - This templateId SHALL contain exactly one [1..1] item (CONF:3372-34886) such that it  SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.133" (CONF:3372-34887)  SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34888). -->
+         <item root="2.16.840.1.113883.10.20.28.4.133" extension="2018-05-01Err"/>
+      </templateId>
+      <!-- Failure a-3372-34891-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-34891) -->
+      <!-- <id root="a8da5449-2a1b-43e4-94b5-51cfb346c074"/> -->
+      <!-- Failure a-3372-34892-error test="count(hqmf:title)=1" - SHALL contain exactly one [1..1] title (CONF:3372-34892). -->
+      <!-- <title value="Days Supplied"/> -->
+      <quantity xsi:type="PQ" value="10" unit="d"/>
+      <!-- Failure a-3372-34893-error test="count(hqmf:quantity)=1" - SHALL contain exactly one [1..1] quantity (CONF:3372-34893).  
+           Failure a-3372-34894-error test="@unit='d'" - This quantity SHALL contain exactly one [1..1] @unit="d" Day 
+      -->
+      <quantity xsi:type="PQ" value="10" />
+   </supplyCriteria>  
+   
+</QualityMeasureDocument>

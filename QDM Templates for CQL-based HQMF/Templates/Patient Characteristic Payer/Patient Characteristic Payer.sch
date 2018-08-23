@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Patient-Characteristic-Payer-errors">
+    <sch:rule id="r-Patient-Characteristic-Payer-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' ]]/hqmf:templateId" >
+      <sch:assert id="a-3335-31630-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457). </sch:assert>
+    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Payer-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31627-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31627).</sch:assert>
       <sch:assert id="a-3335-31628-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31628).</sch:assert>
@@ -36,9 +40,6 @@
     </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Payer-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31643-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31643).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Patient-Characteristic-Payer-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]/hqmf:templateId" >
-      <sch:assert id="a-3335-31630-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457). </sch:assert>
     </sch:rule>
   </sch:pattern>
   

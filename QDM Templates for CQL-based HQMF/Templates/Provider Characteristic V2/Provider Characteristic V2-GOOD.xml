@@ -20,7 +20,7 @@
         </templateId>
         <id root="1b9dd45d-6d1e-4abb-87eb-2e1f1549bd58"/>
         <statusCode code="completed" />
-        <participation typeCode="DRIV">
+        <participation typeCode="PRF">
             <role classCode="ASSIGNED">
                 <playingEntity classCode="PSN" determinerCode="KIND">
                     <code valueSet="{$QDMElementValueSetOID}"/>

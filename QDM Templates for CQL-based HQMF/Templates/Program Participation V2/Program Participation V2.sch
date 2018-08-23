@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+    Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Program-Participation-errors">
+    <sch:rule id="r-Program-Participation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' ]]/hqmf:templateId">
+      <sch:assert id="a-3372-34820-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34820) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.130" (CONF:3372-34824) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34825). </sch:assert>
+    </sch:rule>
     <sch:rule id="r-Program-Participation-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34829-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-34829).</sch:assert>
       <sch:assert id="a-3372-34830-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34830).</sch:assert>
@@ -37,10 +41,7 @@
       <sch:assert id="a-3372-34827-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34827).</sch:assert>
     </sch:rule>
     
-    <sch:rule id="r-Program-Participation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]/hqmf:templateId">
-      <sch:assert id="a-3372-34820-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34820) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.130" (CONF:3372-34824) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34825). </sch:assert>
-    </sch:rule>
-  </sch:pattern>
+   </sch:pattern>
   
   <sch:pattern id="p-Program-Participation-warnings">
     <sch:rule id="r-Program-Participation-value-warnings" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]/hqmf:value[@xsi:type='CD']">

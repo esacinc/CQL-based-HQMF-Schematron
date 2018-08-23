@@ -28,7 +28,7 @@ Total Warnings Expected: 1
      <!-- Failure a-3335-34340 SHALL contain exactly one [1..1] templateId (CONF:3335-34340) -->                      
      <templateId>
        <!-- Failure a-3335-34341-error test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1 - SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01"  -->
-       <item root="2.16.840.1.113883.10.20.28.4.123Err" extensio="2017-05-01" />
+       <item root="2.16.840.1.113883.10.20.28.4.123" extension="2017-05-01Err" />
      </templateId> 
     <code valueSet="xxxx"/>
     <!-- Failure a-3335-34346This code SHOULD contain zero or one [0..1] @valueSet (CONF:3335-34346). -->

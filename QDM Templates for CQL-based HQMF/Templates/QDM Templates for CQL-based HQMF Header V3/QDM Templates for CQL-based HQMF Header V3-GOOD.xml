@@ -6,6 +6,7 @@
    Title: QDM Templates for CQL-base HQMF Header V3 - minimal sample file with no errors
    Autor: Dan Donahue
    Date: 07-16-2018
+   Update: 08-22-2018 Added required setId to expressionDocument
    
    Total Errors Expected: 0
    
@@ -87,6 +88,7 @@
                <reference value="AntidepressantMedicationManagement-6.2.006.json"/>
             </translation>
          </text>
+         <setId root="..." extension="..."/>
       </expressionDocument>
    </relatedDocument>
    <controlVariable>

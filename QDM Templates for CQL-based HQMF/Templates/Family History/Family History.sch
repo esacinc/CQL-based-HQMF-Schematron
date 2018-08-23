@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Family-History-errors">
+    <sch:rule id="r-Family-History-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' ]]/hqmf:templateId">
+      <sch:assert id="a-3335-33792-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33792) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.111" (CONF:3335-33799) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34383). </sch:assert>
+    </sch:rule>
     <sch:rule id="r-Family-History-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-33797-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-33797).</sch:assert>
       <sch:assert id="a-3335-33798-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-33798).</sch:assert>
@@ -29,9 +33,6 @@
       <sch:assert id="a-3335-33800-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3335-33800).</sch:assert>
       <sch:assert id="a-3335-33803-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-33803).</sch:assert>
       <sch:assert id="a-3335-33795-error" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3335-33795).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Family-History-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]/hqmf:templateId">
-      <sch:assert id="a-3335-33792-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33792) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.111" (CONF:3335-33799) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34383). </sch:assert>
     </sch:rule>
     <sch:rule id="r-Family-History-33791-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]/hqmf:code">
       <sch:assert id="a-3335-33801-error" test="@code='10157-6'">This code SHALL contain exactly one [1..1] @code="10157-6" Family History (CONF:3335-33801).</sch:assert>

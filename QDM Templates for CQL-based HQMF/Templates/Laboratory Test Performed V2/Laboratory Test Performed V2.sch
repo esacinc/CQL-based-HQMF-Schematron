@@ -2,6 +2,7 @@
 <!--
 
   Update: 07-30-2018  Removed author participation. Not required
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -20,6 +21,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Laboratory-Test-Performed-errors">
+    <sch:rule id="r-Laboratory-Test-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' ]]/hqmf:templateId">
+      <sch:assert id="a-3346-30367-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30367) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.42" (CONF:3346-30368) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33373). </sch:assert>
+    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-30364-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-30364).</sch:assert>
       <sch:assert id="a-3346-33237-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-33237).</sch:assert>
@@ -37,9 +41,6 @@
       <sch:assert id="a-3346-30378-error" test="count(hqmf:item)=1">The methodCode, if present, SHALL contain exactly one [1..1] item (CONF:3346-30378).</sch:assert>
     </sch:rule>
     
-    <sch:rule id="r-Laboratory-Test-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:templateId">
-      <sch:assert id="a-3346-30367-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30367) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.42" (CONF:3346-30368) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33373). </sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-participation-AUT-time-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34539-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34539).</sch:assert>
     </sch:rule>

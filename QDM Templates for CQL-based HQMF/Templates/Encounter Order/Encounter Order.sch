@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Encounter-Order-errors">
+    <sch:rule id="r-Encounter-Order-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' ]]/hqmf:templateId">
+      <sch:assert id="a-3335-30864-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Encounter-Order-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30860-error" test="@classCode='ENC'">SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3335-30860).</sch:assert>
       <sch:assert id="a-3335-30861-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30861).</sch:assert>
@@ -31,10 +35,7 @@
     <sch:rule id="r-Encounter-Order-statusCode-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-30871-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30871).</sch:assert>      
     </sch:rule>
-    <sch:rule id="r-Encounter-Order-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:templateId">
-      <sch:assert id="a-3335-30864-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Encounter-Order-participation-AUT-time-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
+     <sch:rule id="r-Encounter-Order-participation-AUT-time-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3335-33488-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3335-33488).</sch:assert>      
     </sch:rule>
     <sch:rule id="r-Encounter-Order-participation-AUT-role-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:role">

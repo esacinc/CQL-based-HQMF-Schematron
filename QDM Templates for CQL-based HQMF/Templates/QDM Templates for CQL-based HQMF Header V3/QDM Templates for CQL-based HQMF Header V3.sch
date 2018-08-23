@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
-
+  Update: 08-22-2018  Added 3372-34882,  setId must be present in expressionDocument
+                      Added 3372-34883,  setId must have root
+                      Added 3372-34884,  setId must have extension
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2" >
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -113,6 +115,7 @@
       
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument">
       <sch:assert id="a-3372-34629-error" test="count(hqmf:text)=1">This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629).</sch:assert>
+      <sch:assert id="a-3372-34882-error" test="count(hqmf:setId)=1">This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882).</sch:assert>
     </sch:rule>
     
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-text-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:text">
@@ -123,7 +126,12 @@
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-text-reference-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:text/hqmf:reference">
       <sch:assert id="a-3372-34632-error" test="@value">This reference SHALL contain exactly one [1..1] @value (CONF:3372-34632).</sch:assert>
     </sch:rule>  
-      
+ 
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-setId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:setId">
+      <sch:assert id="a-3372-34883-error" test="@root">This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).</sch:assert>
+      <sch:assert id="a-3372-34884-error" test="@extension">This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).</sch:assert>
+    </sch:rule>
+    
     <sch:rule id="r-CQL-Based-HQMF-Header-controlVariable-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:controlVariable">
       <sch:assert id="a-3372-18546-error" test="count(hqmf:measurePeriod)=1">This controlVariable SHALL contain exactly one [1..1] measurePeriod (CONF:3372-18546).</sch:assert>
     </sch:rule>

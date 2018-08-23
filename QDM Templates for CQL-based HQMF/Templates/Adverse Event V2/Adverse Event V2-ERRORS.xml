@@ -55,7 +55,7 @@
       <!-- Failure a-3346-34183 SHALL contain exactly one [1..1] templateId (CONF:3346-34183) -->
       <!-- Failure a-3346-34184-error SHALL contain exactly one [1..1] item (CONF:3346-34184) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.120" (CONF:3346-34194)	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34531). -->
       <templateId>
-          <item root="2.16.840.1.113883.10.20.28.4.120Err" extension="2017-08-01Err"/>
+          <item root="2.16.840.1.113883.10.20.28.4.120" extension="2017-08-01Err"/>
       </templateId>
       
       <!-- Failure a-3346-34212 SHALL contain exactly one [1..1] id (CONF:3346-34212). -->

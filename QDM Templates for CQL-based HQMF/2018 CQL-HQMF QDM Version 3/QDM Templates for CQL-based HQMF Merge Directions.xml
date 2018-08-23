@@ -30,9 +30,11 @@
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
     ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      
-
+    This schematron corresponds to the CQL-base HQMF IG Release 1, STU 3, August 2018.
+     
 	  This schematron implements conformance for QDM Templates for CQL-Based HQMF data files. 
-	  It contains conformance tests adherent to both Volume 1 and Volume 3 implementation guides (IG)
+	  It contains conformance tests adherent to both Volume 1 and Volume 3 implementation guides (IG).
+	  
 	
 	  In this schematron conformance rules and assertions for Volume 1 are prefixed with "vol-I" in their identifiers.
 	  The numbers following "vol-I" reference "Conformance Requirement" identifiers in the Volume I implementation guide.
@@ -40,6 +42,18 @@
 	  Conformance rules and assertions NOT prefixed with "vol-I" correspond to conformance statements in the Volume 3 
 	  QDM Templates for CQL-based HQMF IG V3 implementation guide.
 	  
+	  Updates as of 08-23-2018
+	       - Removed extension from context on all rules examining templateId conformance in all entry templates
+	       - Fixed statusCode = 'active' conformance in Assessment Order and Procedure Recommended V2
+	       - Removed author participation conformance check in Device Applied, Laboratory Test Performed, Medication Administered, 
+	                 Medication Discharge and Substance Administered
+	       - Added setId conformance on expressionDocument in HQMF document header
+	       - Fixed role classCode = 'ADMM' in Substance Recommended
+	       - Fixed playingMaterial classCode = 'MAT' in Substance Recommended
+	       - Changed typeCode='DRV' to typeCode='PRF' conformance in ParticipationType of Provider Characteristic
+	       - Added role constraints to optional performer participation in Medication Dispensed V2
+	       - Added new template "Days Supplied"
+	       
     </fileHeader>
     
     <errorsHeader>ERROR Patterns and Assertions</errorsHeader>
@@ -83,6 +97,7 @@
         
         <include>Communication Performed</include>
 		<include>Component</include> 
+        <include>Days Supplied</include>
         <include>Device Applied V2</include>
         <include>Device Order</include>
         <include>Device Recommended</include>

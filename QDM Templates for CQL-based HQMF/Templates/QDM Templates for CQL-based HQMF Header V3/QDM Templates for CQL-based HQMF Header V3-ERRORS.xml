@@ -7,8 +7,9 @@
    Autor: Dan Donahue
    Date: 07-16-2018
    Note: See QDM Templates for CQL-based HQMF Header V3 - ERRORS-AUX file for errors not tested here
+   Update: 08-22-2018 Added tests for new assertions 3372-34882, 3372-34883,  3372-34884 (expressionDocument setId errors)
    
-   Total Errors Expected: 46
+   Total Errors Expected: 49
       Failure a-3372-18786-error test="count(hqmf:typeId)=1" - SHALL contain exactly one [1..1] typeId (CONF:3372-18786).
       Failure a-3372-18771-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3372-18771) 
       Failure a-3372-18542-error test="count(hqmf:id)=1" - SHALL contain exactly one [1..1] id (CONF:3372-18542).
@@ -48,8 +49,11 @@
       Failure a-3372-18758-error test="count(hqmf:item)=1" - This id SHALL contain exactly one [1..1] item (CONF:3372-18758).
       Failure a-3372-34628-error test="count(hqmf:expressionDocument)=1"> Such relatedDocuments SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).
       Failure a-3372-34629-error test="count(hqmf:text)=1" - This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629).
+      Failure a-3372-34882-error test="count(hqmf:setId)=1 - This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882).
       Failure a-3372-34631-error test="@mediaType='text/cql'" - This text SHALL contain exactly one [1..1] @mediaType="text/cql" (CONF:3372-34631).
       Failure a-3372-34630-error test="count(hqmf:reference)=1" - This text SHALL contain exactly one [1..1] reference (CONF:3372-34630).
+      Failure a-3372-34883-error test="@root" - This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).
+      Failure a-3372-34884-error test="@extension" - This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).
       Failure a-3372-34632-error test="@value" - This reference SHALL contain exactly one [1..1] @value (CONF:3372-34632).
       Failure a-3372-18546-error test="count(hqmf:measurePeriod)=1" - This controlVariable SHALL contain exactly one [1..1] measurePeriod (CONF:3372-18546).
       Failure a-3372-18547-error test="count(hqmf:code)=1" - This measurePeriod SHALL contain exactly one [1..1] code (CONF:3372-18547).
@@ -288,11 +292,16 @@
             -->
             <reference valueErr="AntidepressantMedicationManagement-6.2.006.cql"/> 
          </text>
+         <!-- Failure a-3372-34883-error test="@root" - This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).
+              Failure a-3372-34884-error test="@extension" - This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).
+         -->
+         <setId></setId>
       </expressionDocument>
       <!-- Failure a-3372-34628-error test="count(hqmf:expressionDocument)=1"> Such relatedDocuments SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628). -->
       <expressionDocument>
          <id root="1FC54EFC-0233-4036-A645-9D81C075FA57"/>
-         <!-- Failure a-3372-34629-error test="count(hqmf:text)=1" - This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629). -->         
+         <!-- Failure a-3372-34629-error test="count(hqmf:text)=1" - This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629). -->    
+         <!-- Failure a-3372-34882-error test="count(hqmf:setId)=1 - This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882). -->
       </expressionDocument>
    </relatedDocument>
    <controlVariable>

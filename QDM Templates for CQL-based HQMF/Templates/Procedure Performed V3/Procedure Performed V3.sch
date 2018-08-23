@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
-Update: 07-30-2018  Removed author participation. Not required
+    Update: 07-30-2018  Removed author participation. Not required
+    Update: 08-14-2018 - Removed extension from context of templateId rule
+
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -19,6 +21,9 @@ Update: 07-30-2018  Removed author participation. Not required
   </sch:phase>
   
   <sch:pattern id="p-Procedure-Performed-errors">
+    <sch:rule id="r-Procedure-Performed-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' ]]/hqmf:templateId">
+      <sch:assert id="a-3372-31339-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31339) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.67" (CONF:3372-31340) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33398).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Procedure-Performed-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-33149-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33149).</sch:assert>
       <sch:assert id="a-3372-31336-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31336).</sch:assert>
@@ -30,9 +35,6 @@ Update: 07-30-2018  Removed author participation. Not required
     </sch:rule>
     <sch:rule id="r-Procedure-Performed-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-33150-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33150).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Procedure-Performed-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:templateId">
-      <sch:assert id="a-3372-31339-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31339) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.67" (CONF:3372-31340) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33398).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Performed-priorityCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:priorityCode">
       <sch:assert id="a-3372-31350-error" test="count(hqmf:item)=1">The priorityCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31350). </sch:assert>

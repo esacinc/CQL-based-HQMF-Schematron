@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
     Update: 07-30-2018  Removed author participation. Not required
+    Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,9 @@
   </sch:phase>
   
   <sch:pattern id="p-Medication-Administered-errors">
+    <sch:rule id="r-Medication-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' ]]/hqmf:templateId">
+      <sch:assert id="a-3372-32051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32051). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.45" (CONF:3372-32052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33386). </sch:assert>
+    </sch:rule>
     <sch:rule id="r-Medication-Administered-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-32047-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32047).</sch:assert>
       <sch:assert id="a-3372-32048-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-32048).</sch:assert>
@@ -35,9 +39,6 @@
     </sch:rule>
     <sch:rule id="r-Medication-Administered-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-32059-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32059). </sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Medication-Administered-templateId--errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:templateId">
-      <sch:assert id="a-3372-32051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32051). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.45" (CONF:3372-32052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33386). </sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Administered-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-32504-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32504).</sch:assert>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--
 
+  Update: 08-14-2018 - Removed extension from context of templateId rule
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -19,6 +20,10 @@
   </sch:phase>
   
   <sch:pattern id="p-Immunization-Order-errors">
+    <sch:rule id="r-Immunization-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' ]]/hqmf:templateId">
+      <sch:assert id="a-3346-34004-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34004) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.113" (CONF:3346-34016) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34385). </sch:assert>
+    </sch:rule>
+    
     <sch:rule id="r-Immunization-Order-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34025-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3346-34025).</sch:assert>
       <sch:assert id="a-3346-34026-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34026).</sch:assert>
@@ -28,10 +33,6 @@
       <sch:assert id="a-3346-34005-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-34005).</sch:assert>
       <sch:assert id="a-3346-34008-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34008) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34024) SHALL contain exactly one [1..1] role (CONF:3346-34009). </sch:assert>
     </sch:rule>
-    <sch:rule id="r-Immunization-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]/hqmf:templateId">
-      <sch:assert id="a-3346-34004-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34004) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.113" (CONF:3346-34016) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34385). </sch:assert>
-    </sch:rule>
-    
     <sch:rule id="r-Immunization-Order-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-34017-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34017).</sch:assert>
     </sch:rule>
