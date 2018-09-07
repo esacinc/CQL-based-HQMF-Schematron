@@ -42,7 +42,7 @@
 	  Conformance rules and assertions NOT prefixed with "vol-I" correspond to conformance statements in the Volume 3 
 	  QDM Templates for CQL-based HQMF IG V3 implementation guide.
 	  
-	  Updates as of 08-23-2018
+	  Updates as of 09-07-2018
 	       - Removed extension from context on all rules examining templateId conformance in all entry templates
 	       - Fixed statusCode = 'active' conformance in Assessment Order and Procedure Recommended V2
 	       - Removed author participation conformance check in Device Applied, Laboratory Test Performed, Medication Administered, 
@@ -53,6 +53,13 @@
 	       - Changed typeCode='DRV' to typeCode='PRF' conformance in ParticipationType of Provider Characteristic
 	       - Added role constraints to optional performer participation in Medication Dispensed V2
 	       - Added new template "Days Supplied"
+	       - Added assertions to check for classCode='ROL' in Medication Discharge participation(PRF). 3372-34918
+	       - Added assertions for 3372-34882, 3372-34883, 3372-34884
+	       - Changed assertion 3372-34627 so that it is a "such that..." containing 3372-34628.  
+	       - Removed standalone 3372-34628 assertion
+	       - Added assertion a-3372-34898-error
+	       - Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906
+	      
 	       
     </fileHeader>
     

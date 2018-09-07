@@ -7,6 +7,8 @@
    Autor: Dan Donahue
    Date: 07-16-2018
    Update: 08-22-2018 Added required setId to expressionDocument
+   Update: 09-07-2018 Added  XCRPT relatedDocument 
+
    
    Total Errors Expected: 0
    
@@ -91,6 +93,16 @@
          <setId root="..." extension="..."/>
       </expressionDocument>
    </relatedDocument>
+   
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="1FC54EFC-0233-4036-A645-9D81C0750102" identifierName="..."/>
+         
+         <setId root="..." extension="..."/>
+         <versionNumber value="..." />
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   
    <controlVariable>
       <measurePeriod>
          <id extension="measureperiod" root="ae93a709-93d1-45d4-b905-ab3d83ab9386"/>

@@ -4,6 +4,10 @@
   Update: 08-22-2018  Added 3372-34882,  setId must be present in expressionDocument
                       Added 3372-34883,  setId must have root
                       Added 3372-34884,  setId must have extension
+  Updte: 09-07-2018   Changed 3372-34627 so that it is a "such that..." containing 3372-34628.  
+                      Removed standalone 3372-34628 assertion
+                      Added a-3372-34898-error
+                      Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2" >
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -30,7 +34,8 @@
       <sch:assert id="a-3372-18579-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-18579).</sch:assert>
       <sch:assert id="a-3372-18543-error" test="count(hqmf:setId)=1">SHALL contain exactly one [1..1] setId (CONF:3372-18543).</sch:assert>
       <sch:assert id="a-3372-18555-error" test="count(hqmf:custodian)=1">SHALL contain exactly one [1..1] custodian (CONF:3372-18555).</sch:assert>
-      <sch:assert id="a-3372-34627-error" test="count(hqmf:relatedDocument) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627).</sch:assert>
+      <sch:assert id="a-3372-34627-error" test="count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).</sch:assert>
+      <sch:assert id="a-3372-34898-error" test="count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..</sch:assert>
       <sch:assert id="a-3372-18545-error" test="count(hqmf:controlVariable)=1">SHALL contain exactly one [1..1] controlVariable (CONF:3372-18545).</sch:assert>
       <sch:assert id="a-3372-18580-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRSCORE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1])=1">SHALL contain exactly one [1..1] subjectOf (CONF:3372-18580) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18581). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18582). This code SHALL contain exactly one [1..1] @code="MSRSCORE" Measure Scoring (CONF:3372-18583). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30057). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29935). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureScoring urn:oid:2.16.840.1.113883.1.11.20367) (CONF:3372-29936).</sch:assert>
       <sch:assert id="a-3372-18588-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRTYPE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1]) &gt; 0">SHALL contain at least one [1..*] subjectOf (CONF:3372-18588) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18590). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18591). This code SHALL contain exactly one [1..1] @code="MSRTYPE" Measure Type (CONF:3372-29934). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30058). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29938). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureType urn:oid:2.16.840.1.113883.1.11.20368) (CONF:3372-29939).</sch:assert>
@@ -108,11 +113,7 @@
     <sch:rule id="r-CQL-Based-HQMF-Header-verifier-responsibleParty-representedResponsibleOrganization-id-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:verifier/hqmf:responsibleParty/hqmf:representedResponsibleOrganization/hqmf:id">
       <sch:assert id="a-3372-18758-error" test="count(hqmf:item)=1">This id SHALL contain exactly one [1..1] item (CONF:3372-18758).</sch:assert>
     </sch:rule>
-      
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument">
-      <sch:assert id="a-3372-34628-error" test="count(hqmf:expressionDocument)=1">Such relatedDocuments SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).</sch:assert>
-    </sch:rule>
-      
+          
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument">
       <sch:assert id="a-3372-34629-error" test="count(hqmf:text)=1">This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629).</sch:assert>
       <sch:assert id="a-3372-34882-error" test="count(hqmf:setId)=1">This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882).</sch:assert>
@@ -131,7 +132,20 @@
       <sch:assert id="a-3372-34883-error" test="@root">This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).</sch:assert>
       <sch:assert id="a-3372-34884-error" test="@extension">This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).</sch:assert>
     </sch:rule>
-    
+ 
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument">
+      <sch:assert id="a-3372-34900-error" test="count(hqmf:id)=1">This componentQualityMeasureDocument SHALL contain exactly one [1..1] id (CONF:3372-34900).</sch:assert>
+      <sch:assert id="a-3372-34906-error" test="count(hqmf:setId) = 0 or (count(hqmf:setId) &gt; 0 and count(hqmf:versionNumber[@value]) = 1)">VersionNumber SHALL be present if the setId element is present and if present, it SHALL have a value attribute that is the versionNumber of the component eCQM (CONF:3372-34906).</sch:assert>
+    </sch:rule>
+
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-id-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:id">
+      <sch:assert id="a-3372-34903-error" test="@root">This id SHALL contain exactly one [1..1] @root (CONF:3372-34903).</sch:assert>
+    </sch:rule>
+ 
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-setId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:setId">
+      <sch:assert id="a-3372-34907-error" test="@root">The setId, if present, SHALL contain exactly one [1..1] @root (CONF:3372-34907).</sch:assert>
+    </sch:rule>
+  
     <sch:rule id="r-CQL-Based-HQMF-Header-controlVariable-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:controlVariable">
       <sch:assert id="a-3372-18546-error" test="count(hqmf:measurePeriod)=1">This controlVariable SHALL contain exactly one [1..1] measurePeriod (CONF:3372-18546).</sch:assert>
     </sch:rule>
@@ -185,6 +199,16 @@
       <sch:assert id="a-3372-29978-warning" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRPOPLEX'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1">SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29978) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29979). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29980). This code SHALL contain exactly one [1..1] @code="MSRPOPLEX" Measure Population Exclusions  (CONF:3372-29981). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30089). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29982).</sch:assert>
       <sch:assert id="a-3372-29984-warning" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='DISC'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1">SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29984) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29985). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29986). This code SHALL contain exactly one [1..1] @code="DISC" Disclaimer (CONF:3372-29987). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30090). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29988).</sch:assert>
     </sch:rule>
+
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-warnings" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument">
+      <sch:assert id="a-3372-34905-error" test="count(hqmf:setId)=1">This componentQualityMeasureDocument SHOULD contain zero or one [0..1] setId (CONF:3372-34905).</sch:assert>
+      <sch:assert id="a-3372-34901-error" test="count(hqmf:versionNumber)=1">This componentQualityMeasureDocument SHOULD contain zero or one [0..1] versionNumber (CONF:3372-34901).</sch:assert>
+    </sch:rule>
+    
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-id-warnings" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:id">
+      <sch:assert id="a-3372-34904-error" test="@identifierName">This id SHOULD contain zero or one [0..1] @identifierName (CONF:3372-34904).</sch:assert>
+    </sch:rule>
+    
   </sch:pattern>
     
 </sch:schema>

@@ -11,39 +11,19 @@ Version 3.0
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
     ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      
-    This schematron corresponds to the CQL-base HQMF IG Release 1, STU 3, August 2018.
-     
+
 	  This schematron implements conformance for QDM Templates for CQL-Based HQMF data files. 
-	  It contains conformance tests adherent to both Volume 1 and Volume 3 implementation guides (IG).
-	  
+	  It contains conformance tests adherent to both Volume 1 and Volume 3 implementation guides (IG)
 	
 	  In this schematron conformance rules and assertions for Volume 1 are prefixed with "vol-I" in their identifiers.
 	  The numbers following "vol-I" reference "Conformance Requirement" identifiers in the Volume I implementation guide.
 
 	  Conformance rules and assertions NOT prefixed with "vol-I" correspond to conformance statements in the Volume 3 
-	  QDM Templates for CQL-based HQMF IG V3 implementation guide.
-	  
-	  Updates as of 09-07-2018
-	       - Removed extension from context on all rules examining templateId conformance in all entry templates
-	       - Fixed statusCode = 'active' conformance in Assessment Order and Procedure Recommended V2
-	       - Removed author participation conformance check in Device Applied, Laboratory Test Performed, Medication Administered, 
-	                 Medication Discharge and Substance Administered
-	       - Added setId conformance on expressionDocument in HQMF document header
-	       - Fixed role classCode = 'ADMM' in Substance Recommended
-	       - Fixed playingMaterial classCode = 'MAT' in Substance Recommended
-	       - Changed typeCode='DRV' to typeCode='PRF' conformance in ParticipationType of Provider Characteristic
-	       - Added role constraints to optional performer participation in Medication Dispensed V2
-	       - Added new template "Days Supplied"
-	       - Added assertions to check for classCode='ROL' in Medication Discharge participation(PRF). 3372-34918
-	       - Added assertions for 3372-34882, 3372-34883, 3372-34884
-	       - Changed assertion 3372-34627 so that it is a "such that..." containing 3372-34628.  
-	       - Removed standalone 3372-34628 assertion
-	       - Added assertion a-3372-34898-error
-	       - Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906 
+	  QDM Templates for CQL-based HQMF IG V3 implementation guide. 
 
-Fri Sep 07 12:43:54 MDT 2018
+Fri Jul 20 10:52:03 MDT 2018
 -->
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:voc="http://www.lantanagroup.com/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" queryBinding="xslt2">
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:voc="http://www.lantanagroup.com/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
   <sch:ns prefix="svs" uri="urn:ihe:iti:svs:2008" />
   <sch:ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance" />
@@ -62,7 +42,6 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:active pattern="p-Communication-Performed-errors" />
     <sch:active pattern="p-Component-errors" />
     <sch:active pattern="p-Data-Criteria-Section-errors" />
-    <sch:active pattern="p-Days-Supplied-errors" />
     <sch:active pattern="p-Device-Applied-errors" />
     <sch:active pattern="p-Device-Order-errors" />
     <sch:active pattern="p-Device-Recommended-errors" />
@@ -194,19 +173,16 @@ Fri Sep 07 12:43:54 MDT 2018
       ERROR Patterns and Assertions
   -->
   <sch:pattern id="p-Admission-Source-errors">
-    <sch:rule id="r-Admission-Source-templateId-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-34341-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34530).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Admission-Source-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01']]">
-      <sch:assert id="a-3335-34340-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3335-34340)</sch:assert>
       <sch:assert id="a-3335-34344-error" test="@classCode='SDLOC'">SHALL contain exactly one [1..1] @classCode="SDLOC" Service Delivery Location (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-34344).</sch:assert>
+      <sch:assert id="a-3335-34340-error" test="count(hqmf:templateId[count(hqmf:item)=1])=1">SHALL contain exactly one [1..1] templateId (CONF:3335-34340)</sch:assert>
       <sch:assert id="a-3335-34342-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3335-34342).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Admission-Source-templateId-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34341-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1">SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34530).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Adverse-Event-errors">
-    <sch:rule id="r-Adverse-Event-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-34184-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120'][@extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34184). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.120" (CONF:3346-34194)	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34531).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Adverse-Event-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120'][@extension='2017-08-01']]">
       <sch:assert id="a-3346-34210-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34210).</sch:assert>
       <sch:assert id="a-3346-34211-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34211).</sch:assert>
@@ -218,6 +194,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34186-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-34186).</sch:assert>
       <sch:assert id="a-3346-34188-error" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34188).</sch:assert>
       <sch:assert id="a-3346-34189-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34189) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34207). HALL contain exactly one [1..1] role (CONF:3346-34190).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Adverse-Event-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34184-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120'][@extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34184). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.120" (CONF:3346-34194)	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34531).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Adverse-Event-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.120'][@extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-34196-error" test="@code='ASSERTION'">This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34196).</sch:assert>
@@ -254,9 +233,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Allergy-Intolerance-errors">
-    <sch:rule id="r-Allergy-Intolerance-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119']]/hqmf:templateId">
-      <sch:assert id="a-3346-34216-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119' and @extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34216) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.119" (CONF:3346-34228) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34532).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Allergy-Intolerance-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34241-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3346-34241).</sch:assert>
       <sch:assert id="a-3346-34242-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34242).</sch:assert>
@@ -268,6 +244,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34218-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-34218).</sch:assert>
       <sch:assert id="a-3346-34220-error" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-34220).</sch:assert>
       <sch:assert id="a-3346-34221-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34221) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34240). SHALL contain exactly one [1..1] role (CONF:3346-34222).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Allergy-Intolerance-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34216-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119' and @extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34216) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.119" (CONF:3346-34228) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34532).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Allergy-Intolerance-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.119' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-34229-error" test="@code='ASSERTION'">This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3346-34229).</sch:assert>
@@ -307,9 +286,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Assessment-Order-errors">
-    <sch:rule id="r-Assessment-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131']]/hqmf:templateId">
-      <sch:assert id="a-3372-34655-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01'])=1">SHALL contain exactly one [1..1] item (CONF:3372-34655) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.131" (CONF:3372-34664).This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34665).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Assessment-Order-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34673-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-34673).</sch:assert>
       <sch:assert id="a-3372-34674-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34674).</sch:assert>
@@ -319,9 +295,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-34656-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-34656).</sch:assert>
       <sch:assert id="a-3372-34657-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-34657).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Assessment-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-34655-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01'])=1">SHALL contain exactly one [1..1] item (CONF:3372-34655) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.131" (CONF:3372-34664).This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34665).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Assessment-Order-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]/hqmf:statusCode">
-      <!-- Fixed: Changed 'completed' to 'active' -->
-      <sch:assert id="a-3372-34667-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).</sch:assert>
+      <sch:assert id="a-3372-34667-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Assessment-Order-participation-time-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3372-34669-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3372-34669).</sch:assert>
@@ -331,9 +309,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Assessment-Performed-errors">
-    <sch:rule id="r-Assessment-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117']]/hqmf:templateId">
-      <sch:assert id="a-3346-34127-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34127) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.117" (CONF:3346-34134) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34254).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Assessment-Performed-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34142-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34142).</sch:assert>
       <sch:assert id="a-3346-34143-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34143).</sch:assert>
@@ -342,6 +317,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34128-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-34128).</sch:assert>
       <sch:assert id="a-3346-34146-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-34146).</sch:assert>
       <sch:assert id="a-3346-34129-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-34129).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Assessment-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34127-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01'])=1">SHALL contain exactly one [1..1] item (CONF:3346-34127) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.117" (CONF:3346-34134) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34254).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Assessment-Performed-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.117' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-34137-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34137).</sch:assert>
@@ -354,9 +332,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Assessment-Recommended-errors">
-    <sch:rule id="r-Assessment-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-34150-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34150) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.118" (CONF:3372-34157) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34273).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Assessment-Recommended-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34165-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-34165).</sch:assert>
       <sch:assert id="a-3372-34166-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34166).</sch:assert>
@@ -365,6 +340,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-34151-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-34151).</sch:assert>
       <sch:assert id="a-3372-34152-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-34152).</sch:assert>
       <sch:assert id="a-3372-34169-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-34169).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Assessment-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-34150-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34150) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.118" (CONF:3372-34157) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34273).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Assessment-Recommended-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.118' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-34160-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34160).</sch:assert>
@@ -377,9 +355,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Care-Goal-errors">
-    <sch:rule id="r-Care-Goal-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-28447" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-28447) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.7" (CONF:3346-28448). This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33051).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Care-Goal-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-27869" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-27869).</sch:assert>
       <sch:assert id="a-3346-27870" test="@moodCode='GOL'">SHALL contain exactly one [1..1] @moodCode="GOL" Goal (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-27870).</sch:assert>
@@ -391,6 +366,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-32480" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-32480).</sch:assert>
       <sch:assert id="a-3346-27876" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3346-27876).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Care-Goal-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-28447" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-28447) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.7" (CONF:3346-28448). This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33051).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Care-Goal-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.7' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-27874" test="@code='ASSERTION'">This code SHALL contain exactly one [1..1] @code="ASSERTION" (CONF:3346-27874).</sch:assert>
       <sch:assert id="a-3346-27875" test="@codeSystem='2.16.840.1.113883.5.4'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-27875).</sch:assert>
@@ -400,9 +378,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Cause-errors">
-    <sch:rule id="r-Cause-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.105' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-33454-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.105' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33454). such that it	This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.105" (CONF:3335-33458). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34647).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Cause-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.105' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-33456-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-33456).</sch:assert>
       <sch:assert id="a-3335-33457-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3335-33457).</sch:assert>
@@ -416,11 +391,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-33460-error" test="@code='42752001'">This code SHALL contain exactly one [1..1] @code="42752001" Due to (CONF:3335-33460).</sch:assert>
       <sch:assert id="a-3335-33461-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-33461).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Cause-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.105' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-33454-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.105' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33454). such that it	This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.105" (CONF:3335-33458). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34647).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Communication-Performed-errors">
-    <sch:rule id="r-Communication-Performed-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132']]/hqmf:templateId">
-      <sch:assert id="a-3372-34684-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34684) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.132" (CONF:3372-34696). This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34697).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Communication-Performed-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34706-error" test="@classCode='ACT'">SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3372-34706).</sch:assert>
       <sch:assert id="a-3372-34707-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34707).</sch:assert>
@@ -429,6 +404,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-34710-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-34710).</sch:assert>
       <sch:assert id="a-3372-34690-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-34690).</sch:assert>
       <sch:assert id="a-3372-34681-error" test="count(hqmf:outboundRelationship[@typeCode='RSON'][count(hqmf:observationCriteria/hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88'][@extension='2017-05-01'])=1])=1">SHALL contain exactly one [1..1] outboundRelationship (CONF:3372-34681) such that it SHALL contain exactly one [1..1] @typeCode="RSON" Has Reason (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34695). SHALL contain exactly one [1..1] Reason (identifier: urn:hl7ii:2.16.840.1.113883.10.20.28.4.88:2017-05-01) (CONF:3372-34682).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Communication-Performed-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-34684-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34684) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.132" (CONF:3372-34696). This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34697).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Communication-Performed-statusCode-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.132' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-34704-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34704).</sch:assert>
@@ -448,9 +426,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Component-errors">
-    <sch:rule id="r-Component-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.121']]/hqmf:templateId">
-      <sch:assert id="a-3335-34571-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.121' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34571) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.121" (CONF:3335-34573). 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34580).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Component-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.121' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-34576-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34576).</sch:assert>
       <sch:assert id="a-3335-34577-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3335-34577).</sch:assert>
@@ -459,6 +434,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-34578-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3335-34578).</sch:assert>
       <sch:assert id="a-3335-34579-error" test="count(hqmf:value)=1">SHALL contain exactly one [1..1] value (CONF:3335-34579).</sch:assert>
       <sch:assert id="a-3335-34607-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-34607).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Component-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.121' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34571-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.121' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34571) such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.121" (CONF:3335-34573). 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34580).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Data-Criteria-Section-errors">
@@ -477,26 +455,7 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-18964-error" test="@value='Data Criteria Section'">This title SHALL contain exactly one [1..1] @value="Data Criteria Section" (CONF:3372-18964).</sch:assert>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern id="p-Days-Supplied-errors">
-    <sch:rule id="r-Days-Supplied-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-34886-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34886) such that it  SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.133" (CONF:3372-34887)  SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34888).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Days-Supplied-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01']]">
-      <sch:assert id="a-3372-34889-error" test="@classCode='SPLY'">SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3372-34889).</sch:assert>
-      <sch:assert id="a-3372-34890-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34890).</sch:assert>
-      <sch:assert id="a-3372-34885-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3372-34885).</sch:assert>
-      <sch:assert id="a-3372-34891-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3372-34891)</sch:assert>
-      <sch:assert id="a-3372-34893-error" test="count(hqmf:quantity)=1">SHALL contain exactly one [1..1] quantity (CONF:3372-34893).</sch:assert>
-      <sch:assert id="a-3372-34892-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-34892).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Days-Supplied-quantity-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01']]/hqmf:quantity">
-      <sch:assert id="a-3372-34894-error" test="@unit='d'">This quantity SHALL contain exactly one [1..1] @unit="d" Day (CodeSystem: UCUM urn:oid:2.16.840.1.113883.6.8) (CONF:3372-34894).</sch:assert>
-    </sch:rule>
-  </sch:pattern>
   <sch:pattern id="p-Device-Applied-errors">
-    <sch:rule id="r-Device-Applied-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13']]/hqmf:templateId">
-      <sch:assert id="a-3372-31306-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01'])=1">This templateId a.	SHALL contain exactly one [1..1] item (CONF:3372-31306). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.13" (CONF:3372-31307). This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33361).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Device-Applied-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-31302-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-31302).</sch:assert>
       <sch:assert id="a-3372-31303-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31303).</sch:assert>
@@ -506,7 +465,10 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-31309-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-31309).</sch:assert>
       <sch:assert id="a-3372-31310-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-31310).</sch:assert>
       <sch:assert id="a-3372-31315-error" test="count(hqmf:participation[@typeCode='DEV'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-31315) such that it SHALL contain exactly one [1..1] @typeCode="DEV" Device (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-31316). SHALL contain exactly one [1..1] role (CONF:3372-31317).</sch:assert>
-      <!-- <sch:assert id="a-3372-34503-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34503) such that it SHALL contain exactly one [1..1] time (CONF:3372-34504). SHALL contain exactly one [1..1] role (CONF:3372-34505). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34506).</sch:assert> -->
+      <sch:assert id="a-3372-34503-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34503) such that it SHALL contain exactly one [1..1] time (CONF:3372-34504). SHALL contain exactly one [1..1] role (CONF:3372-34505). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34506).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Device-Applied-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31306-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01'])=1">This templateId a.	SHALL contain exactly one [1..1] item (CONF:3372-31306). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.13" (CONF:3372-31307). This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33361).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Device-Applied-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-31311-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-31311).</sch:assert>
@@ -535,9 +497,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Device-Order-errors">
-    <sch:rule id="r-Device-Order-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-29843-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-29843). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.15" (CONF:3335-29844) 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33642).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Device-Order-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-29840-error" test="@classCode='SPLY'">SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3335-29840).</sch:assert>
       <sch:assert id="a-3335-29841-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-29841).</sch:assert>
@@ -546,6 +505,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-29846-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-29846).</sch:assert>
       <sch:assert id="a-3335-31003-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3335-31003).</sch:assert>
       <sch:assert id="a-3335-29847-error" test="count(hqmf:participation[@typeCode='DEV'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3335-29847) such that it SHALL contain exactly one [1..1] @typeCode="DEV" Device (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3335-29848) &gt;SHALL contain exactly one [1..1] role (CONF:3335-29849).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Device-Order-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-29843-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-29843). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.15" (CONF:3335-29844) 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33642).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Device-Order-statusCode-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.15' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31004-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31004).</sch:assert>
@@ -561,9 +523,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Device-Recommended-errors">
-    <sch:rule id="r-Device-Recommended-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16']]/hqmf:templateId">
-      <sch:assert id="a-3335-31712-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31712) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.16" (CONF:3335-31713) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33699).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Device-Recommended-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31708-error" test="@classCode='SPLY'">SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3335-31708).</sch:assert>
       <sch:assert id="a-3335-31709-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31709).</sch:assert>
@@ -572,6 +531,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-31715-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-31715).</sch:assert>
       <sch:assert id="a-3335-31716-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3335-31716).</sch:assert>
       <sch:assert id="a-3335-31721-error" test="count(hqmf:participation[@typeCode='DEV'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3335-31721) such that it SHALL contain exactly one [1..1] @typeCode="DEV" Device (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3335-31722) SHALL contain exactly one [1..1] role (CONF:3335-31723).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Device-Recommended-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31712-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31712) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.16" (CONF:3335-31713) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33699).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Device-Recommended-statusCode-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.16' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31717-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31717).</sch:assert>
@@ -587,9 +549,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Diagnosis-errors">
-    <sch:rule id="r-Diagnosis-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-33771-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-33771). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.110" (CONF:3346-33776) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34321).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Diagnosis-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-33768-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-33768).</sch:assert>
       <sch:assert id="a-3346-33769-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-33769).</sch:assert>
@@ -611,11 +570,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Diagnosis-targetSiteCode-error" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01']]/hqmf:targetSiteCode">
       <sch:assert id="a-3346-33786-error" test="count(hqmf:item) =1 ">The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3346-33786).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Diagnosis-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-33771-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.110' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-33771). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.110" (CONF:3346-33776) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34321).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Diagnostic-Study-Order-errors">
-    <sch:rule id="r-Diagnostic-Study-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-30109-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30109) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.22" (CONF:3372-30117) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33643).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Order-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34723-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-34723).</sch:assert>
       <sch:assert id="a-3372-30106-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001 STATIC) (CONF:3372-30106).</sch:assert>
@@ -624,6 +583,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-30112-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-30112).</sch:assert>
       <sch:assert id="a-3372-30111-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-30111).</sch:assert>
       <sch:assert id="a-3372-30232-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-30232).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Diagnostic-Study-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-30109-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30109) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.22" (CONF:3372-30117) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33643).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Order-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.22' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-30233-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-30233).</sch:assert>
@@ -637,9 +599,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Diagnostic-Study-Performed-errors">
-    <sch:rule id="r-Diagnostic-Study-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-30779-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30779) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.23" (CONF:3346-30780) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33605).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Performed-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-30775-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-30775).</sch:assert>
       <sch:assert id="a-3346-30776-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001 STATIC) (CONF:3346-30776).</sch:assert>
@@ -649,6 +608,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34764-error" test="count(hqmf:value)=0">SHALL NOT contain [0..0] value (CONF:3346-34764).</sch:assert>
       <sch:assert id="a-3346-30782-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-30782).</sch:assert>
       <sch:assert id="a-3346-30785-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-30785).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Diagnostic-Study-Performed-templateId--errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-30779-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30779) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.23" (CONF:3346-30780) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33605).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Performed-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.23' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-30786-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-30786).</sch:assert>
@@ -661,9 +623,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Diagnostic-Study-Recommended-errors">
-    <sch:rule id="r-Diagnostic-Study-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24']]/hqmf:templateId">
-      <sch:assert id="a-3372-30576-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30576). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.24" (CONF:3372-30577) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33751)..</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Recommended-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-30572-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-30572).</sch:assert>
       <sch:assert id="a-3372-30573-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001 STATIC) (CONF:3372-30573).</sch:assert>
@@ -672,6 +631,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-30581-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-30581).</sch:assert>
       <sch:assert id="a-3372-30579-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-30579).</sch:assert>
       <sch:assert id="a-3372-30582-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-30582).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Diagnostic-Study-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-30576-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30576). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.24" (CONF:3372-30577) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33751)..</sch:assert>
     </sch:rule>
     <sch:rule id="r-Diagnostic-Study-Recommended-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.24' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-30583-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-30583).</sch:assert>
@@ -684,9 +646,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Dosage-errors">
-    <sch:rule id="r-Dosage-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125']]/hqmf:templateId">
-      <sch:assert id="a-3335-34421-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34421)) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.125" (CONF:3335-34425) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34650).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Dosage-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-34423-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34423).</sch:assert>
       <sch:assert id="a-3335-34424-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-34424).</sch:assert>
@@ -696,15 +655,15 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-34420-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3335-34420).</sch:assert>
       <sch:assert id="a-3335-34422-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3335-34422).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Dosage-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34421-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34421)) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.125" (CONF:3335-34425) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34650).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Dosage-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.125' and @extension='2017-05-01']]/hqmf:code">
       <sch:assert id="a-3335-34427-error" test="@code='260911001'">This code SHALL contain exactly one [1..1] @code="260911001" Dosage (CONF:3335-34427).</sch:assert>
       <sch:assert id="a-3335-34428-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-34428).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Encounter-Order-errors">
-    <sch:rule id="r-Encounter-Order-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-30864-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Encounter-Order-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30860-error" test="@classCode='ENC'">SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3335-30860).</sch:assert>
       <sch:assert id="a-3335-30861-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30861).</sch:assert>
@@ -717,6 +676,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Encounter-Order-statusCode-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-30871-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30871).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Encounter-Order-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-30864-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30864). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.27" (CONF:3335-30865) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33645).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Encounter-Order-participation-AUT-time-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.27' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3335-33488-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3335-33488).</sch:assert>
     </sch:rule>
@@ -725,9 +687,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Encounter-Performed-errors">
-    <sch:rule id="r-Encounter-Performed-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31009-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31009) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.5" (CONF:3346-31010) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33397).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Encounter-Performed-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-31005-error" test="@classCode='ENC'">SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3346-31005).</sch:assert>
       <sch:assert id="a-3346-31006-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31006).</sch:assert>
@@ -740,6 +699,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Encounter-Performed-statusCode-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31016-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31016).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Encounter-Performed-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31009-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31009) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.5" (CONF:3346-31010) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33397).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Encounter-Performed-participation-AUT-time-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.5' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34660-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34660).</sch:assert>
     </sch:rule>
@@ -748,9 +710,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Encounter-Recommended-errors">
-    <sch:rule id="r-Encounter-Recommended-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-30520-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01'])=1">This templateId a.	SHALL contain exactly one [1..1] item (CONF:3335-30520). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.28" (CONF:3335-30521) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33694).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Encounter-Recommended-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30854-error" test="@classCode='ENC'">SHALL contain exactly one [1..1] @classCode="ENC" Encounter (CONF:3335-30854).</sch:assert>
       <sch:assert id="a-3335-30518-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30518).</sch:assert>
@@ -763,6 +722,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Encounter-Recommended-statusCode-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-30858-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30858).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Encounter-Recommended-templateId-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-30520-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01'])=1">This templateId a.	SHALL contain exactly one [1..1] item (CONF:3335-30520). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.28" (CONF:3335-30521) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33694).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Encounter-Recommended-participation-AUT-time-errors" context="hqmf:encounterCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.28' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3335-34381-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3335-34381).</sch:assert>
     </sch:rule>
@@ -771,18 +733,15 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Facility-Location-errors">
-    <sch:rule id="r-Facility-Location-templateId-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.92' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-30516-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.92' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30516) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.92" (CONF:3335-30517) 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34376).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Facility-Location-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.92' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30514-error" test="@classCode='SDLOC'">SHALL contain exactly one [1..1] @classCode="SDLOC" Service Delivery Location (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-30514).</sch:assert>
       <sch:assert id="a-3335-30515-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3335-30515)</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Facility-Location-templateId-errors" context="hqmf:role[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.92' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-30516-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.92' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30516) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.92" (CONF:3335-30517) 	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34376).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Family-History-errors">
-    <sch:rule id="r-Family-History-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-33792-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33792) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.111" (CONF:3335-33799) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34383).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Family-History-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-33797-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-33797).</sch:assert>
       <sch:assert id="a-3335-33798-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-33798).</sch:assert>
@@ -793,6 +752,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-33800-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3335-33800).</sch:assert>
       <sch:assert id="a-3335-33803-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-33803).</sch:assert>
       <sch:assert id="a-3335-33795-error" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3335-33795).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Family-History-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-33792-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-33792) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.111" (CONF:3335-33799) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34383).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Family-History-33791-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.111' and @extension='2017-05-01']]/hqmf:code">
       <sch:assert id="a-3335-33801-error" test="@code='10157-6'">This code SHALL contain exactly one [1..1] @code="10157-6" Family History (CONF:3335-33801).</sch:assert>
@@ -809,9 +771,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Immunization-Administered-errors">
-    <sch:rule id="r-Immunization-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-33831-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-33831) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.112" (CONF:3372-33836) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34384).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Immunization-Administered-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-33833-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-33833).</sch:assert>
       <sch:assert id="a-3372-33834-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-33834).</sch:assert>
@@ -821,6 +780,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-33840-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-33840).</sch:assert>
       <sch:assert id="a-3372-33841-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-33841).</sch:assert>
       <sch:assert id="a-3372-33844-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-33844) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-33852) SHALL contain exactly one [1..1] role (CONF:3372-33845).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Immunization-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-33831-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-33831) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.112" (CONF:3372-33836) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34384).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Immunization-Administered-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.112' and @extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-33838-error" test="@code='416118004'">This code SHALL contain exactly one [1..1] @code="416118004" Administration (CONF:3372-33838).</sch:assert>
@@ -840,9 +802,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Immunization-Order-errors">
-    <sch:rule id="r-Immunization-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-34004-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34004) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.113" (CONF:3346-34016) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34385).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Immunization-Order-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34025-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3346-34025).</sch:assert>
       <sch:assert id="a-3346-34026-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34026).</sch:assert>
@@ -851,6 +810,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34029-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-34029).</sch:assert>
       <sch:assert id="a-3346-34005-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-34005).</sch:assert>
       <sch:assert id="a-3346-34008-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34008) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34024) SHALL contain exactly one [1..1] role (CONF:3346-34009).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Immunization-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34004-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34004) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.113" (CONF:3346-34016) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34385).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Immunization-Order-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.113' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-34017-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34017).</sch:assert>
@@ -872,15 +834,15 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Incision-Datetime-errors">
-    <sch:rule id="r-Incision-Datetime-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-29910-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-29910) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.89" (CONF:3335-29911) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33648).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Incision-Datetime-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-29907-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" (CONF:3335-29907).</sch:assert>
       <sch:assert id="a-3335-29908-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-29908).</sch:assert>
       <sch:assert id="a-3335-29909-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3335-29909).</sch:assert>
       <sch:assert id="a-3335-29913-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3335-29913).</sch:assert>
       <sch:assert id="a-3335-29993-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3335-29993).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Incision-Datetime-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-29910-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-29910) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.89" (CONF:3335-29911) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33648).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Incision-Datetime-code-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.89' and @extension='2017-05-01']]/hqmf:code">
       <sch:assert id="a-3335-29914-error" test="@code='34896006'">This code SHALL contain exactly one [1..1] @code="34896006" Incision (CONF:3335-29914).</sch:assert>
@@ -891,9 +853,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Intervention-Order-errors">
-    <sch:rule id="r-Intervention-Order-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-30644-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30644)  such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.35" (CONF:3335-30645) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33383).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Intervention-Order-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30631-error" test="@classCode='ACT'">SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3335-30631).</sch:assert>
       <sch:assert id="a-3335-30632-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30632).</sch:assert>
@@ -902,6 +861,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-30651-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-30651).</sch:assert>
       <sch:assert id="a-3335-30652-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3335-30652).</sch:assert>
       <sch:assert id="a-3335-30654-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3335-30654).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Intervention-Order-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-30644-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30644)  such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.35" (CONF:3335-30645) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33383).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Intervention-Order-statusCode-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.35' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-30655-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30655).</sch:assert>
@@ -914,9 +876,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Intervention-Performed-errors">
-    <sch:rule id="r-Intervention-Performed-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31154-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31154) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.36" (CONF:3346-31155) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33384).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Intervention-Performed-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-31150-error" test="@classCode='ACT'">SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3346-31150).</sch:assert>
       <sch:assert id="a-3346-31151-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31151).</sch:assert>
@@ -929,6 +888,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Intervention-Performed-statusCode-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31161-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31161).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Intervention-Performed-templateId--errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31154-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31154) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.36" (CONF:3346-31155) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33384).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Intervention-Performed-participation-AUT-time-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.36' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34527-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34527).</sch:assert>
     </sch:rule>
@@ -937,9 +899,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Intervention-Recommended-errors">
-    <sch:rule id="r-Intervention-Recommended-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-30804-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30804) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.37" (CONF:3335-30805) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33385).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Intervention-Recommended-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-30801-error" test="@classCode='ACT'">SHALL contain exactly one [1..1] @classCode="ACT" Act (CONF:3335-30801).</sch:assert>
       <sch:assert id="a-3335-30802-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-30802).</sch:assert>
@@ -952,6 +911,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Intervention-Recommended-statusCode-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-30812-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-30812).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Intervention-Recommended-templateId-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-30804-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-30804) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.37" (CONF:3335-30805) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33385).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Intervention-Recommended-participation-AUT-time-errors" context="hqmf:actCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.37' and @extension='2017-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34396-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34396).</sch:assert>
     </sch:rule>
@@ -960,19 +922,16 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Laboratory-Test-Component-errors">
-    <sch:rule id="r-Laboratory-Test-Component-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126']]/hqmf:templateId">
-      <sch:assert id="a-3335-34582-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34582) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.126" (CONF:3335-34584). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34585).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Component-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-34588-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34588).</sch:assert>
       <sch:assert id="a-3335-34589-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3335-34589).</sch:assert>
       <sch:assert id="a-3335-34581-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3335-34581)</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Laboratory-Test-Component-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34582-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.126' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34582) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.126" (CONF:3335-34584). This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34585).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Laboratory-Test-Order-errors">
-    <sch:rule id="r-Laboratory-Test-Order-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-30393-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30393). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.41" (CONF:3372-30394) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3372-33649).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Order-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-30389-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-30389).</sch:assert>
       <sch:assert id="a-3372-30390-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-30390).</sch:assert>
@@ -985,6 +944,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Laboratory-Test-Order-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-33110-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-33110).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Laboratory-Test-Order-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-30393-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30393). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.41" (CONF:3372-30394) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3372-33649).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Order-participation-AUT-time-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.41' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3372-33498-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3372-33498).</sch:assert>
     </sch:rule>
@@ -993,9 +955,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Laboratory-Test-Performed-errors">
-    <sch:rule id="r-Laboratory-Test-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-30367-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30367) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.42" (CONF:3346-30368) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33373).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-30364-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-30364).</sch:assert>
       <sch:assert id="a-3346-33237-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-33237).</sch:assert>
@@ -1005,12 +964,16 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-30369-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3346-30369).</sch:assert>
       <sch:assert id="a-3346-30372-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-30372).</sch:assert>
       <sch:assert id="a-3346-33611-error" test="count(hqmf:value)=0">SHALL NOT contain [0..0] value (CONF:3346-33611).</sch:assert>
+      <sch:assert id="a-3346-34535-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34535) such that it SHALL contain exactly one [1..1] time (CONF:3346-34536) SHALL contain exactly one [1..1] role (CONF:3346-34537).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-30509-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-30509).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-methodCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:methodCode">
       <sch:assert id="a-3346-30378-error" test="count(hqmf:item)=1">The methodCode, if present, SHALL contain exactly one [1..1] item (CONF:3346-30378).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Laboratory-Test-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-30367-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30367) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.42" (CONF:3346-30368) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33373).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Laboratory-Test-Performed-participation-AUT-time-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34539-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34539).</sch:assert>
@@ -1020,9 +983,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Laboratory-Test-Recommended-errors">
-    <sch:rule id="r-Laboratory-Test-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-30418-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30418). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.43" (CONF:3372-30419) This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33692).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Recommended-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-30414-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-30414).</sch:assert>
       <sch:assert id="a-3372-30415-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-30415).</sch:assert>
@@ -1031,6 +991,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-30423-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-30423).</sch:assert>
       <sch:assert id="a-3372-30421-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-30421).</sch:assert>
       <sch:assert id="a-3372-30424-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-30424).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Laboratory-Test-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-30418-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-30418). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.43" (CONF:3372-30419) This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33692).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Laboratory-Test-Recommended-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.43' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-30510-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-30510).</sch:assert>
@@ -1043,9 +1006,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Laboratory-Test-Reference-Range-errors">
-    <sch:rule id="r-Laboratory-Test-Reference-Range-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-34399-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34399). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.124" (CONF:3335-34401) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34615).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Reference-Range-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-34406-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34406).</sch:assert>
       <sch:assert id="a-3335-34407-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-34407).</sch:assert>
@@ -1055,20 +1015,23 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-34408-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3335-34408).</sch:assert>
       <sch:assert id="a-3335-34409-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-34409).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Laboratory-Test-Reference-Range-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34399-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34399). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.124" (CONF:3335-34401) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34615).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Laboratory-Test-Reference-Range-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.124' and @extension='2017-05-01']]/hqmf:code">
       <sch:assert id="a-3335-34403-error" test="@code='19147-8'">This code SHALL contain exactly one [1..1] @code="19147-8" Lab Test Reference Range (CONF:3335-34403).</sch:assert>
       <sch:assert id="a-3335-34404-error" test="@codeSystem='2.16.840.1.113883.6.1'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3335-34404).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Measure-Description-Section-errors">
-    <sch:rule id="r-Measure-Description-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2']]/hqmf:component/hqmf:measureDescriptionSection/hqmf:templateId">
-      <sch:assert id="a-3372-18898-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.3'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:87-18898) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.3" (CONF:87-18899).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Measure-Description-Section-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureDescriptionSection">
       <sch:assert id="a-3372-18897-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3372-18897).</sch:assert>
       <sch:assert id="a-3372-18914-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-18914).</sch:assert>
       <sch:assert id="a-3372-18918-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-18918).</sch:assert>
       <sch:assert id="a-3372-18920-error" test="count(hqmf:text)=1">SHALL contain exactly one [1..1] text (CONF:3372-18920).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Measure-Description-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureDescriptionSection/hqmf:templateId">
+      <sch:assert id="a-3372-18898-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.3'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:87-18898) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.3" (CONF:87-18899).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Measure-Description-Section-code-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureDescriptionSection/hqmf:code">
       <sch:assert id="a-3372-19064-error" test="@code='74045-6'">This code SHALL contain exactly one [1..1] @code="74045-6" Measure Description (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1 STATIC) (CONF:87-19064).</sch:assert>
@@ -1079,15 +1042,15 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Measure-Observations-Section-errors">
-    <sch:rule id="r-Measure-Observations-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2']]/hqmf:component/hqmf:measureObservationsSection/hqmf:templateId">
-      <sch:assert id="a-3372-18902-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Measure-Observations-Section-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection">
       <sch:assert id="a-3372-18901-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3372-18901).</sch:assert>
       <sch:assert id="a-3372-18905-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-18905).</sch:assert>
       <sch:assert id="a-3372-18910-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-18910).</sch:assert>
       <sch:assert id="a-3372-30105-error" test="count(hqmf:definition) &gt; 0">SHALL contain at least one [1..*] definition (CONF:3372-30105).</sch:assert>
       <sch:assert id="a-3372-18911-error" test="count(hqmf:text)=1">SHALL contain exactly one [1..1] text (CONF:3372-18911).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Measure-Observations-Section-templateId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection/hqmf:templateId">
+      <sch:assert id="a-3372-18902-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-18902) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.4" (CONF:3372-18903). SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-30104).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Measure-Observations-Section-code-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:component/hqmf:measureObservationsSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.4'][@extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-18906-error" test="@code='57027-5'">This code SHALL contain exactly one [1..1] @code="57027-5" Measure Observation (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1 STATIC) (CONF:3372-18906).</sch:assert>
@@ -1114,9 +1077,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Medication-Active-errors">
-    <sch:rule id="r-Medication-Active-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31954-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31954) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.44" (CONF:3372-31955) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33376).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Medication-Active-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01']]">
       <sch:assert id="a-3346-31950-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administrated (CONF:3346-31950).</sch:assert>
       <sch:assert id="a-3346-31951-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31951).</sch:assert>
@@ -1130,6 +1090,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Medication-Active-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31959-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31959).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Medication-Active-templateId--errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31954-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31954) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.44" (CONF:3372-31955) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33376).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Medication-Active-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.44' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-33124-error" test="count(hqmf:playingMaterial)=1">This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-33124).</sch:assert>
     </sch:rule>
@@ -1139,9 +1102,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Medication-Administered-errors">
-    <sch:rule id="r-Medication-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-32051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32051). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.45" (CONF:3372-32052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33386).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Medication-Administered-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-32047-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32047).</sch:assert>
       <sch:assert id="a-3372-32048-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-32048).</sch:assert>
@@ -1151,6 +1111,7 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-32054-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-32054).</sch:assert>
       <sch:assert id="a-3372-32058-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-32058).</sch:assert>
       <sch:assert id="a-3372-32497-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-32497) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32503) SHALL contain exactly one [1..1] role (CONF:3372-32498).</sch:assert>
+      <sch:assert id="a-3372-34542-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34542) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34545) SHALL contain exactly one [1..1] time (CONF:3372-34543) SHALL contain exactly one [1..1] role (CONF:3372-34544).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Administered-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-32055-error" test="@code='416118004' and @codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @code="416118004" Administration (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3372-32055).</sch:assert>
@@ -1158,6 +1119,9 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
     <sch:rule id="r-Medication-Administered-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-32059-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32059).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Medication-Administered-templateId--errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-32051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32051). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.45" (CONF:3372-32052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33386).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Administered-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-32504-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32504).</sch:assert>
@@ -1176,9 +1140,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Medication-Discharge-errors">
-    <sch:rule id="r-Medication-Discharge-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-32524-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-32524) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.48" (CONF:3346-32525) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33439).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Medication-Discharge-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-32521-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3346-32521).</sch:assert>
       <sch:assert id="a-3346-32522-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-32522).</sch:assert>
@@ -1188,6 +1149,7 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-32527-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-32527).</sch:assert>
       <sch:assert id="a-3346-32531-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-32531).</sch:assert>
       <sch:assert id="a-3346-32539-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-32539) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-32540) SHALL contain exactly one [1..1] role (CONF:3346-32541).</sch:assert>
+      <sch:assert id="a-3346-34438-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1][count(hqmf:time)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-34438) such that it SHALL contain exactly one [1..1] time (CONF:3346-34439). SHALL contain exactly one [1..1] role (CONF:3346-34440).  SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34442).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Discharge-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-32528-error" test="@code='10183-2'">This code SHALL contain exactly one [1..1] @code="10183-2" Discharge Medication (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3346-32528).</sch:assert>
@@ -1195,6 +1157,9 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
     <sch:rule id="r-Medication-Discharge-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-32532-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-32532).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Medication-Discharge-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-32524-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-32524) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.48" (CONF:3346-32525) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33439).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Discharge-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3346-32542-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-32542).</sch:assert>
@@ -1211,14 +1176,8 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Medication-Discharge-participation-AUT-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1]/hqmf:role">
       <sch:assert id="a-3346-34444-error" test="@classCode='ROL'">This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34444).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Medication-Discharge-participation-PRF-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role">
-      <sch:assert id="a-3346-34918-error" test="@classCode='ROL'">This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34918).</sch:assert>
-    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Medication-Dispensed-errors">
-    <sch:rule id="r-Medication-Dispensed-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-32564-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3346-32564). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.49" (CONF:3346-32565) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33752).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Medication-Dispensed-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-32560-error" test="@classCode='SPLY'">SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3346-32560).</sch:assert>
       <sch:assert id="a-3346-32561-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-32561).</sch:assert>
@@ -1231,6 +1190,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Medication-Dispensed-statusCode-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-32582-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-32582).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Medication-Dispensed-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-32564-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3346-32564). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.49" (CONF:3346-32565) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33752).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Medication-Dispensed-participation-CSM-role-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3346-32576-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-32576).</sch:assert>
     </sch:rule>
@@ -1239,20 +1201,14 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-32579-error" test="@determinerCode='KIND'">The playingMaterial, if present, SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-32579).</sch:assert>
       <sch:assert id="a-3346-32580-error" test="count(hqmf:code)=1">The playingMaterial, if present, SHALL contain exactly one [1..1] code (CONF:3346-32580).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Medication-Dispensed-participation-AUT-time-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1]/hqmf:time">
+    <sch:rule id="r-Medication-Dispensed-participation-AUT-time-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:role)=1]/hqmf:time">
       <sch:assert id="a-3346-34865-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3346-34865).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Medication-Dispensed-participation-AUT-role-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1]/hqmf:role">
+    <sch:rule id="r-Medication-Dispensed-participation-AUT-role-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3346-34866-error" test="@classCode='ROL'">This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34866).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-Medication-Dispensed-participation-PRF-role-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.49' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role">
-      <sch:assert id="a-3372-34918-error" test="@classCode='ROL'">i.	This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3372-34918).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Medication-Order-errors">
-    <sch:rule id="r-Medication-Order-templateId-item-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-29051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-29051) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.51" (CONF:3372-29052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33443).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Medication-Order-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-30218-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-30218).</sch:assert>
       <sch:assert id="a-3372-29049-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-29049).</sch:assert>
@@ -1264,6 +1220,9 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
     <sch:rule id="r-Medication-Order-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-30228-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-30228).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Medication-Order-templateId-item-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-29051-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-29051) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.51" (CONF:3372-29052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33443).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Medication-Order-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.51' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-29057-error" test="count(hqmf:playingMaterial)=1">This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-29057).</sch:assert>
@@ -1286,9 +1245,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Care-Experience-errors">
-    <sch:rule id="r-Patient-Care-Experience-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-32207-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-32207) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.52" (CONF:3335-32208) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33700).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Care-Experience-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-32204-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-32204).</sch:assert>
       <sch:assert id="a-3335-32205-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-32205).</sch:assert>
@@ -1304,14 +1260,14 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-32211-error" test="@code='406193000'">This code SHALL contain exactly one [1..1] @code="406193000" Patient Satisfaction (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-32211).</sch:assert>
       <sch:assert id="a-3335-32212-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-32212).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Care-Experience-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-32207-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-32207) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.52" (CONF:3335-32208) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33700).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Patient-Care-Experience-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.52' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-32217-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-32217).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Birth-Date-errors">
-    <sch:rule id="r-Patient-Characteristic-Birth-Date-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31553-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31553) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.54" (CONF:3335-31554) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33650).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Birth-Date-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31550-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31550).</sch:assert>
       <sch:assert id="a-3335-31551-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31551).</sch:assert>
@@ -1329,11 +1285,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Birth-Date-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31584-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31584).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Birth-Date-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31553-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.54' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31553) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.54" (CONF:3335-31554) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33650).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Clinical-Trial-Participant-errors">
-    <sch:rule id="r-Patient-Characteristic-Clinical-Trial-Participant-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31568-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' and @extension='2017-05-01'])">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-31568) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.6" (CONF:3335-31569) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33706).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Clinical-Trial-Participant-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31565-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31565).</sch:assert>
       <sch:assert id="a-3335-31566-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31566).</sch:assert>
@@ -1349,14 +1305,14 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-31572-error" test="@code='ASSERTION'">This code SHALL contain exactly one [1..1] @code="ASSERTION" Assertion (CONF:3335-31572).</sch:assert>
       <sch:assert id="a-3335-31573-error" test="@codeSystem">This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3335-31573).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Clinical-Trial-Participant-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31568-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' and @extension='2017-05-01'])">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-31568) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.6" (CONF:3335-31569) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33706).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Clinical-Trial-Participant-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.6' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31576-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31576).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Ethnicity-errors">
-    <sch:rule id="r-Patient-Characteristic-Ethnicity-templateId-item-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-28172-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-28172). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.56" (CONF:3335-28173) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34654).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Ethnicity-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-28168-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" (CodeSystem: HL7ActClass urn:oid:2.16.840.1.113883.5.6) (CONF:3335-28168).</sch:assert>
       <sch:assert id="a-3335-28169-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-28169).</sch:assert>
@@ -1375,11 +1331,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Ethnicity-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31181-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31181).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Ethnicity-templateId-item-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-28172-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.56' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-28172). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.56" (CONF:3335-28173) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34654).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Expired-errors">
-    <sch:rule id="r-Patient-Characteristic-Expired-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31588-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01'])=1">This templateId  SHALL contain exactly one [1..1] item (CONF:3335-31588) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.57" (CONF:3335-33141) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33381).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Expired-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31585-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31585).</sch:assert>
       <sch:assert id="a-3335-31586-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31586).</sch:assert>
@@ -1398,15 +1354,15 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Expired-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31596-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31596).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Expired-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31588-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01'])=1">This templateId  SHALL contain exactly one [1..1] item (CONF:3335-31588) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.57" (CONF:3335-33141) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33381).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Expired-value-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.57' and @extension='2017-05-01']]/hqmf:value[@xsi:type='CD']">
       <sch:assert id="a-3335-33429-error" test="@code='419099009'">This value SHALL contain exactly one [1..1] @code="419099009" Dead (CONF:3335-33429).</sch:assert>
       <sch:assert id="a-3335-33430-error" test="@codeSystem='2.16.840.1.113883.6.96'">This value SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-33430).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Payer-errors">
-    <sch:rule id="r-Patient-Characteristic-Payer-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31630-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Payer-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31627-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31627).</sch:assert>
       <sch:assert id="a-3335-31628-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31628).</sch:assert>
@@ -1425,11 +1381,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Payer-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31643-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31643).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Payer-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31630-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.58' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31630) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.58" (CONF:3335-31631) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34457).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Race-errors">
-    <sch:rule id="r-Patient-Characteristic-Race-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31239-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31239) such that This item SHALL contain exactly one [1..1] @root="  2.16.840.1.113883.10.20.28.4.59" (CONF:3335-31240) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34655).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Race-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31236-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31236).</sch:assert>
       <sch:assert id="a-3335-31237-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31237).</sch:assert>
@@ -1448,11 +1404,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Race-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-31247-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-31247).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Race-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31239-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.59' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-31239) such that This item SHALL contain exactly one [1..1] @root="  2.16.840.1.113883.10.20.28.4.59" (CONF:3335-31240) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34655).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-Sex-errors">
-    <sch:rule id="r-Patient-Characteristic-Sex-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-31285-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-31285) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.55" (CONF:3335-31286) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33382).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-Sex-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-31282-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-31282).</sch:assert>
       <sch:assert id="a-3335-31283-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-31283).</sch:assert>
@@ -1471,11 +1427,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-Sex-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-33142-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3335-33142).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-Sex-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-31285-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.55' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-31285) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.55" (CONF:3335-31286) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33382).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Patient-Characteristic-errors">
-    <sch:rule id="r-Patient-Characteristic-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31606-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31606) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.53" (CONF:3346-31607) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34456).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Patient-Characteristic-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-31602-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-31602).</sch:assert>
       <sch:assert id="a-3346-31603-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31603).</sch:assert>
@@ -1488,11 +1444,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Patient-Characteristic-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31614-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31614).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Patient-Characteristic-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31606-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.53' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31606) such that  This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.53" (CONF:3346-31607) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34456).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Physical-Exam-Order-errors">
-    <sch:rule id="r-Physical-Exam-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-31409-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31409) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.61" (CONF:3372-31410) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33437).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Physical-Exam-Order-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-31405-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-31405).</sch:assert>
       <sch:assert id="a-3372-31406-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31406).</sch:assert>
@@ -1510,6 +1466,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Physical-Exam-Order-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-31415-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-31415).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Physical-Exam-Order-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31409-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31409) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.61" (CONF:3372-31410) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33437).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Physical-Exam-Order-participation-AUT-time-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.61' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1]/hqmf:time">
       <sch:assert id="a-3372-33504-error" test="count(hqmf:low)=1">This time SHALL contain exactly one [1..1] low (CONF:3372-33504).</sch:assert>
     </sch:rule>
@@ -1518,9 +1477,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Physical-Exam-Performed-errors">
-    <sch:rule id="r-Physical-Exam-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31255-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3346-31255). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.62" (CONF:3346-31256) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33428).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Physical-Exam-Performed-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-31251-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-31251).</sch:assert>
       <sch:assert id="a-3346-31252-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31252).</sch:assert>
@@ -1538,6 +1494,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Physical-Exam-Performed-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31262-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31262).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Physical-Exam-Performed-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31255-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3346-31255). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.62" (CONF:3346-31256) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33428).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Physical-Exam-Performed-methodCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.62' and @extension='2017-08-01']]/hqmf:methodCode">
       <sch:assert id="a-3346-31268-error" test="count(hqmf:item)=1">The methodCode, if present, SHALL contain exactly one [1..1] item (CONF:3346-31268).</sch:assert>
     </sch:rule>
@@ -1549,9 +1508,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Physical-Exam-Recommended-errors">
-    <sch:rule id="r-Physical-Exam-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-31447-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31447) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.61" (CONF:3372-31448) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33449).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Physical-Exam-Recommended-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-31443-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-31443).</sch:assert>
       <sch:assert id="a-3372-31444-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31444).</sch:assert>
@@ -1566,6 +1522,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-31451-error" test="@code='5880005'">This code SHALL contain exactly one [1..1] @code="5880005" Physical Examination (CONF:3372-31451).</sch:assert>
       <sch:assert id="a-3372-31452-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3372-31452).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Physical-Exam-Recommended-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31447-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31447) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.61" (CONF:3372-31448) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33449).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Physical-Exam-Recommended-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.63' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-31455-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-31455).</sch:assert>
     </sch:rule>
@@ -1577,15 +1536,15 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Population-Criteria-Section-errors">
-    <sch:rule id="r-Population-Criteria-Section-templateId-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-18775-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0">This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Population-Criteria-Section-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-18774-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3346-18774).</sch:assert>
       <sch:assert id="a-3346-19059-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-19059).</sch:assert>
       <sch:assert id="a-3346-18781-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-18781).</sch:assert>
       <sch:assert id="a-3346-18961-error" test="count(hqmf:text)=1">SHALL contain exactly one [1..1] text (CONF:3346-18961).</sch:assert>
       <sch:assert id="a-3346-29995-error" test="count(hqmf:component[count(hqmf:initialPopulationCriteria)=1]) &gt; 0">SHALL contain at least one [1..*] component (CONF:3346-29995) such that it SHALL contain exactly one [1..1] initialPopulationCriteria (CONF:3346-29996).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Population-Criteria-Section-templateId-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-18775-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7'][@extension='2017-08-01']) &gt; 0">This templateId SHALL contain at least one [1..*] item (CONF:3346-18775) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.2.7" (CONF:3346-18776). SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34633).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Population-Criteria-Section-code-errors" context="hqmf:populationCriteriaSection[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.2.7' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-19060-error" test="@code='57026-7'">This code SHALL contain exactly one [1..1] @code="57026-7" Population Criteria (CONF:3346-19060).</sch:assert>
@@ -1766,9 +1725,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Principal-Diagnosis-errors">
-    <sch:rule id="r-Principal-Diagnosis-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-34349-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34349) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.122" (CONF:3335-34358) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34651).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Principal-Diagnosis-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-34367-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-34367).</sch:assert>
       <sch:assert id="a-3335-34368-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-34368).</sch:assert>
@@ -1786,11 +1742,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Principal-Diagnosis-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-34362-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-34362).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Principal-Diagnosis-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-34349-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.122' and @extension='2017-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3335-34349) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.122" (CONF:3335-34358) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34651).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Procedure-Order-errors">
-    <sch:rule id="r-Procedure-Order-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-31123-error-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31123) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.66" (CONF:3372-31124) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33422).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Procedure-Order-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-31120-error-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31120).</sch:assert>
       <sch:assert id="a-3372-33158-error-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33158).</sch:assert>
@@ -1803,6 +1759,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Procedure-Order-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-33147-error-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33147).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Procedure-Order-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31123-error-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31123) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.66" (CONF:3372-31124) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33422).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Procedure-Order-targetSiteCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.66' and @extension='2018-05-01']]/hqmf:targetSiteCode">
       <sch:assert id="a-3372-33421-error-error" test="count(hqmf:item)=1">The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-33421).</sch:assert>
     </sch:rule>
@@ -1814,9 +1773,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Procedure-Performed-errors">
-    <sch:rule id="r-Procedure-Performed-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-31339-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31339) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.67" (CONF:3372-31340) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33398).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Procedure-Performed-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-33149-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33149).</sch:assert>
       <sch:assert id="a-3372-31336-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31336).</sch:assert>
@@ -1825,9 +1781,13 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-31344-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-31344).</sch:assert>
       <sch:assert id="a-3372-31342-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3372-31342).</sch:assert>
       <sch:assert id="a-3372-31345-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-31345).</sch:assert>
+      <sch:assert id="a-3372-34556-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34556) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34559) SHALL contain exactly one [1..1] time (CONF:3372-34557) SHALL contain exactly one [1..1] role (CONF:3372-34558).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Performed-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-33150-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33150).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Procedure-Performed-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31339-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31339) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.67" (CONF:3372-31340) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33398).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Performed-priorityCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01']]/hqmf:priorityCode">
       <sch:assert id="a-3372-31350-error" test="count(hqmf:item)=1">The priorityCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31350).</sch:assert>
@@ -1846,9 +1806,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Procedure-Recommended-errors">
-    <sch:rule id="r-Procedure-Recommended-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-31212-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31212) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.68" (CONF:3372-31213) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33417).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Procedure-Recommended-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-33154-error" test="@classCode='PROC'">SHALL contain exactly one [1..1] @classCode="PROC" Procedure (CONF:3372-33154).</sch:assert>
       <sch:assert id="a-3372-31209-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-31209).</sch:assert>
@@ -1859,7 +1816,10 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-31218-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-31218).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Recommended-statusCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]/hqmf:statusCode">
-      <sch:assert id="a-3372-33155-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).</sch:assert>
+      <sch:assert id="a-3372-33155-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Procedure-Recommended-templateId-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-31212-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-31212) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.68" (CONF:3372-31213) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33417).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Procedure-Recommended-priorityCode-errors" context="hqmf:procedureCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01']]/hqmf:priorityCode">
       <sch:assert id="a-3372-31223-error" test="count(hqmf:item)=1">The priorityCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31223).</sch:assert>
@@ -1875,9 +1835,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Program-Participation-errors">
-    <sch:rule id="r-Program-Participation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-34820-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34820) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.130" (CONF:3372-34824) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34825).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Program-Participation-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-34829-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3372-34829).</sch:assert>
       <sch:assert id="a-3372-34830-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34830).</sch:assert>
@@ -1895,11 +1852,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Program-Participation-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-34827-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34827).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Program-Participation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-34820-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.130' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-34820) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.130" (CONF:3372-34824) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34825).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Provider-Care-Experience-errors">
-    <sch:rule id="r-Provider-Care-Experience-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-32221-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-32221) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.70" (CONF:3335-32222) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33701).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Provider-Care-Experience-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-32218-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-32218).</sch:assert>
       <sch:assert id="a-3335-32219-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-32219).</sch:assert>
@@ -1915,30 +1872,33 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-32225-error" test="@code='405193005'">This code SHALL contain exactly one [1..1] @code="405193005" Caregiver Satisfaction (CONF:3335-32225).</sch:assert>
       <sch:assert id="a-3335-32226-error" test="@codeSystem='2.16.840.1.113883.6.96'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.96" (CodeSystem: SNOMED CT urn:oid:2.16.840.1.113883.6.96) (CONF:3335-32226).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Provider-Care-Experience-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-32221-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-32221) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.70" (CONF:3335-32222) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33701).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Provider-Care-Experience-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.70' and @extension='2017-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3335-32229-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3335-32229).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Provider-Characteristic-errors">
-    <sch:rule id="r-Provider-Characteristic-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-31743-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31743) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.71" (CONF:3346-31744) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34121).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Provider-Characteristic-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-31740-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-31740).</sch:assert>
       <sch:assert id="a-3346-31741-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-31741).</sch:assert>
       <sch:assert id="a-3346-31742-error" test="count(hqmf:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:3346-31742).</sch:assert>
       <sch:assert id="a-3346-31745-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3346-31745).</sch:assert>
-      <sch:assert id="a-3346-31746-error" test="count(hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="PRF" derived from (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34842) SHALL contain exactly one [1..1] role (CONF:3346-31753).</sch:assert>
+      <sch:assert id="a-3346-31746-error" test="count(hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="DRIV" Is derived from (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3346-34842) SHALL contain exactly one [1..1] role (CONF:3346-31753).</sch:assert>
       <sch:assert id="a-3346-31748-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3346-31748).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Provider-Characteristic-statusCodeerrors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-31749-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-31749).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role">
+    <sch:rule id="r-Provider-Characteristic-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-31743-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-31743) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.71" (CONF:3346-31744) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34121).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3346-31754-error" test="@classCode='ASSIGNED'">This role SHALL contain exactly one [1..1] @classCode="ASSIGNED" Assigned Entity (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-31754).</sch:assert>
       <sch:assert id="a-3346-34837-error" test="count(hqmf:playingEntity)=1">This role SHALL contain exactly one [1..1] playingEntity (CONF:3346-34837).</sch:assert>
     </sch:rule>
-    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-playingEntity-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role/hqmf:playingEntity">
+    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-playingEntity-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1]/hqmf:role/hqmf:playingEntity">
       <sch:assert id="a-3346-34838-error" test="@classCode='PSN'">This playingEntity SHALL contain exactly one [1..1] @classCode="PSN" Person (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3346-34838).</sch:assert>
       <sch:assert id="a-3346-34839-error" test="@determinerCode='KIND'">This playingEntity SHALL contain exactly one [1..1] @determinerCode="KIND" (CodeSystem: EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3346-34839).</sch:assert>
       <sch:assert id="a-3346-34840-error" test="count(hqmf:code)=1">This playingEntity SHALL contain exactly one [1..1] code (CONF:3346-34840).</sch:assert>
@@ -1954,8 +1914,7 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-18579-error" test="count(hqmf:statusCode)=1">SHALL contain exactly one [1..1] statusCode (CONF:3372-18579).</sch:assert>
       <sch:assert id="a-3372-18543-error" test="count(hqmf:setId)=1">SHALL contain exactly one [1..1] setId (CONF:3372-18543).</sch:assert>
       <sch:assert id="a-3372-18555-error" test="count(hqmf:custodian)=1">SHALL contain exactly one [1..1] custodian (CONF:3372-18555).</sch:assert>
-      <sch:assert id="a-3372-34627-error" test="count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).</sch:assert>
-      <sch:assert id="a-3372-34898-error" test="count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..</sch:assert>
+      <sch:assert id="a-3372-34627-error" test="count(hqmf:relatedDocument) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627).</sch:assert>
       <sch:assert id="a-3372-18545-error" test="count(hqmf:controlVariable)=1">SHALL contain exactly one [1..1] controlVariable (CONF:3372-18545).</sch:assert>
       <sch:assert id="a-3372-18580-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRSCORE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1])=1">SHALL contain exactly one [1..1] subjectOf (CONF:3372-18580) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18581). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18582). This code SHALL contain exactly one [1..1] @code="MSRSCORE" Measure Scoring (CONF:3372-18583). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30057). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29935). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureScoring urn:oid:2.16.840.1.113883.1.11.20367) (CONF:3372-29936).</sch:assert>
       <sch:assert id="a-3372-18588-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRTYPE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1]) &gt; 0">SHALL contain at least one [1..*] subjectOf (CONF:3372-18588) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18590). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18591). This code SHALL contain exactly one [1..1] @code="MSRTYPE" Measure Type (CONF:3372-29934). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30058). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29938). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureType urn:oid:2.16.840.1.113883.1.11.20368) (CONF:3372-29939).</sch:assert>
@@ -2017,9 +1976,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-CQL-Based-HQMF-Header-verifier-responsibleParty-representedResponsibleOrganization-id-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:verifier/hqmf:responsibleParty/hqmf:representedResponsibleOrganization/hqmf:id">
       <sch:assert id="a-3372-18758-error" test="count(hqmf:item)=1">This id SHALL contain exactly one [1..1] item (CONF:3372-18758).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument">
+      <sch:assert id="a-3372-34628-error" test="count(hqmf:expressionDocument)=1">Such relatedDocuments SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument">
       <sch:assert id="a-3372-34629-error" test="count(hqmf:text)=1">This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629).</sch:assert>
-      <sch:assert id="a-3372-34882-error" test="count(hqmf:setId)=1">This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882).</sch:assert>
     </sch:rule>
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-text-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:text">
       <sch:assert id="a-3372-34631-error" test="lower-case(normalize-space(@mediaType))='text/cql'">This text SHALL contain exactly one [1..1] @mediaType="text/cql" (CONF:3372-34631).</sch:assert>
@@ -2027,20 +1988,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
     <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-text-reference-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:text/hqmf:reference">
       <sch:assert id="a-3372-34632-error" test="@value">This reference SHALL contain exactly one [1..1] @value (CONF:3372-34632).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-expressionDocument-setId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument/hqmf:expressionDocument/hqmf:setId">
-      <sch:assert id="a-3372-34883-error" test="@root">This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).</sch:assert>
-      <sch:assert id="a-3372-34884-error" test="@extension">This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument">
-      <sch:assert id="a-3372-34900-error" test="count(hqmf:id)=1">This componentQualityMeasureDocument SHALL contain exactly one [1..1] id (CONF:3372-34900).</sch:assert>
-      <sch:assert id="a-3372-34906-error" test="count(hqmf:setId) = 0 or (count(hqmf:setId) &gt; 0 and count(hqmf:versionNumber[@value]) = 1)">VersionNumber SHALL be present if the setId element is present and if present, it SHALL have a value attribute that is the versionNumber of the component eCQM (CONF:3372-34906).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-id-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:id">
-      <sch:assert id="a-3372-34903-error" test="@root">This id SHALL contain exactly one [1..1] @root (CONF:3372-34903).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-setId-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:setId">
-      <sch:assert id="a-3372-34907-error" test="@root">The setId, if present, SHALL contain exactly one [1..1] @root (CONF:3372-34907).</sch:assert>
     </sch:rule>
     <sch:rule id="r-CQL-Based-HQMF-Header-controlVariable-errors" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:controlVariable">
       <sch:assert id="a-3372-18546-error" test="count(hqmf:measurePeriod)=1">This controlVariable SHALL contain exactly one [1..1] measurePeriod (CONF:3372-18546).</sch:assert>
@@ -2055,9 +2002,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Reason-errors">
-    <sch:rule id="r-Reason-29897-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88' ]]/hqmf:templateId">
-      <sch:assert id="a-3335-29898-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-29898) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.88" (CONF:3335-29899) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33686).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Reason-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88' and @extension='2017-05-01']]">
       <sch:assert id="a-3335-29895-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3335-29895).</sch:assert>
       <sch:assert id="a-3335-29896-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3335-29896).</sch:assert>
@@ -2066,11 +2010,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3335-29904-error" test="count(hqmf:value[@xsi:type='CD'])=1">SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3335-29904).</sch:assert>
       <sch:assert id="a-3335-33173-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3335-33173).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Reason-29897-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88' and @extension='2017-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3335-29898-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.88' and @extension='2017-05-01'])=1">This templateId	SHALL contain exactly one [1..1] item (CONF:3335-29898) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.88" (CONF:3335-29899) This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-33686).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Related-To-errors">
-    <sch:rule id="r-Related-To-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-34718-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34718) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.127" (CONF:3346-34721) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34722).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Related-To-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34725-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34725).</sch:assert>
       <sch:assert id="a-3346-34726-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CONF:3346-34726).</sch:assert>
@@ -2078,6 +2022,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34727-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3346-34727).</sch:assert>
       <sch:assert id="a-3346-34729-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-34729).</sch:assert>
       <sch:assert id="a-3346-34719-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-34719).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Related-To-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34718-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34718) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.127" (CONF:3346-34721) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34722).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Related-To-id-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.127' and @extension='2017-08-01']]/hqmf:id">
       <sch:assert id="a-3346-34730-error" test="@root">This id SHALL contain exactly one [1..1] @root (CONF:3346-34730).</sch:assert>
@@ -2088,9 +2035,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Result-errors">
-    <sch:rule id="r-Result-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-32189-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' and @extension='2017-08-01'])=1">This templateId  SHALL contain exactly one [1..1] item (CONF:3346-32189). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.101" (CONF:3346-32190) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34653).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Result-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-32186-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-32186).</sch:assert>
       <sch:assert id="a-3346-32187-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-32187).</sch:assert>
@@ -2098,6 +2042,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-32192-error" test="count(hqmf:code)=1">SHALL contain exactly one [1..1] code (CONF:3346-32192).</sch:assert>
       <sch:assert id="a-3346-32195-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-32195).</sch:assert>
       <sch:assert id="a-3346-32196-error" test="count(hqmf:value)=1">SHALL contain exactly one [1..1] value (CONF:3346-32196).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Result-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-32189-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' and @extension='2017-08-01'])=1">This templateId  SHALL contain exactly one [1..1] item (CONF:3346-32189). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.101" (CONF:3346-32190) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34653).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Result-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.101' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-32193-error" test="@code='394617004'">This code SHALL contain exactly one [1..1] @code="394617004" Result (CONF:3346-32193).</sch:assert>
@@ -2108,9 +2055,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Severity-Observation-errors">
-    <sch:rule id="r-Severity-Observation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.93' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-30132-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.93' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30132) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.93" (CONF:3346-30133) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33691).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Severity-Observation-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.93' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-30129-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-30129).</sch:assert>
       <sch:assert id="a-3346-30130-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-30130).</sch:assert>
@@ -2123,11 +2067,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-30136-error" test="@code='SEV'">This code SHALL contain exactly one [1..1] @code="SEV" Severity Observation (CONF:3346-30136).</sch:assert>
       <sch:assert id="a-3346-30137-error" test="@codeSystem='2.16.840.1.113883.5.4'">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.5.4" (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3346-30137).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Severity-Observation-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.93' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-30132-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.93' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30132) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.93" (CONF:3346-30133) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33691).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Status-errors">
-    <sch:rule id="r-Status-30153-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.94']]/hqmf:templateId">
-      <sch:assert id="a-3346-30155-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.94' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30155). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.94" (CONF:3346-30156) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33690).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Status-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.94' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-30151-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-30151).</sch:assert>
       <sch:assert id="a-3346-30152-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-30152).</sch:assert>
@@ -2140,11 +2084,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-30159-error" test="@code='33999-4'">This code SHALL contain exactly one [1..1] @code="33999-4" Status (CONF:3346-30159).</sch:assert>
       <sch:assert id="a-3346-30160-error" test="@codeSystem">This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:3346-30160).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Status-30153-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.94' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-30155-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.94' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-30155). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.94" (CONF:3346-30156) 	This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33690).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Substance-Administered-errors">
-    <sch:rule id="r-Substance-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-32882-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32882) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.73" (CONF:3372-32883) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33393).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Substance-Administered-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-32878-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32878).</sch:assert>
       <sch:assert id="a-3372-32879-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-32879).</sch:assert>
@@ -2154,6 +2098,7 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-32884-error" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3372-32884).</sch:assert>
       <sch:assert id="a-3372-32887-error" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3372-32887).</sch:assert>
       <sch:assert id="a-3372-32897-error" test="count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-32897) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32898) SHALL contain exactly one [1..1] role (CONF:3372-32899).</sch:assert>
+      <sch:assert id="a-3372-34563-error" test="count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1">SHALL contain exactly one [1..1] participation (CONF:3372-34563) such that it SHALL contain exactly one [1..1] time (CONF:3372-34564). SHALL contain exactly one [1..1] role (CONF:3372-34565). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34566).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Administered-code-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]/hqmf:code">
       <sch:assert id="a-3372-33177-error" test="@code='416118004'">This code SHALL contain exactly one [1..1] @code="416118004" Administration (CONF:3372-33177).</sch:assert>
@@ -2161,6 +2106,9 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
     <sch:rule id="r-Substance-Administered-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-32889-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32889).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Substance-Administered-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-32882-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32882) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.73" (CONF:3372-32883) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33393).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Administered-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-32900-error" test="@classCode='ADMM'">This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32900).</sch:assert>
@@ -2179,9 +2127,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Substance-Order-errors">
-    <sch:rule id="r-Substance-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-32627-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32627). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.77" (CONF:3372-32628) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33652).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Substance-Order-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-32623-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32623).</sch:assert>
       <sch:assert id="a-3372-32624-error" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-32624).</sch:assert>
@@ -2194,6 +2139,9 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Substance-Order-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-32634-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32634).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Substance-Order-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-32627-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32627). such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.77" (CONF:3372-32628) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33652).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Substance-Order-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.77' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
       <sch:assert id="a-3372-32645-error" test="@classCode='ADMM'">This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32645).</sch:assert>
       <sch:assert id="a-3372-32646-error" test="count(hqmf:playingMaterial)=1">This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32646).</sch:assert>
@@ -2205,9 +2153,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Substance-Recommended-errors">
-    <sch:rule id="r-Substance-Recommended-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' ]]/hqmf:templateId">
-      <sch:assert id="a-3372-32125-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32125) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.78" (CONF:3372-32126) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33693).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Substance-Recommended-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]">
       <sch:assert id="a-3372-32063-error" test="@classCode='SBADM'">SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3372-32063).</sch:assert>
       <sch:assert id="a-3372-32064-error" test="@moodCode='INT'">SHALL contain exactly one [1..1] @moodCode="INT" Intent (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-32064).</sch:assert>
@@ -2220,13 +2165,16 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Substance-Recommended-statusCode-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:statusCode">
       <sch:assert id="a-3372-32071-error" test="lower-case(normalize-space(@code))='active'">This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32071).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Substance-Recommended-templateId-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:templateId">
+      <sch:assert id="a-3372-32125-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3372-32125) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.78" (CONF:3372-32126) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33693).</sch:assert>
+    </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-CSM-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role">
-      <sch:assert id="a-3372-32106-error" test="@classCode='ADMM'">This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).</sch:assert>
+      <sch:assert id="a-3372-32106-error" test="@classCode='MANU'">This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).</sch:assert>
       <sch:assert id="a-3372-32107-error" test="count(hqmf:playingMaterial)=1">This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32107).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-CSM-role-playingMaterial-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1]/hqmf:role/hqmf:playingMaterial">
       <sch:assert id="a-3372-32110-error" test="count(hqmf:code)=1">This playingMaterial SHALL contain exactly one [1..1] code (CONF:3372-32110).</sch:assert>
-      <sch:assert id="a-3372-32108-error" test="@classCode='MAT'">This playingMaterial SHALL contain exactly one [1..1] @classCode="MAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).</sch:assert>
+      <sch:assert id="a-3372-32108-error" test="@classCode='MMAT'">This playingMaterial SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).</sch:assert>
       <sch:assert id="a-3372-32109-error" test="@determinerCode='KIND'">This playingMaterial SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3372-32109).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Substance-Recommended-participation-AUT-time-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.78' and @extension='2018-05-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)]/hqmf:time">
@@ -2237,9 +2185,6 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Supply-errors">
-    <sch:rule id="r-Supply-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-34772" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34772) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.129" (CONF:3346-34783) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34784).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Supply-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34795" test="@classCode='SPLY'">SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3346-34795).</sch:assert>
       <sch:assert id="a-3346-34796" test="@moodCode='RQO'">SHALL contain exactly one [1..1] @moodCode="RQO" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34796).</sch:assert>
@@ -2248,11 +2193,11 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-34798" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-34798).</sch:assert>
       <sch:assert id="a-3346-34800" test="count(hqmf:quantity)=1">SHALL contain exactly one [1..1] quantity (CONF:3346-34800).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Supply-templateId-errors" context="hqmf:supplyCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34772" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.129' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34772) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.129" (CONF:3346-34783) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34784).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Symptom-errors">
-    <sch:rule id="r-Symptom-34079-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-34080-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34080) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.116" (CONF:3346-34093) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34480).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Symptom-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-34108-error" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-34108).</sch:assert>
       <sch:assert id="a-3346-34109-error" test="@moodCode='EVN'">SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-34109).</sch:assert>
@@ -2270,11 +2215,11 @@ Fri Sep 07 12:43:54 MDT 2018
     <sch:rule id="r-Symptom-statusCode-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' and @extension='2017-08-01']]/hqmf:statusCode">
       <sch:assert id="a-3346-34097-error" test="lower-case(normalize-space(@code))='completed'">This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-34097).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-Symptom-34079-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-34080-error" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.116' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-34080) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.116" (CONF:3346-34093) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-34480).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Target-Outcome-errors">
-    <sch:rule id="r-Target-Outcome-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' ]]/hqmf:templateId">
-      <sch:assert id="a-3346-29105" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-29105) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.128" (CONF:3346-29108) SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-29109).</sch:assert>
-    </sch:rule>
     <sch:rule id="r-Target-Outcome-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01']]">
       <sch:assert id="a-3346-29112" test="@classCode='OBS'">SHALL contain exactly one [1..1] @classCode="OBS" Observation (CONF:3346-29112).</sch:assert>
       <sch:assert id="a-3346-29113" test="@moodCode='GOL'">SHALL contain exactly one [1..1] @moodCode="GOL" Goal (CONF:3346-29113).</sch:assert>
@@ -2283,6 +2228,9 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3346-29114" test="count(hqmf:id)=1">SHALL contain exactly one [1..1] id (CONF:3346-29114).</sch:assert>
       <sch:assert id="a-3346-29116" test="count(hqmf:title)=1">SHALL contain exactly one [1..1] title (CONF:3346-29116).</sch:assert>
       <sch:assert id="a-3346-29107" test="count(hqmf:value)=1">SHALL contain exactly one [1..1] value (CONF:3346-29107).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-Target-Outcome-templateId-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01']]/hqmf:templateId">
+      <sch:assert id="a-3346-29105" test="count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01'])=1">This templateId SHALL contain exactly one [1..1] item (CONF:3346-29105) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.128" (CONF:3346-29108) SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-29109).</sch:assert>
     </sch:rule>
     <sch:rule id="r-Target-Outcome-code-errors" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.128' and @extension='2017-08-01']]/hqmf:code">
       <sch:assert id="a-3346-29110" test="@code='385676005'">This code SHALL contain exactly one [1..1] @code="385676005" Outcome of action (CONF:3346-29110).</sch:assert>
@@ -2662,7 +2610,7 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Provider-Characteristic-warnings">
-    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-playingEntity-code-warnings" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role/hqmf:playingEntity/hqmf:code">
+    <sch:rule id="r-Provider-Characteristic-participation-DRIV-role-playingEntity-code-warnings" context="hqmf:observationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01']]/hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1]/hqmf:role/hqmf:playingEntity/hqmf:code">
       <sch:assert id="a-3346-34841-warning" test="@valueSet">This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-34841).</sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -2700,13 +2648,6 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-29973-warning" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRPOPL'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1">SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29973) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29974). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29975). This code SHALL contain exactly one [1..1] @code="MSRPOPL" Measure Population (CONF:3372-29976). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30088). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29977).</sch:assert>
       <sch:assert id="a-3372-29978-warning" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRPOPLEX'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1">SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29978) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29979). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29980). This code SHALL contain exactly one [1..1] @code="MSRPOPLEX" Measure Population Exclusions  (CONF:3372-29981). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30089). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29982).</sch:assert>
       <sch:assert id="a-3372-29984-warning" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='DISC'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1">SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29984) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29985). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29986). This code SHALL contain exactly one [1..1] @code="DISC" Disclaimer (CONF:3372-29987). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30090). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29988).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-warnings" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument">
-      <sch:assert id="a-3372-34905-error" test="count(hqmf:setId)=1">This componentQualityMeasureDocument SHOULD contain zero or one [0..1] setId (CONF:3372-34905).</sch:assert>
-      <sch:assert id="a-3372-34901-error" test="count(hqmf:versionNumber)=1">This componentQualityMeasureDocument SHOULD contain zero or one [0..1] versionNumber (CONF:3372-34901).</sch:assert>
-    </sch:rule>
-    <sch:rule id="r-CQL-Based-HQMF-Header-relatedDocument-XCRPT-componentQualityMeasureDocument-id-warnings" context="hqmf:QualityMeasureDocument[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.1.2'][@extension='2018-05-01']]/hqmf:relatedDocument[@typeCode='XCRPT']/hqmf:componentQualityMeasureDocument/hqmf:id">
-      <sch:assert id="a-3372-34904-error" test="@identifierName">This id SHOULD contain zero or one [0..1] @identifierName (CONF:3372-34904).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-Reason-warnings">

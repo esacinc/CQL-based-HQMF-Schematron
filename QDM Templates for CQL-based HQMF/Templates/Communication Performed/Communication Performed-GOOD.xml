@@ -6,6 +6,7 @@
   Title: Communication Performed minimal sample file with no errors
   Autor: Dan Donahue
   Date: 07-06-2018
+  Update: 08-15-2018  Added typeCode="RSON" to outboundRelationship
   
   Total Errors Expected: 0
   

@@ -7,13 +7,13 @@
     Instructions file: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\QDM Templates for CQL-based HQMF Merge Directions.xml
     Title: QDM Templates for CQL-base HQMF
     Version: 3.0
-    Generated on Fri Sep 07 12:43:42 MDT 2018
+    Generated on Fri Jul 20 10:51:50 MDT 2018
     Verbose Reporting is turned on
     Merged file: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch
-        All Error patterns are generated before all Warning patterns
-        Add schematron root attribute: queryBinding=xslt2
+          All Error patterns are generated before all Warning patterns
+            Add schematron root attribute: queryBinding=xslt2
     ALERT: Failed to locate element: <compareSchematronFilename>
-        Compare generated schematron asserts to asserts in file: null
+          Compare generated schematron asserts to asserts in file: null
     Merge report file located at: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/mergeReport.txt
     Validation is turned on
         Validate final merged file using: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\TestFiles\EP_EC\CMS128_v5_4_eCQM.xml
@@ -34,7 +34,6 @@
             Located schematron file: Communication Performed.sch
             Located schematron file: Component.sch
             Located schematron file: Data Criteria Section V3.sch
-            Located schematron file: Days Supplied.sch
             Located schematron file: Device Applied V2.sch
             Located schematron file: Device Order.sch
             Located schematron file: Device Recommended.sch
@@ -99,8 +98,8 @@
             Located schematron file: Symptom V2.sch
             Located schematron file: Target Outcome.sch
             Located schematron file: Vol I Conformance Statements.sch
-            Processed 76 (76 expected) schematron folders.
-        76 schematron templates identified for merging
+            Processed 75 (75 expected) schematron folders.
+        75 schematron templates identified for merging
     Schematron files gleaned from merge instructions: 
         ------------------------------------
         Template Directory: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Admission Source
@@ -168,12 +167,6 @@
         Test File(s): 
             C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Data Criteria Section V3\Data Criteria Section V3-ERRORS.xml
             C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Data Criteria Section V3\Data Criteria Section V3-GOOD.xml
-        ------------------------------------
-        Template Directory: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied
-        Schematron: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied.sch
-        Test File(s): 
-            C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied-ERRORS.xml
-            C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied-GOOD.xml
         ------------------------------------
         Template Directory: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Device Applied V2
         Schematron: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Device Applied V2\Device Applied V2.sch
@@ -569,14 +562,14 @@
     SCHEMATRON: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Admission Source\Admission Souce.sch
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Admission Source\Admission Source-ERRORS.xml
-                Error: a-3335-34340-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:templateId)=1
-                    SHALL contain exactly one [1..1] templateId (CONF:3335-34340)
                 Error: a-3335-34344-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='SDLOC'
                     SHALL contain exactly one [1..1] @classCode="SDLOC" Service Delivery Location (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3335-34344).
+                Error: a-3335-34340-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:templateId[count(hqmf:item)=1])=1
+                    SHALL contain exactly one [1..1] templateId (CONF:3335-34340)
                 Error: a-3335-34342-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:code)=1
                     SHALL contain exactly one [1..1] code (CONF:3335-34342).
                 Error: a-3335-34341-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.123'][@extension='2017-05-01'])=1
-                    This templateId SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34530). 
+                    SHALL contain exactly one [1..1] item (CONF:3335-34341). such that it This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.3.123" (CONF:3335-34345)	This item SHALL contain exactly one [1..1] @extension="2017-05-01" (CONF:3335-34530). 
                 Warning: a-3335-34346-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3335-34346).
             
@@ -745,8 +738,8 @@
                     SHALL contain exactly one [1..1] statusCode (CONF:3372-34657).
                 Error: a-3372-34655-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.131' and @extension='2018-05-01'])=1
                     SHALL contain exactly one [1..1] item (CONF:3372-34655) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.131" (CONF:3372-34664).This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34665). 
-                Error: a-3372-34667-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='active'
-                    This statusCode SHALL contain exactly one [1..1] @code="active" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).
+                Error: a-3372-34667-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='completed'
+                    This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-34667).
                 Error: a-3372-34670-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                      This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3372-34670).  
                 Error: a-3372-34669-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
@@ -995,32 +988,6 @@
             
             (Errors: expected 0, actual 0) (Warnings: expected 0, actual 0)
     _______________________________________________________________
-    SCHEMATRON: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied.sch
-         
-        TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied-ERRORS.xml
-                Error: a-3372-34889-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='SPLY'
-                    SHALL contain exactly one [1..1] @classCode="SPLY" Supply (CONF:3372-34889).
-                Error: a-3372-34890-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: @moodCode='EVN'
-                    SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3372-34890). 
-                Error: a-3372-34885-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:templateId)=1
-                    SHALL contain exactly one [1..1] templateId (CONF:3372-34885). 
-                Error: a-3372-34891-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:id)=1
-                    SHALL contain exactly one [1..1] id (CONF:3372-34891)
-                Error: a-3372-34893-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:quantity)=1
-                    SHALL contain exactly one [1..1] quantity (CONF:3372-34893). 
-                Error: a-3372-34892-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:title)=1
-                    SHALL contain exactly one [1..1] title (CONF:3372-34892). 
-                Error: a-3372-34886-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.133' and @extension='2018-05-01'])=1
-                    This templateId SHALL contain exactly one [1..1] item (CONF:3372-34886) such that it  SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.133" (CONF:3372-34887)  SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-34888). 
-                Error: a-3372-34894-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:supplyCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:quantity[namespace-uri()='urn:hl7-org:v3'][2]: @unit='d'
-                    This quantity SHALL contain exactly one [1..1] @unit="d" Day (CodeSystem: UCUM urn:oid:2.16.840.1.113883.6.8) (CONF:3372-34894).
-            
-            (Errors: expected 8, actual 8) (Warnings: expected 0, actual 0)
-         
-        TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Days Supplied\Days Supplied-GOOD.xml
-            
-            (Errors: expected 0, actual 0) (Warnings: expected 0, actual 0)
-    _______________________________________________________________
     SCHEMATRON: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Device Applied V2\Device Applied V2.sch
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Device Applied V2\Device Applied V2-ERRORS.xml
@@ -1040,6 +1007,8 @@
                     SHALL contain exactly one [1..1] statusCode (CONF:3372-31310).
                 Error: a-3372-31315-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='DEV'][count(hqmf:role)=1])=1
                     SHALL contain exactly one [1..1] participation (CONF:3372-31315) such that it SHALL contain exactly one [1..1] @typeCode="DEV" Device (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-31316). SHALL contain exactly one [1..1] role (CONF:3372-31317). 
+                Error: a-3372-34503-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3372-34503) such that it SHALL contain exactly one [1..1] time (CONF:3372-34504). SHALL contain exactly one [1..1] role (CONF:3372-34505). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34506).
                 Error: a-3372-31306-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.13' and @extension='2018-05-01'])=1
                     This templateId a.	SHALL contain exactly one [1..1] item (CONF:3372-31306). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.13" (CONF:3372-31307). This item SHALL contain exactly one [1..1] @extension="20187-05-01" (CONF:3372-33361).
                 Error: a-3372-33062-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @code='360030002'
@@ -1069,7 +1038,7 @@
                 Warning: a-3372-31323-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingDevice[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3372-31323).
             
-            (Errors: expected 20, actual 20) (Warnings: expected 2, actual 2)
+            (Errors: expected 21, actual 21) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Device Applied V2\Device Applied V2-GOOD.xml
             
@@ -1798,22 +1767,24 @@
                     SHALL contain exactly one [1..1] title (CONF:3346-30372).
                 Error: a-3346-33611-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:value)=0
                     SHALL NOT contain [0..0] value (CONF:3346-33611).
+                Error: a-3346-34535-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3346-34535) such that it SHALL contain exactly one [1..1] time (CONF:3346-34536) SHALL contain exactly one [1..1] role (CONF:3346-34537).
                 Error: a-3346-30367-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.42' and @extension='2017-08-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3346-30367) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.42" (CONF:3346-30368) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33373). 
                 Error: a-3346-30509-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='completed'
                     This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3346-30509).
                 Error: a-3346-30378-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:methodCode[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:item)=1
                     The methodCode, if present, SHALL contain exactly one [1..1] item (CONF:3346-30378).
-                Error: a-3346-34540-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
+                Error: a-3346-34540-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                     This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-34540).
-                Error: a-3346-34539-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
+                Error: a-3346-34539-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
                     This time SHALL contain exactly one [1..1] low (CONF:3346-34539).
                 Warning: a-3346-30371-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3346-30371).
                 Warning: a-3346-30379-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:methodCode[namespace-uri()='urn:hl7-org:v3'][1]/*:item[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This item SHOULD contain zero or one [0..1] @valueSet (CONF:3346-30379).
             
-            (Errors: expected 13, actual 13) (Warnings: expected 2, actual 2)
+            (Errors: expected 14, actual 14) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Laboratory Test Performed V2\Laboratory Test Performed V2-GOOD.xml
             
@@ -2008,6 +1979,8 @@
                     SHALL contain exactly one [1..1] statusCode (CONF:3372-32058).
                 Error: a-3372-32497-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1
                     SHALL contain exactly one [1..1] participation (CONF:3372-32497) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32503) SHALL contain exactly one [1..1] role (CONF:3372-32498).
+                Error: a-3372-34542-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3372-34542) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34545) SHALL contain exactly one [1..1] time (CONF:3372-34543) SHALL contain exactly one [1..1] role (CONF:3372-34544). 
                 Error: a-3372-32051-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.45' and @extension='2018-05-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3372-32051). such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.45" (CONF:3372-32052) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33386). 
                 Error: a-3372-32055-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @code='416118004' and @codeSystem='2.16.840.1.113883.6.96'
@@ -2026,16 +1999,16 @@
                     This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32504).
                 Error: a-3372-32499-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:playingManufacturedMaterial)=1
                     This role SHALL contain exactly one [1..1] playingManufacturedMaterial (CONF:3372-32499).
-                Error: a-3372-34547-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
+                Error: a-3372-34547-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                     This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34547).
-                Error: a-3372-34546-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
+                Error: a-3372-34546-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
                     This time SHALL contain exactly one [1..1] low (CONF:3372-34546).
                 Warning: a-3372-32507-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:routeCode[namespace-uri()='urn:hl7-org:v3'][1]: @valueSet
                     The routeCode, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3372-32507).
                 Warning: a-3372-32502-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingManufacturedMaterial[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3372-32502).
             
-            (Errors: expected 19, actual 19) (Warnings: expected 2, actual 2)
+            (Errors: expected 20, actual 20) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Medication Administered V3\Medication Administered V3-GOOD.xml
             
@@ -2060,6 +2033,8 @@
                     SHALL contain exactly one [1..1] statusCode (CONF:3346-32531).
                 Error: a-3346-32539-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1
                     SHALL contain exactly one [1..1] participation (CONF:3346-32539) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-32540) SHALL contain exactly one [1..1] role (CONF:3346-32541). 
+                Error: a-3346-34438-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1][count(hqmf:time)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3346-34438) such that it SHALL contain exactly one [1..1] time (CONF:3346-34439). SHALL contain exactly one [1..1] role (CONF:3346-34440).  SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34442).
                 Error: a-3346-32524-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3346-32524) such that This item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.48" (CONF:3346-32525) This item SHALL contain exactly one [1..1] @extension="2017-08-01" (CONF:3346-33439). 
                 Error: a-3346-32528-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @code='10183-2'
@@ -2078,12 +2053,10 @@
                     This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured Product (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3346-32542).
                 Error: a-3346-32543-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:playingManufacturedMaterial)=1
                     This role SHALL contain exactly one [1..1] playingManufacturedMaterial (CONF:3346-32543). This playingManufacturedMaterial SHALL contain exactly one [1..1] code (CONF:3346-32546).
-                Error: a-3346-34444-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
+                Error: a-3346-34444-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                     This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34444).
-                Error: a-3346-34443-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
+                Error: a-3346-34443-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
                     This time SHALL contain exactly one [1..1] low (CONF:3346-34443).
-                Error: a-3346-34918-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
-                    This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34918).
                 Warning: a-3346-32538-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:routeCode[namespace-uri()='urn:hl7-org:v3'][1]: @valueSet
                     The routeCode, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3346-32538).
                 Warning: a-3346-32547-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingManufacturedMaterial[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
@@ -2926,6 +2899,8 @@
                     SHALL contain exactly one [1..1] code (CONF:3372-31342).
                 Error: a-3372-31345-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:statusCode)=1
                     SHALL contain exactly one [1..1] statusCode (CONF:3372-31345).
+                Error: a-3372-34556-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3372-34556) such that it SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34559) SHALL contain exactly one [1..1] time (CONF:3372-34557) SHALL contain exactly one [1..1] role (CONF:3372-34558).
                 Error: a-3372-31339-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.67' and @extension='2018-05-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3372-31339) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.67" (CONF:3372-31340) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33398).
                 Error: a-3372-33150-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='completed'
@@ -2936,9 +2911,9 @@
                     The methodCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31352). 
                 Error: a-3372-33402-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:targetSiteCode[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:item)=1
                     The targetSiteCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-33402).  
-                Error: a-3372-34561-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
+                Error: a-3372-34561-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                     This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34561).
-                Error: a-3372-34560-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
+                Error: a-3372-34560-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
                     This time SHALL contain exactly one [1..1] low (CONF:3372-34560).
                 Warning: a-3372-31343-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3372-31343).
@@ -2949,7 +2924,7 @@
                 Warning: a-3372-33404-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:targetSiteCode[namespace-uri()='urn:hl7-org:v3'][1]/*:item[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This item SHOULD contain zero or one [0..1] @valueSet (CONF:3372-33404).
             
-            (Errors: expected 14, actual 14) (Warnings: expected 4, actual 4)
+            (Errors: expected 15, actual 15) (Warnings: expected 4, actual 4)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Procedure Performed V3\Procedure Performed V3-GOOD.xml
             
@@ -2974,8 +2949,8 @@
                     SHALL contain exactly one [1..1] statusCode (CONF:3372-31218).
                 Error: a-3372-31212-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.68' and @extension='2018-05-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3372-31212) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.68" (CONF:3372-31213) 	This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33417).
-                Error: a-3372-33155-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='active'
-                    This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).
+                Error: a-3372-33155-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:statusCode[namespace-uri()='urn:hl7-org:v3'][2]: lower-case(normalize-space(@code))='completed'
+                    This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-33155).
                 Error: a-3372-31223-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:priorityCode[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:item)=1
                     The priorityCode, if present, SHALL contain exactly one [1..1] item (CONF:3372-31223). 
                 Error: a-3372-33414-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:procedureCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:targetSiteCode[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:item)=1
@@ -3082,8 +3057,8 @@
                     SHALL contain exactly one [1..1] templateId (CONF:3346-31742).
                 Error: a-3346-31745-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:id)=1
                     SHALL contain exactly one [1..1] id (CONF:3346-31745).
-                Error: a-3346-31746-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1])=1
-                    SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="PRF" derived from (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3346-34842) SHALL contain exactly one [1..1] role (CONF:3346-31753).
+                Error: a-3346-31746-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='DRIV'][count(hqmf:role)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3346-31746) such that it SHALL contain exactly one [1..1] @typeCode="DRIV" Is derived from (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3346-34842) SHALL contain exactly one [1..1] role (CONF:3346-31753).
                 Error: a-3346-31748-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:statusCode)=1
                     SHALL contain exactly one [1..1] statusCode (CONF:3346-31748).
                 Error: a-3346-31743-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:observationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.71' and @extension='2017-08-01'])=1
@@ -3112,16 +3087,14 @@
     SCHEMATRON: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3.sch
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3-ERRORS-AUX.xml
-                Error: a-3372-34627-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) > 0
-                    SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).
-                Error: a-3372-34898-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) > 0
-                    SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..
+                Error: a-3372-34627-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument) > 0
+                    SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627).
                 Warning: a-3372-18563-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:author) > 0
                     SHOULD contain zero or more [0..*] author (CONF:3372-18563).
                 Warning: a-3372-18754-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:verifier)=1
                     SHOULD contain zero or one [0..1] verifier (CONF:3372-18754).
             
-            (Errors: expected 2, actual 2) (Warnings: expected 2, actual 2)
+            (Errors: expected 1, actual 1) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3-ERRORS.xml
                 Error: a-3372-18786-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:typeId)=1
@@ -3140,8 +3113,6 @@
                     SHALL contain exactly one [1..1] setId (CONF:3372-18543).
                 Error: a-3372-18555-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:custodian)=1
                     SHALL contain exactly one [1..1] custodian (CONF:3372-18555).
-                Error: a-3372-34627-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) > 0
-                    SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).
                 Error: a-3372-18545-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:controlVariable)=1
                     SHALL contain exactly one [1..1] controlVariable (CONF:3372-18545).
                 Error: a-3372-18580-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRSCORE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1])=1
@@ -3198,28 +3169,16 @@
                     This representedResponsibleOrganization SHALL contain exactly one [1..1] name (CONF:3372-18759).
                 Error: a-3372-18758-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:verifier[namespace-uri()='urn:hl7-org:v3'][1]/*:responsibleParty[namespace-uri()='urn:hl7-org:v3'][2]/*:representedResponsibleOrganization[namespace-uri()='urn:hl7-org:v3'][2]/*:id[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item)=1
                     This id SHALL contain exactly one [1..1] item (CONF:3372-18758).
+                Error: a-3372-34628-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:expressionDocument)=1
+                    Such relatedDocuments SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).
                 Error: a-3372-34631-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:text[namespace-uri()='urn:hl7-org:v3'][1]: lower-case(normalize-space(@mediaType))='text/cql'
                     This text SHALL contain exactly one [1..1] @mediaType="text/cql" (CONF:3372-34631).
                 Error: a-3372-34630-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:text[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:reference)=1
                     This text SHALL contain exactly one [1..1] reference (CONF:3372-34630).
                 Error: a-3372-34632-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:text[namespace-uri()='urn:hl7-org:v3'][1]/*:reference[namespace-uri()='urn:hl7-org:v3'][2]: @value
                     This reference SHALL contain exactly one [1..1] @value (CONF:3372-34632).
-                Error: a-3372-34883-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:setId[namespace-uri()='urn:hl7-org:v3'][1]: @root
-                    This setId SHALL contain exactly one [1..1] @root (CONF:3372-34883).
-                Error: a-3372-34884-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:setId[namespace-uri()='urn:hl7-org:v3'][1]: @extension
-                    This setId SHALL contain exactly one [1..1] @extension (CONF:3372-34884).
                 Error: a-3372-34629-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:text)=1
                     This expressionDocument SHALL contain exactly one [1..1] text (CONF:3372-34629).
-                Error: a-3372-34882-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:expressionDocument[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:setId)=1
-                    This expressionDocument SHALL contain exactly one [1..1] setId (CONF:3372-34882).
-                Error: a-3372-34900-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:id)=1
-                    This componentQualityMeasureDocument SHALL contain exactly one [1..1] id (CONF:3372-34900).
-                Error: a-3372-34906-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:setId) = 0 or (count(hqmf:setId) > 0 and count(hqmf:versionNumber[@value]) = 1)
-                    VersionNumber SHALL be present if the setId element is present and if present, it SHALL have a value attribute that is the versionNumber of the component eCQM (CONF:3372-34906).
-                Error: a-3372-34903-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:id[namespace-uri()='urn:hl7-org:v3'][2]: @root
-                    This id SHALL contain exactly one [1..1] @root (CONF:3372-34903).
-                Error: a-3372-34907-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:setId[namespace-uri()='urn:hl7-org:v3'][2]: @root
-                    The setId, if present, SHALL contain exactly one [1..1] @root (CONF:3372-34907).
                 Error: a-3372-18546-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:controlVariable[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:measurePeriod)=1
                     This controlVariable SHALL contain exactly one [1..1] measurePeriod (CONF:3372-18546).
                 Error: a-3372-18547-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:controlVariable[namespace-uri()='urn:hl7-org:v3'][1]/*:measurePeriod[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:code)=1
@@ -3290,14 +3249,8 @@
                     SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29978) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29979). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29980). This code SHALL contain exactly one [1..1] @code="MSRPOPLEX" Measure Population Exclusions  (CONF:3372-29981). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30089). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29982).
                 Warning: a-3372-29984-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='DISC'][@codeSystem])=1][count(hqmf:value[@xsi:type='ED'])=1])=1])=1
                     SHOULD contain zero or one [0..1] subjectOf (CONF:3372-29984) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-29985). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-29986). This code SHALL contain exactly one [1..1] @code="DISC" Disclaimer (CONF:3372-29987). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30090). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="ED" (CONF:3372-29988).
-                Warning: a-3372-34905-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:setId)=1
-                    This componentQualityMeasureDocument SHOULD contain zero or one [0..1] setId (CONF:3372-34905).
-                Warning: a-3372-34901-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:versionNumber)=1
-                    This componentQualityMeasureDocument SHOULD contain zero or one [0..1] versionNumber (CONF:3372-34901).
-                Warning: a-3372-34904-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:relatedDocument[namespace-uri()='urn:hl7-org:v3'][2]/*:componentQualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:id[namespace-uri()='urn:hl7-org:v3'][2]: @identifierName
-                    This id SHOULD contain zero or one [0..1] @identifierName (CONF:3372-34904).
             
-            (Errors: expected 53, actual 53) (Warnings: expected 33, actual 33)
+            (Errors: expected 46, actual 46) (Warnings: expected 30, actual 30)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3-GOOD.xml
             
@@ -3468,6 +3421,8 @@
                     SHALL contain exactly one [1..1] title (CONF:3372-32887).
                 Error: a-3372-32897-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='CSM'][count(hqmf:role)=1])=1
                     SHALL contain exactly one [1..1] participation (CONF:3372-32897) such that it SHALL contain exactly one [1..1] @typeCode="CSM" Consumable (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-32898) SHALL contain exactly one [1..1] role (CONF:3372-32899). 
+                Error: a-3372-34563-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:participation[@typeCode='AUT'][count(hqmf:time)=1][count(hqmf:role)=1])=1
+                    SHALL contain exactly one [1..1] participation (CONF:3372-34563) such that it SHALL contain exactly one [1..1] time (CONF:3372-34564). SHALL contain exactly one [1..1] role (CONF:3372-34565). SHALL contain exactly one [1..1] @typeCode="AUT" Author (CodeSystem: HL7ParticipationType urn:oid:2.16.840.1.113883.5.90) (CONF:3372-34566).
                 Error: a-3372-32882-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:templateId[namespace-uri()='urn:hl7-org:v3'][2]: count(hqmf:item[@root='2.16.840.1.113883.10.20.28.4.73' and @extension='2018-05-01'])=1
                     This templateId SHALL contain exactly one [1..1] item (CONF:3372-32882) such that this item SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.28.4.73" (CONF:3372-32883) This item SHALL contain exactly one [1..1] @extension="2018-05-01" (CONF:3372-33393).
                 Error: a-3372-33177-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @code='416118004'
@@ -3486,16 +3441,16 @@
                     This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32900).
                 Error: a-3372-32901-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:playingMaterial)=1
                     This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32901).
-                Error: a-3372-34568-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
+                Error: a-3372-34568-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
                     This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-34568).
-                Error: a-3372-34567-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
+                Error: a-3372-34567-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][4]/*:time[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:low)=1
                     This time SHALL contain exactly one [1..1] low (CONF:3372-34567).
                 Warning: a-3372-32895-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:routeCode[namespace-uri()='urn:hl7-org:v3'][1]: @valueSet
                     The routeCode, if present, SHOULD contain zero or one [0..1] @valueSet (CONF:3372-32895).
                 Warning: a-3372-32905-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingMaterial[namespace-uri()='urn:hl7-org:v3'][1]/*:code[namespace-uri()='urn:hl7-org:v3'][2]: @valueSet
                     This code SHOULD contain zero or one [0..1] @valueSet (CONF:3372-32905).
             
-            (Errors: expected 19, actual 19) (Warnings: expected 2, actual 2)
+            (Errors: expected 20, actual 20) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\Substance Administered V3\Substance Administered V3-GOOD.xml
             
@@ -3566,12 +3521,12 @@
                     This statusCode SHALL contain exactly one [1..1] @code="active" Active (CodeSystem: HL7ActStatus urn:oid:2.16.840.1.113883.5.14) (CONF:3372-32071).
                 Error: a-3372-32110-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingMaterial[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:code)=1
                     This playingMaterial SHALL contain exactly one [1..1] code (CONF:3372-32110).
-                Error: a-3372-32108-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingMaterial[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='MAT'
-                    This playingMaterial SHALL contain exactly one [1..1] @classCode="MAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
+                Error: a-3372-32108-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingMaterial[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='MMAT'
+                    This playingMaterial SHALL contain exactly one [1..1] @classCode="MMAT" Manufactured Material (CodeSystem: HL7EntityClass urn:oid:2.16.840.1.113883.5.41) (CONF:3372-32108).
                 Error: a-3372-32109-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][1]/*:role[namespace-uri()='urn:hl7-org:v3'][1]/*:playingMaterial[namespace-uri()='urn:hl7-org:v3'][1]: @determinerCode='KIND'
                     This playingMaterial SHALL contain exactly one [1..1] @determinerCode="KIND" Kind (CodeSystem: HL7EntityDeterminer urn:oid:2.16.840.1.113883.5.30) (CONF:3372-32109).
-                Error: a-3372-32106-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ADMM'
-                    This role SHALL contain exactly one [1..1] @classCode="ADMM" Administerable Material (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).
+                Error: a-3372-32106-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='MANU'
+                    This role SHALL contain exactly one [1..1] @classCode="MANU" Manufactured (CodeSystem: HL7RoleClass urn:oid:2.16.840.1.113883.5.110) (CONF:3372-32106).
                 Error: a-3372-32107-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][2]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:playingMaterial)=1
                     This role SHALL contain exactly one [1..1] playingMaterial (CONF:3372-32107).
                 Error: a-3372-34478-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]/*:substanceAdministrationCriteria[namespace-uri()='urn:hl7-org:v3'][1]/*:participation[namespace-uri()='urn:hl7-org:v3'][3]/*:role[namespace-uri()='urn:hl7-org:v3'][1]: @classCode='ROL'
@@ -3731,7 +3686,7 @@
             Added  queryBinding=xslt2 attribute to root element.
             Generating all Error patterns first, then all Warning patterns.
         Wrote merged Schematron file to "C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch".
-            Generated 1189 asserts in generated (merged) file C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch
+            Generated 1174 asserts in generated (merged) file C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch
 
 
     Testing merged file C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch using: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\TestFiles\EP_EC\CMS128_v5_4_eCQM.xml
@@ -3742,9 +3697,9 @@
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\TestFiles\EP_EC\CMS128_v5_4_eCQM.xml
             
-            (Errors: expected N/A, actual 0) (Warnings: expected N/A, actual 0)
+            (Errors: expected -1, actual 0) (Warnings: expected N/A, actual 0)
             Schematron validation of test file results as expected (or no expected error count provided).
  
-    Merge Complete in 13 seconds
+    Merge Complete in 14 seconds
 **************************************** end merge report ************************************************************************
  

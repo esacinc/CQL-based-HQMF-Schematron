@@ -3,6 +3,7 @@
 
   Update: 07-30-2018 - Removed author participation. Not required
   Update: 08-14-2018 - Removed extension from context of templateId rule
+  Update: 09-07-2018 - Added a-3346-34918, rule r-Medication-Discharge-participation-PRF-role-errors
 
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -56,7 +57,10 @@
     </sch:rule>
     <sch:rule id="r-Medication-Discharge-participation-AUT-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:participation[@typeCode='AUT'][count(hqmf:role)=1][count(hqmf:time)=1]/hqmf:role">
       <sch:assert id="a-3346-34444-error" test="@classCode='ROL'">This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34444).</sch:assert>
-    </sch:rule> 
+    </sch:rule>
+    <sch:rule id="r-Medication-Discharge-participation-PRF-role-errors" context="hqmf:substanceAdministrationCriteria[hqmf:templateId/hqmf:item[@root='2.16.840.1.113883.10.20.28.4.48' and @extension='2017-08-01']]/hqmf:participation[@typeCode='PRF'][count(hqmf:role)=1]/hqmf:role">
+      <sch:assert id="a-3346-34918-error" test="@classCode='ROL'">This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34918).</sch:assert>
+    </sch:rule>
   </sch:pattern>
   
   <sch:pattern id="p-Medication-Discharge-warnings">

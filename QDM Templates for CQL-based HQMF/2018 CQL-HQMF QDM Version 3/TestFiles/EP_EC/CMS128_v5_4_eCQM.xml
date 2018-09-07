@@ -741,7 +741,7 @@
             <localVariableName value="AntidepressantMedication_MedicationActive_yFPVd"/>
             <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
                <templateId>
-                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.44"/>
+                  <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.4.44" />
                </templateId>
                <id extension="AntidepressantMedication_MedicationActive"
                    root="40280381-3d61-56a7-013e-7af6125a640d"/>

@@ -9,8 +9,9 @@
   Date: 07-11-2018
   Update: 07-17-2018 templateId fix
   Update: 07-30-2018 Removed author participation. Not required
+  Update: 09-07-2018 - Added a-3346-34918, rule r-Medication-Discharge-participation-PRF-role-errors
   
-  Total Errors Expected: 19
+  Total Errors Expected: 20
       Failure a-3346-32521-error test="@classCode='SBADM'" - SHALL contain exactly one [1..1] @classCode="SBADM" Substance Administration (CONF:3346-32521).
       Failure a-3346-32522-error test="@moodCode='RQO'" - SHALL contain exactly one [1..1] @moodCode="RQO" Request (CodeSystem: HL7ActMood urn:oid:2.16.840.1.113883.5.1001) (CONF:3346-32522).
       Failure a-3346-32523-error test="count(hqmf:templateId)=1" - SHALL contain exactly one [1..1] templateId (CONF:3346-32523).
@@ -30,6 +31,7 @@
       Failure a-3346-32546-error test="count(hqmf:code)=1" - This playingManufacturedMaterial SHALL contain exactly one [1..1] code (CONF:3346-32546). 
       Failure a-3346-34443-error test="count(hqmf:low)=1" - This time SHALL contain exactly one [1..1] low (CONF:3346-34443).
       Failure a-3346-34444-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34444).
+      Failure a-3346-34918-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role (CONF:3346-34918).
      
    
   Total Warnings Expected: 2
@@ -99,6 +101,11 @@
         <high></high>
       </time>
     </participation>
+    
+    <participation typeCode="PRF">
+      <!-- Failure a-3346-34918-error test="@classCode='ROL'" - This role SHALL contain exactly one [1..1] @classCode="ROL" Role  -->
+      <role classCode="ROLerr"></role>
+     </participation>
   </substanceAdministrationCriteria>       
                         
 </QualityMeasureDocument>
