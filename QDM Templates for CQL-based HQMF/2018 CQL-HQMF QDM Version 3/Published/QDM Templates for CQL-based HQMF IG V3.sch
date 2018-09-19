@@ -39,9 +39,14 @@ Version 3.0
 	       - Changed assertion 3372-34627 so that it is a "such that..." containing 3372-34628.  
 	       - Removed standalone 3372-34628 assertion
 	       - Added assertion a-3372-34898-error
-	       - Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906 
+	       - Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906
+	  
+	  Update as of 09-19-2018
+	       - Added typeCode='COMP' constraint to relatedDocument rules.
+	               Context change for rules: r-vol-I-relatedDocument-errors and r-vol-I-relatedDocument-expressionDocument-errors
+	       - Removed assertion a-3372-34898-error as it should be a MAY in the IG rather than a SHALL 
 
-Fri Sep 07 12:43:54 MDT 2018
+Wed Sep 19 10:19:19 MDT 2018
 -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:voc="http://www.lantanagroup.com/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -1955,7 +1960,8 @@ Fri Sep 07 12:43:54 MDT 2018
       <sch:assert id="a-3372-18543-error" test="count(hqmf:setId)=1">SHALL contain exactly one [1..1] setId (CONF:3372-18543).</sch:assert>
       <sch:assert id="a-3372-18555-error" test="count(hqmf:custodian)=1">SHALL contain exactly one [1..1] custodian (CONF:3372-18555).</sch:assert>
       <sch:assert id="a-3372-34627-error" test="count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).</sch:assert>
-      <sch:assert id="a-3372-34898-error" test="count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..</sch:assert>
+      <!-- Removed because this conformance changed from SHALL to MAY in IG -->
+      <!-- <sch:assert id="a-3372-34898-error" test="count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) &gt; 0">SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..</sch:assert> -->
       <sch:assert id="a-3372-18545-error" test="count(hqmf:controlVariable)=1">SHALL contain exactly one [1..1] controlVariable (CONF:3372-18545).</sch:assert>
       <sch:assert id="a-3372-18580-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRSCORE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1])=1">SHALL contain exactly one [1..1] subjectOf (CONF:3372-18580) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18581). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18582). This code SHALL contain exactly one [1..1] @code="MSRSCORE" Measure Scoring (CONF:3372-18583). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30057). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29935). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureScoring urn:oid:2.16.840.1.113883.1.11.20367) (CONF:3372-29936).</sch:assert>
       <sch:assert id="a-3372-18588-error" test="count(hqmf:subjectOf[count(hqmf:measureAttribute[count(hqmf:code[@code='MSRTYPE'][@codeSystem])=1][count(hqmf:value[@xsi:type='CD'][@code])=1])=1]) &gt; 0">SHALL contain at least one [1..*] subjectOf (CONF:3372-18588) such that it SHALL contain exactly one [1..1] measureAttribute (CONF:3372-18590). This measureAttribute SHALL contain exactly one [1..1] code (CONF:3372-18591). This code SHALL contain exactly one [1..1] @code="MSRTYPE" Measure Type (CONF:3372-29934). This code SHALL contain exactly one [1..1] @codeSystem (CodeSystem: HL7ActCode urn:oid:2.16.840.1.113883.5.4) (CONF:3372-30058). This measureAttribute SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:3372-29938). This value SHALL contain exactly one [1..1] @code (ValueSet: ObservationMeasureType urn:oid:2.16.840.1.113883.1.11.20368) (CONF:3372-29939).</sch:assert>
@@ -2290,10 +2296,10 @@ Fri Sep 07 12:43:54 MDT 2018
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-vol-I-pattern-errors">
-    <sch:rule id="r-vol-I-relatedDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument">
+    <sch:rule id="r-vol-I-relatedDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument[@typeCode='COMP']">
       <sch:assert id="a-vol-I-001-relatedDocument-error" test="count(hqmf:expressionDocument)=1">Measures utilizing CQL libraries SHALL include exactly 1 expressionDocument element per CQL library refenced in the HQMF</sch:assert>
     </sch:rule>
-    <sch:rule id="r-vol-I-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument/hqmf:expressionDocument">
+    <sch:rule id="r-vol-I-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument[@typeCode='COMP']/hqmf:expressionDocument">
       <sch:assert id="a-vol-I-002-expressionDocument-error" test="count(hqmf:text[@mediaType='text/cql'][count(hqmf:reference) &gt;=1])=1">The expressionDocument element SHALL contain a child text element that SHALL have a mediaType attribute value of text/cql and SHALL include a child reference element whose value contains a URI (relative or absolute) that identifies the CQL expression document.</sch:assert>
     </sch:rule>
     <sch:rule id="r-vol-I-definition-valueSet-errors" context="hqmf:definition/hqmf:valueSet">

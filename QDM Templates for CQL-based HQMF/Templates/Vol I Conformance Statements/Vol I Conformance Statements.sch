@@ -5,6 +5,7 @@
     Date:   03-21-2018
     Note:   Assertion Ids reference conformance requirements listed in internal ESAC document: 'CQL_QMF_Conformance Requirements - for schematron.docx'
 
+    Update: 09-19-2018 Added typeCode='COMP' constraint to relatedDocument rule because only composite measures require an expression document.
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:hqmf="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -23,10 +24,10 @@
   
   
   <sch:pattern id="p-vol-I-pattern-errors">
-    <sch:rule id="r-vol-I-relatedDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument">
+    <sch:rule id="r-vol-I-relatedDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument[@typeCode='COMP']">
       <sch:assert id="a-vol-I-001-relatedDocument-error" test="count(hqmf:expressionDocument)=1">Measures utilizing CQL libraries SHALL include exactly 1 expressionDocument element per CQL library refenced in the HQMF</sch:assert>
      </sch:rule>
-    <sch:rule id="r-vol-I-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument/hqmf:expressionDocument">
+    <sch:rule id="r-vol-I-relatedDocument-expressionDocument-errors" context="hqmf:QualityMeasureDocument/hqmf:relatedDocument[@typeCode='COMP']/hqmf:expressionDocument">
       <sch:assert id="a-vol-I-002-expressionDocument-error" test="count(hqmf:text[@mediaType='text/cql'][count(hqmf:reference) &gt;=1])=1">The expressionDocument element SHALL contain a child text element that SHALL have a mediaType attribute value of text/cql and SHALL include a child reference element whose value contains a URI (relative or absolute) that identifies the CQL expression document.</sch:assert>
     </sch:rule>
     <sch:rule id="r-vol-I-definition-valueSet-errors" context="hqmf:definition/hqmf:valueSet">

@@ -7,7 +7,7 @@
     Instructions file: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3\QDM Templates for CQL-based HQMF Merge Directions.xml
     Title: QDM Templates for CQL-base HQMF
     Version: 3.0
-    Generated on Fri Sep 07 12:43:42 MDT 2018
+    Generated on Wed Sep 19 10:19:08 MDT 2018
     Verbose Reporting is turned on
     Merged file: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\2018 CQL-HQMF QDM Version 3/Published/QDM Templates for CQL-based HQMF IG V3.sch
         All Error patterns are generated before all Warning patterns
@@ -3114,14 +3114,12 @@
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3-ERRORS-AUX.xml
                 Error: a-3372-34627-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument[count(hqmf:expressionDocument)=1]) > 0
                     SHALL contain at least one [1..*] relatedDocument (CONF:3372-34627) such that it SHALL contain exactly one [1..1] expressionDocument (CONF:3372-34628).
-                Error: a-3372-34898-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:relatedDocument[@typeCode='XCRPT'][count(hqmf:componentQualityMeasureDocument)=1]) > 0
-                    SHALL contain at least one [1..*] relatedDocument (CONF:3372-34898) such that it SHALL contain exactly one [1..1] @typeCode="XCRPT" Excerpts (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:3372-34902). SHALL contain exactly one [1..1] componentQualityMeasureDocument (CONF:3372-34899)..
                 Warning: a-3372-18563-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:author) > 0
                     SHOULD contain zero or more [0..*] author (CONF:3372-18563).
                 Warning: a-3372-18754-warning at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:verifier)=1
                     SHOULD contain zero or one [0..1] verifier (CONF:3372-18754).
             
-            (Errors: expected 2, actual 2) (Warnings: expected 2, actual 2)
+            (Errors: expected 1, actual 1) (Warnings: expected 2, actual 2)
          
         TEST FILE: C:\Development\CQL\GIT Repositories\CQL-based-HQMF-Schematron\QDM Templates for CQL-based HQMF\Templates\QDM Templates for CQL-based HQMF Header V3\QDM Templates for CQL-based HQMF Header V3-ERRORS.xml
                 Error: a-3372-18786-error at /*:QualityMeasureDocument[namespace-uri()='urn:hl7-org:v3'][1]: count(hqmf:typeId)=1
@@ -3745,6 +3743,6 @@
             (Errors: expected N/A, actual 0) (Warnings: expected N/A, actual 0)
             Schematron validation of test file results as expected (or no expected error count provided).
  
-    Merge Complete in 13 seconds
+    Merge Complete in 12 seconds
 **************************************** end merge report ************************************************************************
  

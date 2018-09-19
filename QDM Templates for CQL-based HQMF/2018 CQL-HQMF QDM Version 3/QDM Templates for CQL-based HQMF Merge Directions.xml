@@ -59,7 +59,11 @@
 	       - Removed standalone 3372-34628 assertion
 	       - Added assertion a-3372-34898-error
 	       - Added XCRPT relatedDocument assertions 3372-34898, 3372-34900, 3372-34903, 3372-34904, 3372-34905, 3372-34907, 3372-34901, 3372-34906
-	      
+	  
+	  Update as of 09-19-2018
+	       - Added typeCode='COMP' constraint to relatedDocument rules.
+	               Context change for rules: r-vol-I-relatedDocument-errors and r-vol-I-relatedDocument-expressionDocument-errors
+	       - Removed assertion a-3372-34898-error as it should be a MAY in the IG rather than a SHALL
 	       
     </fileHeader>
     
